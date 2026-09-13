@@ -1,13 +1,12 @@
 # GPPDiscovery3
 
-Numerical and symbolic discovery for the Golden Physics Project.
+Discovery laboratory for the Golden Physics Project: exact algebra, numerics,
+and statements under construction.
 
-Companion to the Lean formalization in [GPPVerify](https://github.com/GoldenPhysicsProject/GPPVerify).
-Nothing in this repository is a theorem. Candidates that survive exact statement,
-hypotheses, domain, and singular cases graduate there.
+Machine-checked Lean lives in [GPPVerify](https://github.com/GoldenPhysicsProject/GPPVerify).
 
 ## Current thread
 
 Arithmetic pairing of the signed Weil measure (Archimedean place minus primes)
 against the heat Gaussian, and certified enclosures of the truncated Galerkin
-form when those are needed as evidence.
+form.
