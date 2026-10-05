@@ -1,0 +1,61 @@
+{
+  "alpha": 0.5,
+  "base_value": 0.44434492158106575,
+  "delta": 0.1,
+  "exact_dual_norm": 1.4433756729740645,
+  "gamma": 3.0,
+  "panels": 2048,
+  "resolution_relative_difference": 6.279421427279885e-13,
+  "rows": [
+    {
+      "amplitude": 0.0001490611150887194,
+      "cauchy_schwarz_ratio": 1.1688218390043116e-21,
+      "covariance_relative_error": 3.124502447734811e-15,
+      "t": -80,
+      "weighted_norm": 8.835612619506552e+16
+    },
+    {
+      "amplitude": 0.008138461125721698,
+      "cauchy_schwarz_ratio": 3.096106444141352e-11,
+      "covariance_relative_error": 1.4958604504509742e-15,
+      "t": -40,
+      "weighted_norm": 182115549.57159764
+    },
+    {
+      "amplitude": 0.1634653614386108,
+      "cauchy_schwarz_ratio": 0.0020329025356821146,
+      "covariance_relative_error": 3.500410391409846e-16,
+      "t": -10,
+      "weighted_norm": 55.709569213417005
+    },
+    {
+      "amplitude": 0.4443449215810667,
+      "cauchy_schwarz_ratio": 0.7262414299849279,
+      "covariance_relative_error": 2.1237771180174447e-15,
+      "t": 0,
+      "weighted_norm": 0.42389648868123014
+    },
+    {
+      "amplitude": 1.207854725901871,
+      "cauchy_schwarz_ratio": 0.015021230879813522,
+      "covariance_relative_error": 5.534132237879242e-16,
+      "t": 10,
+      "weighted_norm": 55.709569213417005
+    },
+    {
+      "amplitude": 24.260410694948742,
+      "cauchy_schwarz_ratio": 9.229363233394538e-08,
+      "covariance_relative_error": 1.2954010139241773e-15,
+      "t": 40,
+      "weighted_norm": 182115549.57159764
+    },
+    {
+      "amplitude": 1324.5735429885085,
+      "cauchy_schwarz_ratio": 1.0386280040175606e-14,
+      "covariance_relative_error": 1.919195039325395e-16,
+      "t": 80,
+      "weighted_norm": 8.835612619506552e+16
+    }
+  ],
+  "status": "floating-point control, not interval certification or an RH proof"
+}
