@@ -45,8 +45,11 @@ def lower_bound(t):
     return float(np.sqrt(np.vdot(b,solve(gram,b,assume_a='pos')).real))
 
 
-def fit(t, injected, step):
+def fit(t, injected, step, jitter=0.0):
     centers=np.linspace(-t-6,6,round((t+12)/step)+1)
+    if jitter:
+        j=np.arange(1,len(centers)-1)
+        centers[1:-1]+=jitter*step*np.sin(j*math.pi*(math.sqrt(5)-1))
     x=np.arange(centers[0]-3-SHIFT,centers[-1]+3+SHIFT,.0125)
     weight=2*np.cosh(x/2)
     target=np.exp(-(x+t)**2/(4*TAU))/math.sqrt(4*math.pi*TAU)
@@ -59,7 +62,7 @@ def fit(t, injected, step):
     bound=lower_bound(t) if injected else 0.
     assert fine+1e-7>=bound,(t,fine,bound)
     assert abs(coarse-fine)<1e-5,(t,coarse,fine)
-    return dict(t=t,injected=injected,step=step,residual=fine,
+    return dict(t=t,injected=injected,step=step,jitter=jitter,residual=fine,
                 grid_discrepancy=abs(coarse-fine),artificial_zero_lower_bound=bound,
                 condition=float(singular[0]/singular[-1]),rank=int(rank),
                 centers=centers.tolist(),coefficients=coeff.tolist())
