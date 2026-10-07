@@ -1,0 +1,54 @@
+{
+  "arithmetic": "exact Fraction arithmetic; no numerical tolerance",
+  "incidence_gram": [
+    [
+      2,
+      -1,
+      0,
+      0,
+      0
+    ],
+    [
+      -1,
+      2,
+      -1,
+      0,
+      0
+    ],
+    [
+      0,
+      -1,
+      2,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      2,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      2
+    ]
+  ],
+  "weak_block_exchange_is_unweighted_graph_automorphism": true,
+  "folded_left_equals_folded_right": true,
+  "relative_generators_compress_to_zero": true,
+  "diagonal_generators_preserve_fold": true,
+  "left_only_generators_do_not_preserve_fold": true,
+  "scope": "Linear exchange on two internal doublets only. Does not identify Lorentz chirality, CPT, or an anti-linear charge-conjugation fold.",
+  "conclusion": "Symmetric folding selects the diagonal internal action, not one of the two original independent weak factors.",
+  "conjugate_fold": {
+    "fixed_graph": "(v, conjugate(v))",
+    "physical_complex_structure": "diag(i,-i)",
+    "preserves_original_charged_complex_doublet": true,
+    "adds_independent_weak_group": false,
+    "limitation": "Lorentz Weyl representation and gauge action must still be supplied; their chirality is not derived."
+  }
+}
