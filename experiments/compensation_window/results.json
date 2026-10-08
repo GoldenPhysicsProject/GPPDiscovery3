@@ -1,0 +1,44 @@
+{
+  "arithmetic": "binary64; no rigorous rounding certificate",
+  "xmax": 100000,
+  "knots_tested": 33005,
+  "largest_sampled_deficit": {
+    "value": 0.2367285864403148,
+    "x": 2.0
+  },
+  "correction_samples": [
+    {
+      "x": 2,
+      "R": 0.3328150981819178,
+      "elementary_upper_bound": 5.545177444479561
+    },
+    {
+      "x": 10,
+      "R": 0.21257232525557251,
+      "elementary_upper_bound": 4.2871430438763
+    },
+    {
+      "x": 100,
+      "R": 0.07046404985535212,
+      "elementary_upper_bound": 2.262871587813799
+    },
+    {
+      "x": 1000,
+      "R": 0.022193359854949753,
+      "elementary_upper_bound": 1.0204479207764816
+    },
+    {
+      "x": 10000,
+      "R": 0.0070019576814888155,
+      "elementary_upper_bound": 0.42019740364051483
+    },
+    {
+      "x": 100000,
+      "R": 0.0022136730685544622,
+      "elementary_upper_bound": 0.16376274078656392
+    }
+  ],
+  "C0_partial": 0.18337794410427932,
+  "analytic_tail_bound": 9.713572340168218e-06,
+  "C0_plus_Dbound_estimated_upper": 0.7766722128844322
+}
