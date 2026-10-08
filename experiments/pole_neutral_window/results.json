@@ -1,0 +1,63 @@
+{
+  "status": "exploratory floating point; no all-scale estimate",
+  "norm_squared_phi": 6.5,
+  "transform_checks": [
+    {
+      "z": "0.5",
+      "transform_error": 8.881784197001252e-16,
+      "abs_transform": 0.0
+    },
+    {
+      "z": "-0.5",
+      "transform_error": 8.881784197001252e-16,
+      "abs_transform": 0.0
+    },
+    {
+      "z": "(0.2+1.7j)",
+      "transform_error": 5.773426602417214e-15,
+      "abs_transform": 1.1648489707396794
+    },
+    {
+      "z": "(0.01+14.1j)",
+      "transform_error": 2.9925468266049133e-15,
+      "abs_transform": 0.45070603734857934
+    },
+    {
+      "z": "14.1j",
+      "transform_error": 5.9396931817445875e-15,
+      "abs_transform": 0.45068987830693835
+    }
+  ],
+  "prime_checks": [
+    {
+      "x": 10,
+      "five_scale_prime_sum": -0.7364695156311165,
+      "D_phi": 0.07101396195128867,
+      "C_phi": 0.6654555536798279,
+      "identity_error": 3.219646771412954e-15
+    },
+    {
+      "x": 100,
+      "five_scale_prime_sum": 0.6847767362021395,
+      "D_phi": 0.00012257759343522513,
+      "C_phi": -0.6848993137955748,
+      "identity_error": 1.5543122344752192e-15
+    },
+    {
+      "x": 1000,
+      "five_scale_prime_sum": 0.6599900559950829,
+      "D_phi": 3.85669264077093e-07,
+      "C_phi": -0.659990441664347,
+      "identity_error": 2.8754776337791554e-14
+    },
+    {
+      "x": 10000,
+      "five_scale_prime_sum": -0.10894719464904767,
+      "D_phi": 1.2194586239300905e-09,
+      "C_phi": 0.10894719342958906,
+      "identity_error": 1.096345236817342e-15
+    }
+  ],
+  "off_axis_control_C0": 4.379093645168832,
+  "off_axis_control_max_to_60": 334599.4974999144
+}
