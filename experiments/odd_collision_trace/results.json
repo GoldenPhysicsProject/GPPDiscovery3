@@ -1,0 +1,69 @@
+{
+  "status": "finite Galerkin binary64 checks, not an RH proof",
+  "rows": [
+    {
+      "L": 2,
+      "odd_bins": 8,
+      "susceptibility": 0.8972588524075695,
+      "margin_to_one": 0.10274114759243047,
+      "minimum_Q_cholesky_pivot": 0.31507895148247633,
+      "direct_vs_collision_error": 1.0270007066992548e-11
+    },
+    {
+      "L": 2,
+      "odd_bins": 16,
+      "susceptibility": 0.9594443965126201,
+      "margin_to_one": 0.040555603487379854,
+      "minimum_Q_cholesky_pivot": 0.41179705667360594,
+      "direct_vs_collision_error": 1.4219736499399005e-12
+    },
+    {
+      "L": 4,
+      "odd_bins": 8,
+      "susceptibility": 0.9944503750807162,
+      "margin_to_one": 0.005549624919283791,
+      "minimum_Q_cholesky_pivot": 0.15650527244392548,
+      "direct_vs_collision_error": 8.51363424203555e-12
+    },
+    {
+      "L": 4,
+      "odd_bins": 16,
+      "susceptibility": 0.9972779585443623,
+      "margin_to_one": 0.0027220414556377026,
+      "minimum_Q_cholesky_pivot": 0.19970568025578272,
+      "direct_vs_collision_error": 1.2296830220748234e-12
+    },
+    {
+      "L": 6,
+      "odd_bins": 8,
+      "susceptibility": 0.9989050243210438,
+      "margin_to_one": 0.0010949756789562226,
+      "minimum_Q_cholesky_pivot": 0.09247462706708005,
+      "direct_vs_collision_error": 4.198863479132342e-13
+    },
+    {
+      "L": 6,
+      "odd_bins": 16,
+      "susceptibility": 0.9995012671978322,
+      "margin_to_one": 0.0004987328021678339,
+      "minimum_Q_cholesky_pivot": 0.1452760003118788,
+      "direct_vs_collision_error": 5.495603971894525e-13
+    },
+    {
+      "L": 8,
+      "odd_bins": 8,
+      "susceptibility": 0.9997746712197421,
+      "margin_to_one": 0.00022532878025793845,
+      "minimum_Q_cholesky_pivot": 0.06561477680946613,
+      "direct_vs_collision_error": 2.060596138164783e-11
+    },
+    {
+      "L": 8,
+      "odd_bins": 16,
+      "susceptibility": 0.9998773582112623,
+      "margin_to_one": 0.00012264178873766518,
+      "minimum_Q_cholesky_pivot": 0.10961770115072716,
+      "direct_vs_collision_error": 1.4004353232621725e-12
+    }
+  ]
+}
