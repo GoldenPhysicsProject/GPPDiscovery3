@@ -1,0 +1,60 @@
+{
+  "control_on_axis": {
+    "shift": "0",
+    "diagonal": [
+      "1572/785",
+      "99/197"
+    ],
+    "det_exact": "196/154645",
+    "det_decimal": 0.001267418927220408
+  },
+  "control_off_axis": {
+    "shift": "1/5",
+    "diagonal": [
+      "150644825/72221208",
+      "19503960100/38424771099"
+    ],
+    "det_exact": "-32103282750774390625/3296799062441201899296",
+    "det_decimal": -0.009737712897492354
+  },
+  "prime_cutoff": 100000,
+  "prime_series_tail_bounds": {
+    "3": 6.006462732485115e-10,
+    "4": 3.9487529327678546e-15
+  },
+  "actual_arithmetic_diagnostics": [
+    {
+      "height": 0,
+      "det_diagnostic": 3.1139266526694284e-06,
+      "diagonal": [
+        0.04575627811583459,
+        0.04534022657214335
+      ]
+    },
+    {
+      "height": 14,
+      "det_diagnostic": 0.0007670902408622865,
+      "diagonal": [
+        0.22315763850218445,
+        0.14282054511176528
+      ]
+    },
+    {
+      "height": 21,
+      "det_diagnostic": 0.001344932638675217,
+      "diagonal": [
+        0.2770943467267704,
+        0.18628783001920063
+      ]
+    },
+    {
+      "height": 50,
+      "det_diagnostic": 0.003786303662849211,
+      "diagonal": [
+        0.4483868061160817,
+        0.3091465826636316
+      ]
+    }
+  ],
+  "status": "rational controls exact; arithmetic values binary64, not full interval certificates"
+}
