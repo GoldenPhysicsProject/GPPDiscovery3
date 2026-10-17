@@ -1,0 +1,59 @@
+{
+  "scope": "Non-rigorous finite diagnostics. Exact identities proved separately. No RH claim.",
+  "rows": [
+    {
+      "L": "1.4",
+      "prime_constant_rayleigh": "3.53345823927785299",
+      "pole": "6.57656265938937447",
+      "prime_minus_pole": "-3.04310442011152148",
+      "arch": "-3.00589887284650684",
+      "completed_constant": "0.0372055472650146425",
+      "necessary_log10_Omega": "2.33274128371206664"
+    },
+    {
+      "L": "2",
+      "prime_constant_rayleigh": "7.53802082530593519",
+      "pole": "11.0487827643345258",
+      "prime_minus_pole": "-3.51076193902859065",
+      "arch": "-3.49319147375599248",
+      "completed_constant": "0.01757046527259817",
+      "necessary_log10_Omega": "4.07190071726027893"
+    },
+    {
+      "L": "3",
+      "prime_constant_rayleigh": "20.1589354838733526",
+      "pole": "24.1804319887407089",
+      "prime_minus_pole": "-4.02149650486735626",
+      "arch": "-4.00545543048871298",
+      "completed_constant": "0.0160410743786432877",
+      "necessary_log10_Omega": "9.55309431004797193"
+    },
+    {
+      "L": "4",
+      "prime_constant_rayleigh": "48.2930625136011007",
+      "pole": "52.6164656720329733",
+      "prime_minus_pole": "-4.32340315843187251",
+      "arch": "-4.31566598604015149",
+      "completed_constant": "0.00773717239172102517",
+      "necessary_log10_Omega": "21.7715904322238575"
+    },
+    {
+      "L": "5",
+      "prime_constant_rayleigh": "112.605792304071247",
+      "pole": "117.135917639660551",
+      "prime_minus_pole": "-4.53012533558930376",
+      "arch": "-4.51770731910002283",
+      "completed_constant": "0.0124180164892809277",
+      "necessary_log10_Omega": "49.7022540963599193"
+    },
+    {
+      "L": "6",
+      "prime_constant_rayleigh": "262.958695642019123",
+      "pole": "267.620848163274526",
+      "prime_minus_pole": "-4.66215252125540264",
+      "arch": "-4.6572805392389827",
+      "completed_constant": "0.0048719820164199395",
+      "necessary_log10_Omega": "114.999690354163694"
+    }
+  ]
+}
