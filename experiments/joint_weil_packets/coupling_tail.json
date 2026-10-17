@@ -1,0 +1,20 @@
+{
+  "scope": "Numerical checks of analytic coupling envelope; proof is separate.",
+  "rows": [
+    {
+      "L": "0.5",
+      "tests": 42,
+      "max_ratio": "0.20221366949568373849"
+    },
+    {
+      "L": "1.4",
+      "tests": 42,
+      "max_ratio": "0.048880779205799098133"
+    },
+    {
+      "L": "2",
+      "tests": 42,
+      "max_ratio": "0.040030803626506060846"
+    }
+  ]
+}
