@@ -1,0 +1,23 @@
+{
+  "scope": "Shifted-product negative control, numerical only; theta=0 identity checked.",
+  "rows": [
+    {
+      "L": "0.5",
+      "dimension": 17,
+      "theta": "1/4",
+      "min_eigenvalue": "-0.0001533125111715046753145"
+    },
+    {
+      "L": "1.4",
+      "dimension": 17,
+      "theta": "1/4",
+      "min_eigenvalue": "-0.1695228713887108566847"
+    },
+    {
+      "L": "2",
+      "dimension": 17,
+      "theta": "1/4",
+      "min_eigenvalue": "-0.2107278825087023894071"
+    }
+  ]
+}
