@@ -1,0 +1,4 @@
+Shifted-gamma direct integral error 0.25 5.22256226e-65
+Shifted-gamma direct integral error 0.75 6.468855527e-65
+L=4, 95-digit minimum 2.1568135256595311629960858786491679e-40
+Regenerated 65-digit result: 2.156813525659531162996e-40; agrees with 95 digits to displayed precision. Earlier loose diagonal tail produced 2.156814107580839284021e-40 and has been corrected; analytic tail truncation is below 1e-60, floating arithmetic not certified.
