@@ -1,0 +1,49 @@
+{
+  "scope": "Finite subspaces, non-certified mpmath. Not full-window positivity or RH.",
+  "controls": [
+    {
+      "L": "1.4",
+      "t": "3.0",
+      "s": "0.0",
+      "error": "5.7566879e-65"
+    },
+    {
+      "L": "2.0",
+      "t": "14.0",
+      "s": "7.0",
+      "error": "8.583103e-65"
+    },
+    {
+      "L": "3.0",
+      "t": "12.0",
+      "s": "-12.0",
+      "error": "2.9673649e-67"
+    }
+  ],
+  "scans": [
+    {
+      "L": "1.4",
+      "dimension": 17,
+      "min_eigenvalue": "2.48818126110849467721e-24",
+      "max_eigenvalue": "2.911881889358005506829"
+    },
+    {
+      "L": "2",
+      "dimension": 17,
+      "min_eigenvalue": "1.836481200190566613062e-30",
+      "max_eigenvalue": "0.3357974998621311912117"
+    },
+    {
+      "L": "3",
+      "dimension": 17,
+      "min_eigenvalue": "4.12932498791304412943e-36",
+      "max_eigenvalue": "0.3210531749119675562436"
+    },
+    {
+      "L": "4",
+      "dimension": 17,
+      "min_eigenvalue": "2.156813525659531162996e-40",
+      "max_eigenvalue": "0.133920327211486388357"
+    }
+  ]
+}
