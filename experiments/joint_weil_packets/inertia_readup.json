@@ -1,0 +1,110 @@
+{
+  "scope": "Finite Fourier-packet subspaces, 85 decimal digits, analytic series tails not rounded by intervals.",
+  "rows": [
+    {
+      "L": "0.5",
+      "even": {
+        "dimension": 9,
+        "R_negative": 1,
+        "Q_negative": 0,
+        "min_R": "-1.9855927433347",
+        "min_Q": "1.3362378520542e-6",
+        "schur_margin": "-1.0558945793572e-6",
+        "margin_required": "<=0"
+      },
+      "odd": {
+        "dimension": 8,
+        "R_negative": 0,
+        "Q_negative": 0,
+        "min_R": "0.019841197084703",
+        "min_Q": "0.00025077706468971",
+        "schur_margin": "0.012116284356414",
+        "margin_required": ">=0"
+      }
+    },
+    {
+      "L": "1.4",
+      "even": {
+        "dimension": 9,
+        "R_negative": 1,
+        "Q_negative": 0,
+        "min_R": "-6.5677087488696",
+        "min_Q": "2.4881812611085e-24",
+        "schur_margin": "-1.2960018453749e-24",
+        "margin_required": "<=0"
+      },
+      "odd": {
+        "dimension": 8,
+        "R_negative": 0,
+        "Q_negative": 0,
+        "min_R": "2.4298373268145e-17",
+        "min_Q": "1.3279242832085e-21",
+        "schur_margin": "1.938823001001e-20",
+        "margin_required": ">=0"
+      }
+    },
+    {
+      "L": "2",
+      "even": {
+        "dimension": 9,
+        "R_negative": 1,
+        "Q_negative": 0,
+        "min_R": "-11.225537715881",
+        "min_Q": "1.8364812001906e-30",
+        "schur_margin": "-7.2936585402081e-31",
+        "margin_required": "<=0"
+      },
+      "odd": {
+        "dimension": 8,
+        "R_negative": 0,
+        "Q_negative": 0,
+        "min_R": "1.778056498315e-22",
+        "min_Q": "1.7884380537373e-27",
+        "schur_margin": "1.1846866052534e-26",
+        "margin_required": ">=0"
+      }
+    },
+    {
+      "L": "3",
+      "even": {
+        "dimension": 9,
+        "R_negative": 1,
+        "Q_negative": 0,
+        "min_R": "-25.996000183085",
+        "min_Q": "4.129324987913e-36",
+        "schur_margin": "-1.1218669305607e-36",
+        "margin_required": "<=0"
+      },
+      "odd": {
+        "dimension": 8,
+        "R_negative": 0,
+        "Q_negative": 0,
+        "min_R": "1.1133180354366e-27",
+        "min_Q": "5.5320139219654e-33",
+        "schur_margin": "1.2433421623249e-32",
+        "margin_required": ">=0"
+      }
+    },
+    {
+      "L": "4",
+      "even": {
+        "dimension": 9,
+        "R_negative": 1,
+        "Q_negative": 0,
+        "min_R": "-62.545069211187",
+        "min_Q": "2.1568135256595e-40",
+        "schur_margin": "-4.302401782867e-41",
+        "margin_required": "<=0"
+      },
+      "odd": {
+        "dimension": 8,
+        "R_negative": 0,
+        "Q_negative": 0,
+        "min_R": "6.3655528410221e-31",
+        "min_Q": "7.8131188218585e-37",
+        "schur_margin": "7.5341925469736e-37",
+        "margin_required": ">=0"
+      }
+    }
+  ]
+}
