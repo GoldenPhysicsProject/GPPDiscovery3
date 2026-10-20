@@ -21,7 +21,7 @@ check["balanced half-density critical counterterm",
  2(te-1+Exp[-te/2]),Assumptions->te>0]];
 check["the prime mean cross-over is exp(-a) at eps=a/T",
  FullSimplify[Limit[smooth[te,aa/te]/(2Exp[te/2]),te->Infinity,
- Assumptions->aa>0]==Exp[-aa]];
+ Assumptions->aa>0]-Exp[-aa],Assumptions->aa>0]===0];
 
 (* Laplace transform from the exact continuous density dx + delta_1. *)
 lt=FullSimplify[Integrate[Exp[-z te] bal[te,ee],
