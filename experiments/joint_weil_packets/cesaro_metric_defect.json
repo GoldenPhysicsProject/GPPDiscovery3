@@ -1,0 +1,104 @@
+{
+  "scope": "Finite model identities checked numerically; no arithmetic embedding, interval or Lean proof",
+  "rows": [
+    {
+      "model": "rotation",
+      "R": "1.0",
+      "G_diagonal": [
+        "1.0",
+        "1.0"
+      ],
+      "relative_defect": "0.0",
+      "condition_number": "1.0",
+      "endpoint_identity_error": "0.0"
+    },
+    {
+      "model": "rotation",
+      "R": "4.0",
+      "G_diagonal": [
+        "1.0",
+        "1.0"
+      ],
+      "relative_defect": "0.0",
+      "condition_number": "1.0",
+      "endpoint_identity_error": "0.0"
+    },
+    {
+      "model": "rotation",
+      "R": "10.0",
+      "G_diagonal": [
+        "1.0",
+        "1.0"
+      ],
+      "relative_defect": "0.0",
+      "condition_number": "1.0",
+      "endpoint_identity_error": "0.0"
+    },
+    {
+      "model": "growth_pair",
+      "R": "1.0",
+      "G_diagonal": [
+        "1.0421906109874947232",
+        "1.0421906109874947232"
+      ],
+      "relative_defect": "0.5",
+      "condition_number": "1.0",
+      "endpoint_identity_error": "0.0"
+    },
+    {
+      "model": "growth_pair",
+      "R": "4.0",
+      "G_diagonal": [
+        "1.8134302039235093838",
+        "1.8134302039235093838"
+      ],
+      "relative_defect": "0.5",
+      "condition_number": "1.0",
+      "endpoint_identity_error": "0.0"
+    },
+    {
+      "model": "growth_pair",
+      "R": "10.0",
+      "G_diagonal": [
+        "14.840642115557751795",
+        "14.840642115557751795"
+      ],
+      "relative_defect": "0.5",
+      "condition_number": "1.0",
+      "endpoint_identity_error": "0.0"
+    },
+    {
+      "model": "jordan",
+      "R": "1.0",
+      "G_diagonal": [
+        "1.0",
+        "1.3333333333333333333"
+      ],
+      "relative_defect": "0.86602540378443864676",
+      "condition_number": "1.3333333333333333333",
+      "endpoint_identity_error": "0.0"
+    },
+    {
+      "model": "jordan",
+      "R": "4.0",
+      "G_diagonal": [
+        "1.0",
+        "6.3333333333333333333"
+      ],
+      "relative_defect": "0.39735970711951314196",
+      "condition_number": "6.3333333333333333333",
+      "endpoint_identity_error": "0.0"
+    },
+    {
+      "model": "jordan",
+      "R": "10.0",
+      "G_diagonal": [
+        "1.0",
+        "34.333333333333333333"
+      ],
+      "relative_defect": "0.1706640371965722886",
+      "condition_number": "34.333333333333333333",
+      "endpoint_identity_error": "0.0"
+    }
+  ]
+}
