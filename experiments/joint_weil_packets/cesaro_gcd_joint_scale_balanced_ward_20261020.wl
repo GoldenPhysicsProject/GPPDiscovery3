@@ -62,10 +62,10 @@ ex=cc^2-2cc(aa1 rp+aa2 rp^2)+aa1^2+aa2^2+2aa1 aa2 rp;
 varg=2Log[pp](aa1^2+2aa1 aa2+2aa2^2);
 ms=aa1+aa2-cc;
 check["all-prime-phase infinitesimal variance = nested positive squares",
- FullSimplify[D[ex,hh]/.hh->0 ==
-   -2ms(aa1+2aa2)Log[pp]+varg,Assumptions->pp>1]];
+ FullSimplify[(D[ex,hh]/.hh->0) -
+   (-2ms(aa1+2aa2)Log[pp]+varg),Assumptions->pp>1]===0];
 check["two prime-power example smoothing energy is not monotone",
- FullSimplify[(D[ex,hh]/.cc->0)<0,
+ FullSimplify[(D[ex,hh]/.(cc->0))<0,
  Assumptions->pp>1&&aa1>0&&aa2>0&&hh>0]];
 Print["Exact all-padic-depth variance slope:"];
 Print["V'_0(t)=2 sum_p log p sum_j (sum_{k>=j}a_{p^k}(t))² >=0"];
