@@ -1,0 +1,36 @@
+{
+  "scope": "Model tests; no RH or actual arithmetic positivity claim",
+  "left_weighted_mean": [
+    [
+      "1/3",
+      "1/3"
+    ],
+    [
+      "1/2",
+      "1/2"
+    ]
+  ],
+  "sandwich_constant_offdiagonal": "0.942809041582063365867792482806",
+  "desired_constant_offdiagonal": "1",
+  "sandwich_eigenvalues": [
+    "0.0571909584179366341322075171935",
+    "1.94280904158206336586779248281"
+  ],
+  "scalar_controls": [
+    {
+      "N": 10,
+      "actual_operator_error": "0.064563492063492063492",
+      "propagated_error_bound": "0.29289682539682539683"
+    },
+    {
+      "N": 100,
+      "actual_operator_error": "0.0068817217931019520324",
+      "propagated_error_bound": "0.051873775176396202608"
+    },
+    {
+      "N": 1000,
+      "actual_operator_error": "0.00069264743055982030967",
+      "propagated_error_bound": "0.0074854708605503449127"
+    }
+  ]
+}
