@@ -49,3 +49,24 @@ Print["local independent-prime variance O(t² or t³);"];
 Print["thus E_bal(T)=O(T³) with NO RH input."];
 Print["CAVEAT: this is a SHIFTED arithmetic signal, not Astra's J."];
 Print["RH / GRH / zero simplicity remain OPEN."];
+
+
+(* Infinitesimal phase variance and p-adic nested-square depth.
+   Symbolic two-prime-power test checks exact first-order e-derivative.
+   General identity: min(k,l)=sum_{j>=1}1_{j<=k}1_{j<=l};
+   V'_0=2 sum_p log p sum_j (sum_{k>=j}a_{p^k})^2 >=0.
+   This polynomial variance is RH-blind; the hard mean is J. *)
+ClearAll[pp,aa1,aa2,cc,hh,ex,rp,varg,ms];
+rp=pp^(-hh);
+ex=cc^2-2cc(aa1 rp+aa2 rp^2)+aa1^2+aa2^2+2aa1 aa2 rp;
+varg=2Log[pp](aa1^2+2aa1 aa2+2aa2^2);
+ms=aa1+aa2-cc;
+check["all-prime-phase infinitesimal variance = nested positive squares",
+ FullSimplify[D[ex,hh]/.hh->0 ==
+   -2ms(aa1+2aa2)Log[pp]+varg,Assumptions->pp>1]];
+check["two prime-power example smoothing energy is not monotone",
+ FullSimplify[(D[ex,hh]/.cc->0)<0,
+ Assumptions->pp>1&&aa1>0&&aa2>0&&hh>0]];
+Print["Exact all-padic-depth variance slope:"];
+Print["V'_0(t)=2 sum_p log p sum_j (sum_{k>=j}a_{p^k}(t))² >=0"];
+Print["Prime Chebyshev bound V'_0(t)=O((1+t)^3)."];
