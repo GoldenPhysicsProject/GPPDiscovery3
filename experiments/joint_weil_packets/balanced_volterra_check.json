@@ -1,0 +1,95 @@
+{
+  "scope": "Finite analytic-cell identity checks, not uniform estimates or interval/Lean certification",
+  "rows": [
+    {
+      "X": 10,
+      "epsilon": "0.0",
+      "balanced": "-2.20295038723114085930973",
+      "volterra_error": "0.0"
+    },
+    {
+      "X": 10,
+      "epsilon": "0.01",
+      "balanced": "-2.200343054170960589389656",
+      "volterra_error": "3.11151e-61"
+    },
+    {
+      "X": 10,
+      "epsilon": "0.25",
+      "balanced": "-2.141079999334902526913616",
+      "volterra_error": "0.0"
+    },
+    {
+      "X": 10,
+      "epsilon": "0.5",
+      "balanced": "-2.085637626640215625418302",
+      "volterra_error": "0.0"
+    },
+    {
+      "X": 10,
+      "epsilon": "1.0",
+      "balanced": "-1.991181601145292095333109",
+      "volterra_error": "4.66726e-61"
+    },
+    {
+      "X": 100,
+      "epsilon": "0.0",
+      "balanced": "-3.016659557444106632887642",
+      "volterra_error": "0.0"
+    },
+    {
+      "X": 100,
+      "epsilon": "0.01",
+      "balanced": "-3.011782498663935175625649",
+      "volterra_error": "3.11151e-60"
+    },
+    {
+      "X": 100,
+      "epsilon": "0.25",
+      "balanced": "-2.907829752591814522103003",
+      "volterra_error": "9.33452e-61"
+    },
+    {
+      "X": 100,
+      "epsilon": "0.5",
+      "balanced": "-2.818331641067918818004461",
+      "volterra_error": "3.11151e-61"
+    },
+    {
+      "X": 100,
+      "epsilon": "1.0",
+      "balanced": "-2.674188778669278488637059",
+      "volterra_error": "9.33452e-61"
+    },
+    {
+      "X": 1000,
+      "epsilon": "0.0",
+      "balanced": "-3.265675929973435332555384",
+      "volterra_error": "4.97841e-60"
+    },
+    {
+      "X": 1000,
+      "epsilon": "0.01",
+      "balanced": "-3.260210321062622398595488",
+      "volterra_error": "3.11151e-59"
+    },
+    {
+      "X": 1000,
+      "epsilon": "0.25",
+      "balanced": "-3.145892965961090223821354",
+      "volterra_error": "4.35611e-60"
+    },
+    {
+      "X": 1000,
+      "epsilon": "0.5",
+      "balanced": "-3.048099762743648066637758",
+      "volterra_error": "3.11151e-61"
+    },
+    {
+      "X": 1000,
+      "epsilon": "1.0",
+      "balanced": "-2.889786977703060888475014",
+      "volterra_error": "1.2446e-60"
+    }
+  ]
+}
