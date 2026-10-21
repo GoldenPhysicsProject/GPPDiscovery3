@@ -1,0 +1,46 @@
+{
+  "scope": "Independent finite arithmetic quadrature of centered endpoint energy identity.\nNo infinite arithmetic bound, no interval certificate, no Lean certification.\n",
+  "exact_polynomial_checks": 4,
+  "rows": [
+    {
+      "X": 10,
+      "weighted_endpoint_energy": 25.719673404447263,
+      "centered_J0_energy": 4.695118558396286,
+      "boundary_square": 21.024554846050968,
+      "identity_error": 1.0658141036401503e-14,
+      "r_at_T": 3.3798224508405132
+    },
+    {
+      "X": 100,
+      "weighted_endpoint_energy": 51.9050385175844,
+      "centered_J0_energy": 15.154608279634187,
+      "boundary_square": 36.75043023795021,
+      "identity_error": 0.0,
+      "r_at_T": 3.3609968873514617
+    },
+    {
+      "X": 1000,
+      "weighted_endpoint_energy": 78.08382877658342,
+      "centered_J0_energy": 35.46351611825509,
+      "boundary_square": 42.620312658328444,
+      "identity_error": -1.2079226507921703e-13,
+      "r_at_T": 3.3624993908269643
+    },
+    {
+      "X": 10000,
+      "weighted_endpoint_energy": 104.26117341348132,
+      "centered_J0_energy": 59.70422739639042,
+      "boundary_square": 44.55694601709662,
+      "identity_error": -5.7269744502264075e-12,
+      "r_at_T": 3.370814785026388
+    },
+    {
+      "X": 100000,
+      "weighted_endpoint_energy": 130.44798777204613,
+      "centered_J0_energy": 85.26006189919494,
+      "boundary_square": 45.18792587290613,
+      "identity_error": -5.4932058901613345e-11,
+      "r_at_T": 3.3776960289802047
+    }
+  ]
+}
