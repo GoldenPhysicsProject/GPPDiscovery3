@@ -1,0 +1,155 @@
+{
+  "scope": "Exact rational finite identities; no arithmetic mean bound",
+  "cases": [
+    {
+      "r": "0",
+      "coefficients": [
+        "2",
+        "3"
+      ],
+      "variance": "13",
+      "identity_exact": true
+    },
+    {
+      "r": "0",
+      "coefficients": [
+        "1",
+        "-2",
+        "3",
+        "-4"
+      ],
+      "variance": "30",
+      "identity_exact": true
+    },
+    {
+      "r": "0",
+      "coefficients": [
+        "1/3",
+        "2/7",
+        "5/11"
+      ],
+      "variance": "21310/53361",
+      "identity_exact": true
+    },
+    {
+      "r": "1/10",
+      "coefficients": [
+        "2",
+        "3"
+      ],
+      "variance": "141471/10000",
+      "identity_exact": true
+    },
+    {
+      "r": "1/10",
+      "coefficients": [
+        "1",
+        "-2",
+        "3",
+        "-4"
+      ],
+      "variance": "655129431/25000000",
+      "identity_exact": true
+    },
+    {
+      "r": "1/10",
+      "coefficients": [
+        "1/3",
+        "2/7",
+        "5/11"
+      ],
+      "variance": "9617149/21560000",
+      "identity_exact": true
+    },
+    {
+      "r": "1/2",
+      "coefficients": [
+        "2",
+        "3"
+      ],
+      "variance": "255/16",
+      "identity_exact": true
+    },
+    {
+      "r": "1/2",
+      "coefficients": [
+        "1",
+        "-2",
+        "3",
+        "-4"
+      ],
+      "variance": "927/64",
+      "identity_exact": true
+    },
+    {
+      "r": "1/2",
+      "coefficients": [
+        "1/3",
+        "2/7",
+        "5/11"
+      ],
+      "variance": "698101/1138368",
+      "identity_exact": true
+    },
+    {
+      "r": "9/10",
+      "coefficients": [
+        "2",
+        "3"
+      ],
+      "variance": "59071/10000",
+      "identity_exact": true
+    },
+    {
+      "r": "9/10",
+      "coefficients": [
+        "1",
+        "-2",
+        "3",
+        "-4"
+      ],
+      "variance": "116210631/25000000",
+      "identity_exact": true
+    },
+    {
+      "r": "9/10",
+      "coefficients": [
+        "1/3",
+        "2/7",
+        "5/11"
+      ],
+      "variance": "652272679/2134440000",
+      "identity_exact": true
+    },
+    {
+      "r": "1",
+      "coefficients": [
+        "2",
+        "3"
+      ],
+      "variance": "0",
+      "identity_exact": true
+    },
+    {
+      "r": "1",
+      "coefficients": [
+        "1",
+        "-2",
+        "3",
+        "-4"
+      ],
+      "variance": "0",
+      "identity_exact": true
+    },
+    {
+      "r": "1",
+      "coefficients": [
+        "1/3",
+        "2/7",
+        "5/11"
+      ],
+      "variance": "0",
+      "identity_exact": true
+    }
+  ]
+}
