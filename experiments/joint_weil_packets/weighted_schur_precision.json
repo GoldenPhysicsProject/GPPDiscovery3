@@ -1,0 +1,40 @@
+{
+  "scope": "Exact rational tests of weighted Schur assembly-error budgets.\nSynthetic matrices only; no replay of Grok's dumps and no RH claim.\n",
+  "exact_cases": [
+    {
+      "soft_error": "1/1000000000000000000000000000000000000000000",
+      "hard_error": "0",
+      "true_S": "3799/10000",
+      "certified_lower": "3599/10000",
+      "positive_certificate": true
+    },
+    {
+      "soft_error": "-1/1000000000000000000000000000000000000000000",
+      "hard_error": "0",
+      "true_S": "6199/10000",
+      "certified_lower": "3599/10000",
+      "positive_certificate": true
+    },
+    {
+      "soft_error": "1/1000000000000000000000000000000000000000000",
+      "hard_error": "1/10000",
+      "true_S": "37969999/100000000",
+      "certified_lower": "345879/1000000",
+      "positive_certificate": true
+    },
+    {
+      "soft_error": "1/1000000000000000000000000000000000000000",
+      "hard_error": "0",
+      "true_S": "-439/2",
+      "certified_lower": "-479/2",
+      "positive_certificate": false
+    }
+  ],
+  "conditional_s76_example": {
+    "entry_error": "1/2000000000000000000000000000000000000000000000",
+    "e_squared_bound": "247/10000000",
+    "e_upper": "1/200",
+    "schur_loss_upper": "2801/40000",
+    "requires": "certified b<=7, fixed certified A, and separate C error budget"
+  }
+}
