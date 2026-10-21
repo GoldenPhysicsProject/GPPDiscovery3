@@ -1,0 +1,105 @@
+{
+  "scope": "Exact rational multiplier samples and floating ODE checks; analytic proof is separate; no RH bound",
+  "rows": [
+    {
+      "X": 100,
+      "epsilon": 0,
+      "inverse_error": 5.329070518200751e-15,
+      "dissipation_residual": 0.0,
+      "balanced_energy": 21.180973804185093,
+      "weighted_original_energy": 21.180973804185093,
+      "original_energy": 21.18097380418511,
+      "nonnegative_loss": 0.0
+    },
+    {
+      "X": 100,
+      "epsilon": 0.01,
+      "inverse_error": 1.687538997430238e-14,
+      "dissipation_residual": 1.1102230246251565e-14,
+      "balanced_energy": 21.125597854894412,
+      "weighted_original_energy": 19.88715845931398,
+      "original_energy": 21.180973804185097,
+      "nonnegative_loss": 1.2384393955804431
+    },
+    {
+      "X": 100,
+      "epsilon": 0.25,
+      "inverse_error": 2.4424906541753444e-15,
+      "dissipation_residual": 1.1368683772161603e-13,
+      "balanced_energy": 19.903488505821127,
+      "weighted_original_energy": 4.966755142525499,
+      "original_energy": 21.180973804185047,
+      "nonnegative_loss": 14.93673336329574
+    },
+    {
+      "X": 100,
+      "epsilon": 0.5,
+      "inverse_error": 5.551115123125783e-15,
+      "dissipation_residual": 1.2079226507921703e-13,
+      "balanced_energy": 18.81782182343723,
+      "weighted_original_energy": 1.5314283334736771,
+      "original_energy": 21.180973804185058,
+      "nonnegative_loss": 17.286393489963675
+    },
+    {
+      "X": 100,
+      "epsilon": 1,
+      "inverse_error": 1.942890293094024e-14,
+      "dissipation_residual": 5.684341886080802e-14,
+      "balanced_energy": 17.07691880836309,
+      "weighted_original_energy": 0.28751662047490517,
+      "original_energy": 21.18097380418506,
+      "nonnegative_loss": 16.789402187888243
+    },
+    {
+      "X": 1000,
+      "epsilon": 0,
+      "inverse_error": 1.4210854715202004e-14,
+      "dissipation_residual": 0.0,
+      "balanced_energy": 44.10155770775911,
+      "weighted_original_energy": 44.10155770775911,
+      "original_energy": 44.10155770775912,
+      "nonnegative_loss": 0.0
+    },
+    {
+      "X": 1000,
+      "epsilon": 0.01,
+      "inverse_error": 1.1590728377086634e-13,
+      "dissipation_residual": 5.329070518200751e-15,
+      "balanced_energy": 43.97892488520957,
+      "weighted_original_energy": 40.30487068432621,
+      "original_energy": 44.10155770775907,
+      "nonnegative_loss": 3.6740542008833668
+    },
+    {
+      "X": 1000,
+      "epsilon": 0.25,
+      "inverse_error": 2.853273173286652e-14,
+      "dissipation_residual": 1.2789769243681803e-13,
+      "balanced_energy": 41.28923029357699,
+      "weighted_original_energy": 6.308001830328112,
+      "original_energy": 44.101557707759056,
+      "nonnegative_loss": 34.98122846324901
+    },
+    {
+      "X": 1000,
+      "epsilon": 0.5,
+      "inverse_error": 6.38378239159465e-15,
+      "dissipation_residual": 8.526512829121202e-14,
+      "balanced_energy": 38.922984711367675,
+      "weighted_original_energy": 1.6184906279096958,
+      "original_energy": 44.10155770775904,
+      "nonnegative_loss": 37.30449408345807
+    },
+    {
+      "X": 1000,
+      "epsilon": 1,
+      "inverse_error": 1.942890293094024e-14,
+      "dissipation_residual": 6.394884621840902e-14,
+      "balanced_energy": 35.16612171319538,
+      "weighted_original_energy": 0.28798572116983906,
+      "original_energy": 44.10155770775908,
+      "nonnegative_loss": 34.878135992025605
+    }
+  ]
+}
