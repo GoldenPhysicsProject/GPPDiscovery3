@@ -1,0 +1,82 @@
+{
+  "scope": "Exact finite Mobius-energy identities and numerical scale diagnostics. Not an RH bound.",
+  "exact_checks": [
+    {
+      "N": 2,
+      "E_exact": "1/2",
+      "identity_exact": true,
+      "shift_identity_exact": true
+    },
+    {
+      "N": 3,
+      "E_exact": "1/2",
+      "identity_exact": true,
+      "shift_identity_exact": true
+    },
+    {
+      "N": 10,
+      "E_exact": "101/105",
+      "identity_exact": true,
+      "shift_identity_exact": true
+    },
+    {
+      "N": 37,
+      "E_exact": "4698530822179/3710369067405",
+      "identity_exact": true,
+      "shift_identity_exact": true
+    },
+    {
+      "N": 100,
+      "E_exact": "1005212172201402177689074420338645503/743731601272747878952613595913469700",
+      "identity_exact": true,
+      "shift_identity_exact": true
+    }
+  ],
+  "numerical_diagnostics": [
+    {
+      "N": 100,
+      "E": 1.351579212825141,
+      "diagonal": 3.2255671344280232,
+      "signed_cross": -1.873987921602882,
+      "absolute_pair_majorant": 37.82966125419606,
+      "residual": -2.220446049250313e-16,
+      "E_over_logN": 0.29349169699254973
+    },
+    {
+      "N": 1000,
+      "E": 1.4554094175787888,
+      "diagonal": 4.6343931289258355,
+      "signed_cross": -3.1789837113470485,
+      "absolute_pair_majorant": 371.8304258575111,
+      "residual": 1.7763568394002505e-15,
+      "E_over_logN": 0.21069209298816455
+    },
+    {
+      "N": 10000,
+      "E": 1.5294613268521375,
+      "diagonal": 6.035113163864221,
+      "signed_cross": -4.50565183701211,
+      "absolute_pair_majorant": 3699.8316335975055,
+      "residual": 2.6645352591003757e-14,
+      "E_over_logN": 0.16605915363407728
+    },
+    {
+      "N": 100000,
+      "E": 1.598526526012238,
+      "diagonal": 7.434971619449223,
+      "signed_cross": -5.836445093437041,
+      "absolute_pair_majorant": 36961.991597278036,
+      "residual": 5.595524044110789e-14,
+      "E_over_logN": 0.138846249884618
+    },
+    {
+      "N": 1000000,
+      "E": 1.6633051338629665,
+      "diagonal": 8.834790145179898,
+      "signed_cross": -7.171485011317319,
+      "absolute_pair_majorant": 369582.3434798667,
+      "residual": 3.872457909892546e-13,
+      "E_over_logN": 0.12039404022633933
+    }
+  ]
+}
