@@ -79,5 +79,24 @@ if __name__=="__main__":
             left,right,error=check(eps,u)
             print(f"eps={eps:<3} u={u:<3} direct={left:+.14e} J-transfer={right:+.14e} abs_error={error:.2e}")
             errors.append(error)
+
+    # Shifted completed-xi control: exact 2cosh(theta log n) prime
+    # weights equal the sum of the eps=-theta and eps=+theta transports.
+    for u in [0.,1.,3.,5.]:
+        theta=.25
+        direct=sum(lp*math.exp(-ln/2)*2*math.cosh(theta*ln)*f(ln-u)
+                   for ln,lp in POWERS)
+        direct-=quad(lambda v:2*math.cosh(theta*(u+v))*
+                     math.exp((u+v)/2)*f(v),
+                     A,B,epsabs=2e-14)[0]
+        breaks=[A]+[ln-u for ln,lp in POWERS
+                     if A+1e-10<ln-u<B-1e-10]+[B]
+        paired=sum(quad(lambda v:(J_eps(u+v,-theta)+J_eps(u+v,theta))*
+                        (f2(v)-.5*f1(v)),x,y,epsabs=2e-14)[0]
+                   for x,y in zip(breaks[:-1],breaks[1:]))
+        err=abs(direct-paired)
+        print(f"theta={theta} u={u} direct={direct:+.14e} paired={paired:+.14e} error={err:.2e}")
+        errors.append(err)
     assert max(errors)<1e-11
-    print("PASS: 28 exact-prime-power/interval-quadrature comparisons; maximum floating residual",max(errors))
+    print("PASS: 32 all-prime-power comparisons, including exact F_theta 2cosh weight; max residual",max(errors))
+
