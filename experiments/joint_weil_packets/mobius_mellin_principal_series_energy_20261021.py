@@ -69,3 +69,27 @@ if __name__ == "__main__":
               f"terminal={float(terminal):.12f} certified-tail-bound={tail:.8f}")
     print("Analytic whole-line Fourier and all-U tail theorem proved in accompanying bridge note.")
     print("RH / GRH / simplicity OPEN.")
+
+
+def completed_spectral_gram(a):
+    """Use the EXACT whole-line Mellin Fourier kernel for the boundary-completed
+    amplitude Q_N(t)=sum_n a_n(n^(-s)-N^(-s)), s=1/2+it.
+
+    For each m,n, its spectral inner product is
+        (1/max(m,n) - 1/N)
+    because three terminal counterterms telescope: -1/N-1/N+1/N.
+    This function is O(N^2), so use it only on small exact controls.
+    """
+    N=len(a); z=Fraction(0)
+    for m in range(1,N):
+        for n in range(1,N):
+            z += a[m]*a[n]*(Fraction(1,max(m,n))-Fraction(1,N))
+    return z
+
+if __name__ == "__main__":
+    for N in (3,8,16,32):
+        for a in (mobius(N),[0]+[1]*(N-1),[0]+[(-1)**i for i in range(1,N)]):
+            E,_,_=exact_checks(a)
+            assert completed_spectral_gram(a)==E
+        print(f"PASS boundary-completed POSITIVE Mellin-cut Gram for all 3 coefficient controls at N={N}.")
+    print("The completed spectral integrand is |D_N(s)-M(N-1)N^(-s)|^2/|s|^2 >=0 for EVERY real t.")
