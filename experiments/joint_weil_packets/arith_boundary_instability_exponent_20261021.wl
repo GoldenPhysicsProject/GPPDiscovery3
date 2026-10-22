@@ -26,8 +26,7 @@ toy=Integrate[Exp[2dd t]Cos[ww t]^2,{t,0,T},
 check["toy energy is exact antiderivative",
  FullSimplify[D[toy,T]-Exp[2dd T]Cos[ww T]^2==0,
  Assumptions->T>0&&dd>0&&ww>0]];
-check["toy energy vanishes at T=0",FullSimplify[toy/.T->0==0,
- Assumptions->dd>0&&ww>0]];
+check["toy energy vanishes at T=0",FullSimplify[(toy/.T->0),Assumptions->dd>0&&ww>0]===0];
 (* coefficient of e^{2δT} lies in a strictly positive range for ω>0:
   [(1/δ−1/sqrt(δ²+ω²))/4,
    (1/δ+1/sqrt(δ²+ω²))/4]. *)
