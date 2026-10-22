@@ -1,0 +1,111 @@
+{
+  "scope": "Exact rational audit of Cesaro/window energy identities, including all boundaries.",
+  "checks": [
+    {
+      "N": 3,
+      "H": 1,
+      "Cesaro_energy": "5/6",
+      "original_energy": "1/2",
+      "exact": true
+    },
+    {
+      "N": 3,
+      "H": 2,
+      "Cesaro_energy": "2/3",
+      "original_energy": "1/2",
+      "exact": true
+    },
+    {
+      "N": 3,
+      "H": 3,
+      "Cesaro_energy": "11/18",
+      "original_energy": "1/2",
+      "exact": true
+    },
+    {
+      "N": 3,
+      "H": 3,
+      "Cesaro_energy": "11/18",
+      "original_energy": "1/2",
+      "exact": true
+    },
+    {
+      "N": 3,
+      "H": 6,
+      "Cesaro_energy": "5/9",
+      "original_energy": "1/2",
+      "exact": true
+    },
+    {
+      "N": 8,
+      "H": 1,
+      "Cesaro_energy": "223/140",
+      "original_energy": "181/210",
+      "exact": true
+    },
+    {
+      "N": 8,
+      "H": 2,
+      "Cesaro_energy": "41/30",
+      "original_energy": "181/210",
+      "exact": true
+    },
+    {
+      "N": 8,
+      "H": 3,
+      "Cesaro_energy": "17/14",
+      "original_energy": "181/210",
+      "exact": true
+    },
+    {
+      "N": 8,
+      "H": 8,
+      "Cesaro_energy": "421/420",
+      "original_energy": "181/210",
+      "exact": true
+    },
+    {
+      "N": 8,
+      "H": 16,
+      "Cesaro_energy": "261/280",
+      "original_energy": "181/210",
+      "exact": true
+    },
+    {
+      "N": 16,
+      "H": 1,
+      "Cesaro_energy": "495203/240240",
+      "original_energy": "264169/240240",
+      "exact": true
+    },
+    {
+      "N": 16,
+      "H": 2,
+      "Cesaro_energy": "109/65",
+      "original_energy": "264169/240240",
+      "exact": true
+    },
+    {
+      "N": 16,
+      "H": 3,
+      "Cesaro_energy": "1095727/720720",
+      "original_energy": "264169/240240",
+      "exact": true
+    },
+    {
+      "N": 16,
+      "H": 16,
+      "Cesaro_energy": "1135007/960960",
+      "original_energy": "264169/240240",
+      "exact": true
+    },
+    {
+      "N": 16,
+      "H": 32,
+      "Cesaro_energy": "56197/49280",
+      "original_energy": "264169/240240",
+      "exact": true
+    }
+  ],
+  "positive_control_exact": true
+}
