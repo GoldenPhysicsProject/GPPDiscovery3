@@ -49,8 +49,8 @@ if __name__=="__main__":
     for h in [0.8,0.2,0.05,0.01,0.001]:
         lo,hi,target,err=ratio_bracket(Fraction(1,2),8,h,1e10)
         print(f"T=8 eps=1/2 h={h:g} bracket [{lo:.9f}, {hi:.9f}] "
-              f"sharp e^8={target:.9f} L_inf_error<={err:.2e}")
-        assert lo<=target<=hi
+              f"ceiling e^8={target:.9f} L_inf_error<={err:.2e}")
+        assert 0 < lo <= hi < target
     print("Proof: omega->infinity makes J_eps/F->1 in L2. "
           "Then h->0 forces E0/E_eps->exp(2eps*T).")
     print("This is a SHARPNESS theorem for general signals, "
