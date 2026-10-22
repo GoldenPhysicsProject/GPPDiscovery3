@@ -1,0 +1,47 @@
+{
+  "scope": "Finite numerical checks of the exact archimedean Hankel bound; not a Lean certificate.",
+  "gram_checks": [
+    {
+      "rank": 8,
+      "largest_gram_eigenvalue": 1.2666663138591325,
+      "upper_bound": 1.5707963267948966
+    },
+    {
+      "rank": 32,
+      "largest_gram_eigenvalue": 1.3494406890652642,
+      "upper_bound": 1.5707963267948966
+    },
+    {
+      "rank": 128,
+      "largest_gram_eigenvalue": 1.4021777852242703,
+      "upper_bound": 1.5707963267948966
+    },
+    {
+      "rank": 512,
+      "largest_gram_eigenvalue": 1.4381145231306027,
+      "upper_bound": 1.5707963267948966
+    }
+  ],
+  "exponential_probes": [
+    {
+      "a": 0.1,
+      "quadratic_form_over_L2norm_squared": 0.6122682273053868
+    },
+    {
+      "a": 0.5,
+      "quadratic_form_over_L2norm_squared": 1.23370055013617
+    },
+    {
+      "a": 1,
+      "quadratic_form_over_L2norm_squared": 1.2709398238358034
+    },
+    {
+      "a": 5,
+      "quadratic_form_over_L2norm_squared": 1.0939281441223268
+    },
+    {
+      "a": 100,
+      "quadratic_form_over_L2norm_squared": 1.0049912920364021
+    }
+  ]
+}
