@@ -1,7 +1,8 @@
 """Prime-side parity matrices and fixed-border variational prices; numerical, not certified."""
 import contextlib,io,json,math
+from pathlib import Path
 with contextlib.redirect_stdout(io.StringIO()):
- exec(open('rh_audit/detector_full_line.py').read().split('zeros=[]')[0])
+ exec(Path(__file__).with_name('detector_full_line.py').read_text().split('zeros=[]')[0])
 m.mp.dps=45
 K=7
 N=math.ceil(math.exp(1.7+1.4*(K-1)+1))
