@@ -88,6 +88,26 @@ def k2_hankel_at_center(s: float) -> float:
                 for p in primes_through(limit))
 
 
+def shifted_two_species_k2_hankel(s: float, theta: float) -> float:
+    """F_theta's two ζ-species, with 2*cosh(theta*log(n)) weights."""
+    limit = math.ceil(math.exp((s + 1.0) / 2.0))
+    return -sum(math.log(p) / p
+                * 2.0 * math.cosh(theta * 2.0 * math.log(p))
+                * g0(2.0 * math.log(p) - s)
+                for p in primes_through(limit))
+
+
+def bump_laplace(z: float) -> float:
+    """Integral of sin^2(pi*u) exp(z*u) on u in [0,1]."""
+    if z == 0.0:
+        return 0.5
+    return math.expm1(z) * 2.0 * math.pi**2 / (z * (z*z + 4.0 * math.pi**2))
+
+
+def correlation_laplace(theta: float) -> float:
+    return bump_laplace(theta) * bump_laplace(-theta)
+
+
 def k2_toeplitz_at_lag(v: float) -> float:
     """Actual k=2 diagonal-block coefficient for lag v."""
     limit = math.ceil(math.exp((abs(v) + 1.0) / 2.0))
@@ -155,6 +175,21 @@ def audit() -> None:
     for lag in [6.0, 10.0, 14.0, 18.0, 22.0]:
         value = k2_toeplitz_at_lag(lag)
         print(f"{lag:>7.1f} {value:>14.9f} {value - target:>18.3e}")
+
+    # Adversarial two-species deformation F_theta(s)=xi(s-theta)xi(s+theta).
+    # The PNT bulk is cosh(theta*u) du, giving EXACT rank-one parity parts:
+    # P+_bulk = -2*M(theta) cosh(theta*x_i)cosh(theta*x_j)
+    # P-_bulk = +2*M(theta) sinh(theta*x_i)sinh(theta*x_j), x_i=a_i+1/2.
+    theta = 0.25
+    mtheta = correlation_laplace(theta)
+    print("\nF_theta two-species shifted control, theta=.25:")
+    print(f"M(theta)=S(theta)*S(-theta)={mtheta:.12f}")
+    print("center s  C2_theta discrete    bulk prediction     relative error")
+    for center in [10.0, 18.0, 26.0]:
+        observed = shifted_two_species_k2_hankel(center, theta)
+        predicted = -mtheta * math.cosh(theta * center)
+        print(f"{center:>8.1f} {observed:>18.9f} {predicted:>18.9f} "
+              f"{(observed-predicted)/predicted:>16.3e}")
 
 
 if __name__ == "__main__":
