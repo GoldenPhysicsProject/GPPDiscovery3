@@ -1,0 +1,81 @@
+{
+  "s_real": 3.0,
+  "s_imag": 0.7,
+  "parameter": {
+    "power": 18,
+    "scrambles": 8,
+    "mellin_real": {
+      "mean": 0.26395423885238334,
+      "empirical_se": 1.7383253824156666e-05
+    },
+    "mellin_imag": {
+      "mean": 0.40798219216842396,
+      "empirical_se": 1.807290094375717e-05
+    },
+    "mass_scan": [
+      {
+        "mass_squared": 1.0,
+        "mean": 0.03671580708386334,
+        "empirical_se": 2.082678075457377e-06
+      },
+      {
+        "mass_squared": 0.1,
+        "mean": 9.607491572997006,
+        "empirical_se": 0.00045345771478249626
+      },
+      {
+        "mass_squared": 0.01,
+        "mean": 129.45594882617587,
+        "empirical_se": 0.013986010110806454
+      },
+      {
+        "mass_squared": 0.001,
+        "mean": 239.03079231142505,
+        "empirical_se": 0.1908277064423551
+      },
+      {
+        "mass_squared": 0.0,
+        "mean": 271.9822277860774,
+        "empirical_se": 1.510872170355029
+      }
+    ]
+  },
+  "position": [
+    {
+      "scale_nodes": 32,
+      "triangle_order": 10,
+      "radial_order": 96,
+      "real": 0.2640218704072909,
+      "imag": 0.40785417094288634
+    },
+    {
+      "scale_nodes": 48,
+      "triangle_order": 16,
+      "radial_order": 96,
+      "real": 0.263952462473401,
+      "imag": 0.40796166224001756
+    }
+  ],
+  "initial_failed_refinement": [
+    {
+      "scale_nodes": 24,
+      "triangle_order": 6,
+      "real": 0.26430111151869806,
+      "imag": 0.4069140622108953
+    },
+    {
+      "scale_nodes": 48,
+      "triangle_order": 6,
+      "real": 0.2643020017890966,
+      "imag": 0.4069125231156313
+    },
+    {
+      "scale_nodes": 96,
+      "triangle_order": 6,
+      "real": 0.2643020309930757,
+      "imag": 0.40691252024938596
+    }
+  ],
+  "comparison_gate_passed": true,
+  "stopped_before_optional_order24": "Order16 passed; optional expensive refinement stopped, no order24 result claimed."
+}
