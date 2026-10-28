@@ -1,0 +1,101 @@
+[
+  {
+    "amplitude": 0.3,
+    "minimum_a": 0.9440844415666613,
+    "ricci_residual": 9.64939933512099e-17,
+    "uncorrected_ricci": 0.03310243891869345,
+    "series": [
+      {
+        "order_in_amplitude": 2,
+        "max_error": 0.00048556546973488324,
+        "analytic_series_tail_bound": 0.015098859460886644
+      },
+      {
+        "order_in_amplitude": 4,
+        "max_error": 1.4956458176396126e-06,
+        "analytic_series_tail_bound": 0.0002971499976415404
+      },
+      {
+        "order_in_amplitude": 10,
+        "max_error": 5.206945985491984e-14,
+        "analytic_series_tail_bound": 9.384490004799004e-11
+      },
+      {
+        "order_in_amplitude": 20,
+        "max_error": 5.218048215738236e-14,
+        "analytic_series_tail_bound": 3.0000493878009366e-24
+      },
+      {
+        "order_in_amplitude": 40,
+        "max_error": 5.218048215738236e-14,
+        "analytic_series_tail_bound": 1.3554696285002216e-56
+      }
+    ]
+  },
+  {
+    "amplitude": 0.6,
+    "minimum_a": 0.7820932173906195,
+    "ricci_residual": 2.0469737016526324e-16,
+    "uncorrected_ricci": 0.1324097556747738,
+    "series": [
+      {
+        "order_in_amplitude": 2,
+        "max_error": 0.007697713002914219,
+        "analytic_series_tail_bound": 0.25722197354161463
+      },
+      {
+        "order_in_amplitude": 4,
+        "max_error": 9.526484592570217e-05,
+        "analytic_series_tail_bound": 0.01965176436536536
+      },
+      {
+        "order_in_amplitude": 10,
+        "max_error": 6.413425346352142e-12,
+        "analytic_series_tail_bound": 3.882149051523306e-07
+      },
+      {
+        "order_in_amplitude": 20,
+        "max_error": 7.349676423018536e-13,
+        "analytic_series_tail_bound": 1.2624051868664737e-17
+      },
+      {
+        "order_in_amplitude": 40,
+        "max_error": 7.349676423018536e-13,
+        "analytic_series_tail_bound": 5.967058973163905e-44
+      }
+    ]
+  },
+  {
+    "amplitude": 1.0,
+    "minimum_a": 0.4314329547173299,
+    "ricci_residual": 2.8102520310824275e-16,
+    "uncorrected_ricci": 0.3678048768743714,
+    "series": [
+      {
+        "order_in_amplitude": 2,
+        "max_error": 0.05811210919592613,
+        "analytic_series_tail_bound": 2.3445286595444594
+      },
+      {
+        "order_in_amplitude": 4,
+        "max_error": 0.0020188927241347465,
+        "analytic_series_tail_bound": 0.45735624031263983
+      },
+      {
+        "order_in_amplitude": 10,
+        "max_error": 2.908069673956959e-09,
+        "analytic_series_tail_bound": 0.000182653092175112
+      },
+      {
+        "order_in_amplitude": 20,
+        "max_error": 7.609468610780823e-13,
+        "analytic_series_tail_bound": 9.665692845983275e-13
+      },
+      {
+        "order_in_amplitude": 40,
+        "max_error": 7.609468610780823e-13,
+        "analytic_series_tail_bound": 1.2427475903221963e-34
+      }
+    ]
+  }
+]
