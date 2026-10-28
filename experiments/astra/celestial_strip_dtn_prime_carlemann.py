@@ -6,7 +6,7 @@ of width pi. It is also 2*D_same(t)*C_Carleman(t).
 No claim is made that this alone identifies the signed Weil form.
 """
 
-from math import cosh, pi, sinh
+from math import cosh, pi, sinh, tanh
 
 
 def strip_dtn(t):
@@ -22,6 +22,10 @@ def celestial(t):
 
 def carleman_bulk(t):
     return pi / (2 * cosh(pi * t))
+
+
+def kinematic_prefactor_squared(t):
+    return 4 / (pi * pi) if t == 0 else 2 * t / pi / tanh(pi * t / 2)
 
 
 def bulk_energy(t, f0, f1, pieces=10000):
@@ -50,6 +54,12 @@ def main():
         assert abs(2 * d * c - p) < 1e-12
         assert d + off >= -1e-14 and d - off > 0
         assert abs((d * d - off * off) - (t * t)) < 1e-11
+        # Antisymmetric orientation eigenvalue is the exact celestial
+        # principal-series Legendre-block prefactor in Daniel's companion paper.
+        assert abs((2 / pi) * (d - off) - kinematic_prefactor_squared(t)) < 1e-12
+        assert abs((pi / 2) * ((d - off) - (d + off)) - p) < 1e-12
+        # The Legendre shadow coefficient tanh(pi*t) is an inverse-DtN ratio.
+        assert abs((t / d if t else 0.0) - tanh(pi * t)) < 1e-12
         for f0, f1 in ((1.5, -0.7), (2.0, 0.4)):
             boundary = d * (f0 * f0 + f1 * f1) + 2 * off * f0 * f1
             energy = bulk_energy(t, f0, f1)
