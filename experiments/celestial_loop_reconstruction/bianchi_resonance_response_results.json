@@ -1,0 +1,69 @@
+{
+  "precision_digits": 45,
+  "first_zeta_ordinate": 14.134725141734695,
+  "max_unitarity_error": 8.758115402030107e-47,
+  "max_derivative_identity_error": 7.006492321624085e-46,
+  "samples": [
+    {
+      "lambda": 13.134725141734695,
+      "oriented_full_phase_response": 4.897653134301151,
+      "isolated_rho_factor": 0.8
+    },
+    {
+      "lambda": 13.634725141734695,
+      "oriented_full_phase_response": 3.9313330903796944,
+      "isolated_rho_factor": 2.0
+    },
+    {
+      "lambda": 14.134725141734695,
+      "oriented_full_phase_response": 5.1359526194257406,
+      "isolated_rho_factor": 4.0
+    },
+    {
+      "lambda": 14.634725141734695,
+      "oriented_full_phase_response": 2.9675096914086505,
+      "isolated_rho_factor": 2.0
+    },
+    {
+      "lambda": 15.134725141734695,
+      "oriented_full_phase_response": 1.9319204758891009,
+      "isolated_rho_factor": 0.8
+    }
+  ],
+  "simple_pole_residue": {
+    "real": -0.8437791782805245,
+    "imag": 1.4666220258772737
+  },
+  "residue_checks": [
+    {
+      "epsilon": 0.0001,
+      "relative_residue_error": 0.0001920126484972483
+    },
+    {
+      "epsilon": 1e-06,
+      "relative_residue_error": 1.9202200278840277e-06
+    },
+    {
+      "epsilon": 1e-08,
+      "relative_residue_error": 1.920220963277896e-08
+    }
+  ],
+  "off_line_factor_controls": [
+    {
+      "beta": 0.3,
+      "response": 2.641509433962264,
+      "positive": true
+    },
+    {
+      "beta": 0.5,
+      "response": 3.4482758620689653,
+      "positive": true
+    },
+    {
+      "beta": 0.7,
+      "response": 4.615384615384615,
+      "positive": true
+    }
+  ],
+  "scope": "Floating checks of established scattering formula and derived local response; no rigorous interval certification or Lean verification."
+}
