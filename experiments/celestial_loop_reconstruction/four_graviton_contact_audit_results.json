@@ -1,0 +1,14 @@
+{
+  "momentum_conservation": "exact",
+  "contact": "625",
+  "mandelstam": [
+    "5",
+    "5",
+    "-10"
+  ],
+  "little_group": "passed all four legs",
+  "identical_helicity_exchanges": "passed",
+  "soft_polynomial_degree": "delta^2 each leg",
+  "pole_residues": "zero: polynomial has no propagator denominators",
+  "scope": "Local four-point EFT ambiguity; no UV completion, celestial crossing solution, or loop claim"
+}
