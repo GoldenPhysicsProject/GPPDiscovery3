@@ -1,0 +1,12 @@
+{
+  "mobius_density_residual": 5.551115123125783e-16,
+  "composition": "passed",
+  "spin_half_central_sign": "passed",
+  "positive_even_archimedean_weight": "passed",
+  "minimum_packet_gram_eigenvalue": 9.430707767921836,
+  "connected_four_point": [
+    0.0,
+    0.0
+  ],
+  "scope": "Principal-series Gaussian CAR boundary carrier only; primes not coupled; no translations, local CFT, or interacting gravitational reconstruction"
+}
