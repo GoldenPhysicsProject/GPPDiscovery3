@@ -1,0 +1,41 @@
+--- a/ONON-5-2-1-3.tex
++++ b/ONON-5-2-1-3.tex
+@@ -7762,6 +7762,16 @@
+ \item Conformal covariance fixing the $|z_{ij}|$ dependence
+ \end{enumerate}
+ 
++% Astra audit, 2026-10-28: retained derivation below is not yet validated.
++\begin{quote}\textbf{Status correction.}
++The all-positive-helicity expression below is not an Einstein-gravity MHV
++three-point amplitude in the standard all-outgoing convention. A spinning
++celestial correlator requires separate holomorphic and antiholomorphic weights,
++$h_i=(\Delta_i+J_i)/2$ and $\bar h_i=(\Delta_i-J_i)/2$.
++The fiber integrations, normalization and incoming/outgoing conventions must
++be supplied before this expression can be used as gravitational OPE data.
++\end{quote}
++
+ \begin{theorem}[MHV three-point function]
+ \label{thm:mhv-three-point}
+ The celestial three-graviton amplitude for three positive-helicity gravitons is:
+@@ -11599,6 +11609,21 @@
+ \textbf{Key feature:} The principal series spectrum $\Delta \in 1+i\mathbb{R}$ requires an integral rather than sum, distinguishing celestial CFT from standard 2D theories.
+ 
+ \paragraph{MHV Four-Graviton Result}
++
++% Astra audit, 2026-10-28: do not use the following as a proved bootstrap result.
++\begin{quote}\textbf{Status correction: proposed four-point ansatz.}
++The theorem and derivation retained below are unverified. In the standard
++all-outgoing convention, the Einstein MHV sector has two negative and two
++positive helicities, not four positive helicities. The coefficient density,
++spinning partial-wave normalization, momentum-conservation distributions and
++meromorphic continuation used in the residue argument remain to be established.
++Pole factorization alone leaves local interaction data undetermined: for example,
++a four-graviton term $c\langle12\rangle^4[34]^4$ in the $--++$ sector changes
++no factorization residue. Its coefficient must be fixed or excluded by an
++explicit additional dynamical condition. The spectral weight alone does not
++supply that condition. No complete arithmetic boundary theory or gravitational
++four-point reconstruction is claimed by this retained ansatz.
++\end{quote}
+ 
+ \begin{theorem}[MHV four-graviton amplitude]
+ \label{thm:4pt-mhv-main}
