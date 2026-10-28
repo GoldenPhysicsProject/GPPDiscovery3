@@ -6,7 +6,7 @@ of width pi. It is also 2*D_same(t)*C_Carleman(t).
 No claim is made that this alone identifies the signed Weil form.
 """
 
-from math import cosh, pi, sinh, tanh
+from math import cos, cosh, exp, pi, sinh, tanh
 
 
 def strip_dtn(t):
@@ -22,6 +22,17 @@ def celestial(t):
 
 def carleman_bulk(t):
     return pi / (2 * cosh(pi * t))
+
+
+def celestial_fourier_kernel(z):
+    return 1 / (4 * cosh(z / 2) ** 2)
+
+
+def celestial_fourier_quadrature(z):
+    dt = 0.01
+    return sum(celestial(abs(-20 + (j + 0.5) * dt)) *
+               cos((-20 + (j + 0.5) * dt) * z) * dt / (2 * pi)
+               for j in range(4000))
 
 
 def kinematic_prefactor_squared(t):
@@ -46,6 +57,17 @@ def bulk_energy(t, f0, f1, pieces=10000):
 
 
 def main():
+    for x, y in ((0.0, 0.0), (-1.2, 0.8), (3.1, -0.4)):
+        # Mellin unitary U:f(t)->exp(x/2)f(exp(x)) maps
+        # C(t,u)=1/(2(t+u)) to the translation kernel sech((x-y)/2)/4.
+        actual = exp((x + y) / 2) / (2 * (exp(x) + exp(y)))
+        predicted = 1 / (4 * cosh((x - y) / 2))
+        assert abs(actual - predicted) < 1e-13
+    for z in (0, 0.8, 2.3, 4.0):
+        # Its positive strip DtN dressing gives exactly the Fourier pair
+        # of Daniel's celestial two-particle unitarity cut paper.
+        assert abs(celestial_fourier_quadrature(z) -
+                   celestial_fourier_kernel(z)) < 1e-7
     for t in (0.0, 0.1, 0.4, 1.3, 3.0):
         d, off = strip_dtn(t)
         p = celestial(t)
