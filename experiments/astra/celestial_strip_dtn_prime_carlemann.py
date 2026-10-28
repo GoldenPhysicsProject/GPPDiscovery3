@@ -60,6 +60,11 @@ def main():
         assert abs((pi / 2) * ((d - off) - (d + off)) - p) < 1e-12
         # The Legendre shadow coefficient tanh(pi*t) is an inverse-DtN ratio.
         assert abs((t / d if t else 0.0) - tanh(pi * t)) < 1e-12
+        # Exact Schur contraction and its margin (comparison to Turbo's s_K).
+        rho = -off / d
+        schur_margin = 1 - rho * rho
+        assert abs(rho - 1 / cosh(pi * t)) < 1e-12
+        assert abs(schur_margin - tanh(pi * t) ** 2) < 1e-12
         for f0, f1 in ((1.5, -0.7), (2.0, 0.4)):
             boundary = d * (f0 * f0 + f1 * f1) + 2 * off * f0 * f1
             energy = bulk_energy(t, f0, f1)
