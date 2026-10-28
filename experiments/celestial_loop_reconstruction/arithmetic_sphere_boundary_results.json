@@ -1,0 +1,19 @@
+{
+  "CAR": "all 256 states and all mode pairs passed",
+  "angular_gram_and_inverse": "passed",
+  "models": [
+    {
+      "g": 0,
+      "partition": 4.974475588302688,
+      "minimum_energy": 0.0,
+      "connected_prime_number_four_point": -5.551115123125783e-17
+    },
+    {
+      "g": 0.4,
+      "partition": 4.191085063826233,
+      "minimum_energy": 0.0,
+      "connected_prime_number_four_point": -0.10622302869073375
+    }
+  ],
+  "scope": "Chosen finite interacting S2 model; harmonic ball extension, not Lorentzian holography or derived gravity"
+}
