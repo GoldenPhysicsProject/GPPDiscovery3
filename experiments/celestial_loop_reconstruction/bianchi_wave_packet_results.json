@@ -1,0 +1,42 @@
+{
+  "model": "ultrastatic R_time x PSL2(Z[i])\\H3, massless scalar; numerics are cusp-channel envelopes, not full interior Eisenstein evaluation",
+  "center": 14.134725141734695,
+  "sigma_amplitude": 0.25,
+  "spectral_points": 513,
+  "max_unitarity_error": 2.220446049250313e-16,
+  "average_group_velocity": 0.9975055729360416,
+  "phase_shift_average": 4.793473268693219,
+  "narrow_packet_delay_estimate": 4.80546013851751,
+  "packets": [
+    {
+      "time": 0.0,
+      "out_norm": 1.0,
+      "reference_norm": 0.9999999999999998,
+      "out_centroid": -4.793473329364416,
+      "reference_centroid": -2.2204460492503136e-16,
+      "displacement": -4.793473329364416,
+      "predicted_displacement": -4.793473268693219
+    },
+    {
+      "time": 20.0,
+      "out_norm": 0.9999999999999999,
+      "reference_norm": 1.0000000000000002,
+      "out_centroid": 15.156638129356422,
+      "reference_centroid": 19.95011145872083,
+      "displacement": -4.793473329364408,
+      "predicted_displacement": -4.793473268693219
+    },
+    {
+      "time": 40.0,
+      "out_norm": 0.9999999999999993,
+      "reference_norm": 0.9999999999999996,
+      "out_centroid": 35.106749588077264,
+      "reference_centroid": 39.90022291744167,
+      "displacement": -4.793473329364403,
+      "predicted_displacement": -4.793473268693219
+    }
+  ],
+  "finite_difference_wave_equation_max_residual": 3.7783827178114927e-07,
+  "milne_mode_ode_coefficient_max": 2.842170943040401e-14,
+  "integrated_flux_mismatch": 5.985355706628339e-16
+}
