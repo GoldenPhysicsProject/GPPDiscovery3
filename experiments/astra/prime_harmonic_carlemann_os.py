@@ -4,7 +4,7 @@ All computations use literal finite prime sums, no zeta zeros and no
 external packages. Exact all-prime proofs are in the accompanying note.
 """
 
-from math import exp, log, sqrt
+from math import cos, cosh, exp, log, pi, sqrt
 
 
 def sieve(limit):
@@ -28,6 +28,15 @@ def gram_quadratic(primes, k, times, coeffs):
                for p in primes)
 
 
+def mellin_carlemann_multiplier(tau):
+    """Numerical independent Beta/Mellin check of π/cosh(πτ)."""
+    dy = 0.01
+    integral = sum(cos(tau * (-50 + (j + 0.5) * dy)) /
+                   (2 * cosh((-50 + (j + 0.5) * dy) / 2)) * dy
+                   for j in range(10000))
+    return integral
+
+
 def main():
     primes = sieve(1_000_000)
     assert len(primes) == 78498
@@ -41,6 +50,11 @@ def main():
                          k * u + (k - 1) / 4)
             assert abs(lhs - rhs) < 3e-12 * max(1, abs(lhs))
         assert gram_quadratic(primes, k, times, coeffs) >= 0
+
+    for tau in (0, 0.4, 1.0, 2.0):
+        actual = mellin_carlemann_multiplier(tau)
+        predicted = pi / cosh(pi * tau)
+        assert abs(actual - predicted) < 1e-8, (tau, actual, predicted)
 
     # The exact borderline k=2 density is asymptotically 1/(2(t+u)).
     # Finite prime truncations underestimate the infinite mass.
