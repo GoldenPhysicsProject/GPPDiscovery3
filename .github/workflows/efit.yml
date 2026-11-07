@@ -1,0 +1,73 @@
+name: xi-approximation-error
+on:
+  workflow_dispatch:
+  push:
+    paths: ['efit.py', '.github/workflows/efit.yml']
+permissions:
+  contents: write
+jobs:
+  point:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        include:
+          - {c: 3,  N: 28}
+          - {c: 5,  N: 28}
+          - {c: 7,  N: 28}
+          - {c: 11, N: 28}
+          - {c: 13, N: 28}
+          - {c: 17, N: 28}
+          - {c: 19, N: 28}
+          - {c: 23, N: 28}
+          - {c: 29, N: 28}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: pip install -r requirements.txt
+      - run: python efit.py --c ${{ matrix.c }} --N ${{ matrix.N }} --T 300 --dps 60
+      - uses: actions/upload-artifact@v4
+        with:
+          name: E-c${{ matrix.c }}
+          path: result.json
+  collect:
+    needs: point
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: pip install numpy
+      - uses: actions/download-artifact@v4
+        with: {path: eart}
+      - run: |
+          python - <<'PY'
+          import glob,json,math
+          import numpy as np
+          rows=[json.load(open(f)) for f in sorted(glob.glob("eart/**/result.json",recursive=True))]
+          rows.sort(key=lambda r:r["c"])
+          open("E_results.jsonl","w").write("\n".join(json.dumps(r) for r in rows)+"\n")
+          L=["# Xi-approximation error E(c)\n",
+             "| c | a=log c | E(tau<15) | E(tau<30) | E(tau<60) | log10 lam1 | sec |",
+             "|---|---------|-----------|-----------|-----------|------------|-----|"]
+          for r in rows:
+              L.append(f"| {r['c']} | {r['a']:.4f} | {r['E_15']:.4e} | {r['E_30']:.4e} "
+                       f"| {r['E_60']:.4e} | {r['lam1_log10']:.3f} | {r['seconds']} |")
+          if len(rows)>=3:
+              c=np.array([r['c'] for r in rows],float); E=np.array([r['E_60'] for r in rows])
+              for lab,x in [('log c',np.log(c)),('c',c),('sqrt c',np.sqrt(c))]:
+                  s,i=np.polyfit(x,np.log(E),1); res=np.log(E)-(s*x+i)
+                  L.append(f"\n- ln E ~ {s:.4f} * [{lab}] + {i:.3f}, max|resid| {abs(res).max():.4f}")
+              L.append("\nFlatness of E across tau-windows is the signature of "
+                       "LOCALLY UNIFORM convergence, which is what Hurwitz needs.")
+          open("E_RESULTS.md","w").write("\n".join(L)+"\n")
+          print("\n".join(L))
+          PY
+          git config user.name gpp-bot; git config user.email dtoupin@goldenphysics.org
+          git add E_results.jsonl E_RESULTS.md
+          git commit -m "E(c) xi-approximation error $(date -u +%FT%TZ)" || echo nochange
+          git push

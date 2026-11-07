@@ -1,0 +1,138 @@
+name: RH discovery lab (stdlib exact gates)
+
+on:
+  push:
+    paths:
+      - 'rh_lab/**'
+      - 'tests/**'
+      - 'experiments/arch_cross_trace_gate.py'
+      - 'experiments/arch_cross_superexp_null.py'
+      - 'experiments/arch_ftheta_shift_gap.py'
+      - 'experiments/arch_ftheta_shift_arb_crosscheck.py'
+      - 'experiments/arch_annihilator_*.py'
+      - 'experiments/annihilator_zero_spectral_check.py'
+      - 'experiments/translation_laplace_pole_probe.py'
+      - 'experiments/translated_arithmetic_sewing_scan.py'
+      - 'experiments/gamma_offsupport_laplace.py'
+      - 'experiments/gamma_offsupport_arb_certificate.py'
+      - 'experiments/gamma_uniform_operator_bound.py'
+      - 'experiments/prime_site_grade_*.py'
+      - 'experiments/prime_site_grade_signature_census.py'
+      - 'experiments/celestial_nodal_intersections.py'
+      - 'experiments/celestial_jensen_source_microscope.py'
+      - 'experiments/celestial_arb_full_arc_winding.py'
+      - 'experiments/arch_hankel_sine2_*.py'
+      - 'experiments/arch_hankel_sine2_*.json'
+      - '.github/workflows/rh-lab.yml'
+  pull_request:
+    paths:
+      - 'rh_lab/**'
+      - 'tests/**'
+      - 'experiments/arch_cross_trace_gate.py'
+      - 'experiments/arch_cross_superexp_null.py'
+      - 'experiments/arch_ftheta_shift_gap.py'
+      - 'experiments/arch_ftheta_shift_arb_crosscheck.py'
+      - 'experiments/arch_annihilator_*.py'
+      - 'experiments/annihilator_zero_spectral_check.py'
+      - 'experiments/translation_laplace_pole_probe.py'
+      - 'experiments/translated_arithmetic_sewing_scan.py'
+      - 'experiments/gamma_offsupport_laplace.py'
+      - 'experiments/gamma_offsupport_arb_certificate.py'
+      - 'experiments/gamma_uniform_operator_bound.py'
+      - 'experiments/prime_site_grade_*.py'
+      - 'experiments/prime_site_grade_signature_census.py'
+      - 'experiments/celestial_nodal_intersections.py'
+      - 'experiments/celestial_jensen_source_microscope.py'
+      - 'experiments/celestial_arb_full_arc_winding.py'
+      - '.github/workflows/rh-lab.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-lab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Registry and unit tests (stdlib only)
+        run: |
+          python -m rh_lab.cli check
+          python -m unittest discover -s tests -v
+      - name: Certified-core replay and permanent audit artifacts
+        run: python -m rh_lab.cli smoke
+      - name: Publish run manifests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exact-rh-runs-py${{ matrix.python-version }}
+          path: .rh_runs/*.json
+          if-no-files-found: ignore
+
+  arb-crosscheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install independent interval implementation
+        run: python -m pip install python-flint==0.9.0
+      - name: Generate rational enclosure and verify with 256-bit Arb
+        run: python -m rh_lab.cli run sine2_cross_arb --replay
+      - name: Independent shifted-frequency 384-bit Arb check
+        run: python -m rh_lab.cli run ftheta_shift_arb --replay
+      - name: Directed 384-bit off-support gamma Toeplitz enclosure
+        run: python -m rh_lab.cli run gamma_offsupport_arb_certificate --replay
+      - name: Directed Arb finite-prime-site graded signature certificate
+        run: python -m rh_lab.cli run prime_site_grade_arb_certificate --replay
+      - name: Certify every local celestial full arc and integer winding
+        run: python experiments/celestial_arb_full_arc_winding.py --segments 2048 --bits 256
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: arb-rh-run-py312
+          path: .rh_runs/*.json
+          if-no-files-found: ignore
+
+  source-normalization-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install optional numerical source auditors
+        run: python -m pip install numpy scipy mpmath==1.4.1
+      - name: Reproduce Wave234 parity eigenvalues and same-vector prime control
+        run: python -m rh_lab.cli run ftheta_full_s1_annihilator --replay
+      - name: Independently compare prime channels against known zero-side Mellin amplitudes
+        run: python -m rh_lab.cli run annihilator_zero_spectral_pairing --replay
+      - name: Planted off-line translation Laplace-pole stress test
+        run: python -m rh_lab.cli run translation_laplace_pole_control --replay
+      - name: Translated complete prime-Arch source scan and finite zero interference
+        run: |
+          python -m rh_lab.cli run translated_arithmetic_sewing_source --replay
+          python experiments/translated_arithmetic_sewing_scan.py --k 6 --a-max 2 --step 0.2 --zeros 120 --arch-cutoff 500
+      - name: Replay celestial-equator nodes and independent completed theta wave
+        run: python experiments/celestial_nodal_intersections.py --numeric --count 4 --dps 45
+      - name: Replay height-centered Jensen local windings and independent entire theta source
+        run: python experiments/celestial_jensen_source_microscope.py --numeric --dps 38 --samples 160
+      - name: Independently audit off-support gamma/Laplace identity
+        run: python experiments/gamma_offsupport_laplace.py --compare-digamma --n-modes 60
+      - name: Check all-K pure Arch gamma operator bound and finite section controls
+        run: python experiments/gamma_uniform_operator_bound.py --n-modes 80 --matrix-sizes 6 16 40
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s1-normalization-probe-py312
+          path: .rh_runs/*.json
+          if-no-files-found: ignore

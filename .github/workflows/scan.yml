@@ -1,0 +1,59 @@
+name: weil-decay-scan
+on:
+  workflow_dispatch:
+  push:
+    paths: ['point.py', 'fit.py', '.github/workflows/scan.yml']
+permissions:
+  contents: write
+jobs:
+  point:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        include:
+          # N-convergence at the FAR END (c=19, interval 2*log19=5.89, the
+          # worst-resolved point in the scan). N=36 was verified converged at
+          # c=7 only, where the interval is 3.89. If lambda_1 is still moving
+          # at N=52 here, the entire apparent curvature in the c-scan is a
+          # resolution artifact and no decay law can be read off yet.
+          - {c: 19, N: 36}
+          - {c: 19, N: 44}
+          - {c: 19, N: 52}
+          # gap measurement across the c-scan
+          - {c: 3,  N: 36}
+          - {c: 5,  N: 36}
+          - {c: 7,  N: 36}
+          - {c: 11, N: 36}
+          - {c: 13, N: 36}
+          - {c: 17, N: 36}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: pip install -r requirements.txt
+      - run: python point.py --c ${{ matrix.c }} --N ${{ matrix.N }} --T 300 --dps 90
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pt-c${{ matrix.c }}-N${{ matrix.N }}
+          path: result.json
+  collect:
+    needs: point
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: pip install numpy
+      - uses: actions/download-artifact@v4
+        with: {path: artifacts}
+      - run: python fit.py
+      - run: |
+          git config user.name "gpp-bot"
+          git config user.email "dtoupin@goldenphysics.org"
+          git add results.jsonl RESULTS.md
+          git commit -m "scan results $(date -u +%FT%TZ)" || echo "no change"
+          git push

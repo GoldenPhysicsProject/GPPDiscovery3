@@ -1,0 +1,568 @@
+{
+  "version": 1,
+  "experiments": [
+    {
+      "id": "fake_quartet_control",
+      "path": "rh_lab/controls.py",
+      "method": "exact_rational",
+      "evidence": "paper_proved",
+      "claim": "Reflection, conjugation and strict positivity on the critical line do not imply RH for general entire functions.",
+      "assumptions": [
+        "The explicitly defined degree-four polynomial is not the completed zeta function."
+      ],
+      "falsifiers": [
+        "Evaluate the four purported roots with exact Gaussian rational arithmetic.",
+        "Check the global sum-of-squares lower bound on the critical line."
+      ],
+      "limitations": [
+        "This blocks an invalid inference; it does not establish any statement about zeros of zeta."
+      ],
+      "timeout_s": 10,
+      "default_run": true
+    },
+    {
+      "id": "sine2_cross_tail",
+      "path": "experiments/arch_hankel_sine2_tail_certificate.py",
+      "method": "exact_rational",
+      "evidence": "paper_proved",
+      "claim": "Wave234 sine-squared cross-Arch Laplace tail after n=7 has a rational bound smaller than 1e-9.",
+      "assumptions": [
+        "The cross-kernel, support positions, and sine-squared Laplace formula match the Wave234 source derivation."
+      ],
+      "falsifiers": [
+        "Recompute the finite rational Taylor inequalities.",
+        "Change support separation to test whether the tail inequality breaks."
+      ],
+      "limitations": [
+        "Cross-Arch only; no diagonal or prime/pole entries."
+      ],
+      "timeout_s": 30,
+      "default_run": true
+    },
+    {
+      "id": "sine2_cross_matrix",
+      "path": "experiments/arch_hankel_sine2_k6_exact_intervals.py",
+      "method": "interval",
+      "evidence": "interval_certified",
+      "claim": "Outward rational enclosures for all 36 entries of the specified six-by-six cross-Arch block.",
+      "assumptions": [
+        "Wave234 analytic cross-kernel and the stated six sine-squared supports are exact and normalized as described."
+      ],
+      "falsifiers": [
+        "Compare all entries against an independent Arb ball evaluation.",
+        "Check every enclosure including the uniform infinite-tail remainder."
+      ],
+      "limitations": [
+        "Not the full arithmetic matrix; not an enclosure for Phat6 unless a separate exact normalization bridge is proved."
+      ],
+      "timeout_s": 90,
+      "default_run": true
+    },
+    {
+      "id": "sine2_cross_arb",
+      "path": "experiments/arch_hankel_sine2_arb_crosscheck.py",
+      "stdin_from": "sine2_cross_matrix",
+      "method": "ball_crosscheck",
+      "evidence": "numerical",
+      "claim": "Independent python-flint Arb checks of the 36 cross-Arch intervals.",
+      "assumptions": [
+        "Optional python-flint dependency installed and same source kernel parameterization supplied."
+      ],
+      "falsifiers": [
+        "Reject if any Arb enclosure is disjoint from the exact interval."
+      ],
+      "limitations": [
+        "Independent ball cross-check corroborates, but does not transform the conditional source formula into a theorem."
+      ],
+      "timeout_s": 90,
+      "default_run": false
+    },
+    {
+      "id": "phat6_ldl_gate",
+      "path": "experiments/phat6_robust_interval_gate.py",
+      "method": "exact_rational",
+      "evidence": "interval_certified",
+      "claim": "Exact LDL margin for a separately supplied rational Phat6; transfer to exact arithmetic is conditional on a missing entrywise enclosure.",
+      "assumptions": [
+        "Private six-by-six input JSON with Phat6 is supplied as a command-line argument."
+      ],
+      "falsifiers": [
+        "Check all six exact shifted LDL pivots.",
+        "Derive every entrywise arithmetic enclosure from source formulas before transfer."
+      ],
+      "limitations": [
+        "Not runnable without private input; no unconditional full matrix bound yet."
+      ],
+      "timeout_s": 30,
+      "default_run": false
+    },
+    {
+      "id": "gamma_uniform_arch_operator_bound",
+      "path": "experiments/gamma_uniform_operator_bound.py",
+      "method": "floating",
+      "evidence": "paper_proved",
+      "claim": "Under the Wave234 gamma Fourier normalization, the pure Arch gamma Toeplitz plus folded gamma Hankel operator has an explicit norm bound independent of matrix size K; numerical source constants and finite sections are reproduced separately.",
+      "assumptions": [
+        "Sine-squared support positions a_j=7/20+(7/10)j, and the exact Fourier-digamma/Laplace identities for the gamma Toeplitz and cross-Hankel kernels.",
+        "The prime/pole/SQ and other non-Arch sewing channels are excluded from the operator considered here."
+      ],
+      "falsifiers": [
+        "Verify the off-support mode identity and its positive-term geometric lag decay at every d>=2, then audit the Schur row-sum bound.",
+        "Reconstruct the folded cross-Arch negative Gram representation and its trace bound independently.",
+        "Compare increasing K numerical matrix norms with the K-independent analytic expression for zeta and the theta=1/4 control."
+      ],
+      "limitations": [
+        "Printed constants use floating quadrature for d=0,1 and are not rigorous upper enclosures; the K-independence of the symbolic formula is the mathematical theorem.",
+        "The exact-rational cross-trace tail certificate bounds only omitted modes, not the finite numerical head.",
+        "This is a pure Arch-only bound: the completed arithmetic all-K positivity gap and RH remain open."
+      ],
+      "timeout_s": 120,
+      "default_run": false
+    },
+    {
+      "id": "gamma_offsupport_arb_certificate",
+      "path": "experiments/gamma_offsupport_arb_certificate.py",
+      "method": "ball_crosscheck",
+      "evidence": "interval_certified",
+      "claim": "For every Toeplitz gamma offset d=2..5 in the specified zeta/Ftheta Wave234 sine-squared basis, output exact dyadic directed Arb enclosures including an exact rational bound on all omitted Laplace modes.",
+      "assumptions": [
+        "The paper-derived digamma/Fourier compact-support identity for x=7d/10>=1 is valid in the specified Wave234 normalization.",
+        "python-flint==0.9.0 supplies directed Arb operations; the N=60 J=36 tail inequality is proved by rational Taylor and geometric bounds."
+      ],
+      "falsifiers": [
+        "Recompute all eight Arb intervals independently at 384 and 512 bits and require mutual overlap.",
+        "Check exact dyadic endpoints by integer arithmetic and compare independent compact-source quadrature as a NONcertifying diagnostic.",
+        "For θ=1/4 verify both shifted lambda mode families are present."
+      ],
+      "limitations": [
+        "This certifies only gamma Toeplitz entries d>=2, conditional on the separately derived analytic source identity.",
+        "Near-diagonal d=0,1 still need certified compact quadrature and prime/pole arithmetic must be enclosed separately.",
+        "Finite K=6 was already closed by Turbo Wave271 and Lean #425 via a different route; no all-K bound or RH proof is supplied."
+      ],
+      "timeout_s": 90,
+      "default_run": false
+    },
+    {
+      "id": "gamma_offsupport_laplace_tail",
+      "path": "experiments/gamma_offsupport_laplace.py",
+      "method": "exact_rational",
+      "evidence": "paper_proved",
+      "claim": "For d>=2 the complete zeta and Ftheta gamma Toeplitz entries equal explicit negative Laplace-mode sums with an exact rational N-mode tail; at d=0,1 the same digamma-Fourier method gives compact nonoscillatory finite-interval integrals.",
+      "assumptions": [
+        "The sine-squared length-one bump has S(lambda)=exp(lambda)*S(-lambda) and compact autocorrelation G(x)=0 for |x|>=1.",
+        "The Wave234 digamma spectral multiplier is Re psi(1/4+it/2)-log pi for zeta and the stated +/-theta/2 pair for Ftheta.",
+        "For the tail cap, pi^2<10, e^t greater than its positive Taylor truncation, and the geometric ratio inequality for positive t."
+      ],
+      "falsifiers": [
+        "Derive the digamma integral and use Fourier inversion of the bump autocorrelation before truncating any series.",
+        "Cross-check d=0..5 for theta=0,1/4 against independently computed oscillatory digamma quadrature and d>=2 against the compact formula.",
+        "Validate exact-rational Taylor and geometric upper caps at N=60 against numerical remainders."
+      ],
+      "limitations": [
+        "The d=0,1 compact integrals still require certified quadrature; only d>=2 is covered by the explicit negative Laplace sum.",
+        "Exact rational mode-tail bounds do not certify finite transcendental mode values.",
+        "Turbo Wave271 already independently closed the finite K6 arithmetic gate; this alternate formula provides no uniform K control or RH proof."
+      ],
+      "timeout_s": 30,
+      "default_run": true
+    },
+    {
+      "id": "translated_arithmetic_sewing_source",
+      "path": "experiments/translated_arithmetic_sewing_scan.py",
+      "method": "floating",
+      "evidence": "numerical",
+      "claim": "Independently assemble complete prime/pole/Arch sewing on continuously translated fixed K annihilators, audit translation-invariant diagonal budget, and compare the oscillatory arithmetic residual with finite known-line zero interference.",
+      "assumptions": [
+        "Zeta Wave234 source prime/pole/gamma normalization in the existing full S1 auditor.",
+        "SciPy for gamma quadrature; optional mpmath for the first 120 known on-line zero pairs.",
+        "Translation a is nonnegative and limited by finite prime sieve budget."
+      ],
+      "falsifiers": [
+        "At a=0 require agreement with the independently assembled unshifted full S1 parity form.",
+        "Check each translated autocorrelation against direct all-j,h sum and the folded Arch Laplace mode rescaling.",
+        "At 120 known zero pairs demand that source sewing and independent spectral interference agree to within 2e-8 numerically."
+      ],
+      "limitations": [
+        "Every tested prime sum is exact-support but evaluated in floats; the gamma integral is truncated and not certified.",
+        "A finite translation scan plus known on-line zeros establishes no all-a bound, no positivity theorem and no RH result.",
+        "Near-saturation of a parity budget is diagnostic only, not an unconditional guarantee of strict positivity."
+      ],
+      "timeout_s": 180,
+      "default_run": false
+    },
+    {
+      "id": "translation_laplace_pole_control",
+      "path": "experiments/translation_laplace_pole_probe.py",
+      "method": "floating",
+      "evidence": "numerical",
+      "claim": "For one fixed polynomial bump profile, sampled on-line zero modes produce a bounded continuous-translation interference signal, while its planted rho±1/4 adversary grows exponentially. The separate Laplace pole argument identifies collective noncancellation provided the completed arithmetic signal is bounded.",
+      "assumptions": [
+        "The analytic Laplace transform W(z) has no zeros in Re(z)>0 for the specified sine-squared polynomial bump profile.",
+        "Only 60 known on-line zeta zeros are sampled; mpmath is optional and provides a finite numerical control.",
+        "The boundedness of the complete arithmetic sewing form for all translations is not assumed or established."
+      ],
+      "falsifiers": [
+        "Check that the fixed polynomial has zeros only in Re(z)<0, and S(z) has no zeros in Re(z)>0.",
+        "Use the Laplace transform to locate every hypothetical off-line zero as an uncancellable pole and audit normal convergence.",
+        "Measure finite-zero RMS translation controls and compare exponential rates for planted theta shifts."
+      ],
+      "limitations": [
+        "The analytic implication is another RH-equivalent boundedness criterion, not a proof of the missing arithmetic estimate.",
+        "Sampled zero-mode RMS values are numerical; they exclude no unknown zeta zeros.",
+        "The argument requires a continuum of translations and does not automatically hold for the discrete K lattice."
+      ],
+      "timeout_s": 120,
+      "default_run": false
+    },
+    {
+      "id": "annihilator_zero_spectral_pairing",
+      "path": "experiments/annihilator_zero_spectral_check.py",
+      "method": "floating",
+      "evidence": "numerical",
+      "claim": "Classical explicit-formula zero-side diagonal and sewing transforms numerically reproduce the separately assembled Wave234 S1 prime-pole-gamma forms on one common annihilating vector at K6/K10, for zeta and shifted off-critical Ftheta.",
+      "assumptions": [
+        "The full Wave234 S1 prime/pole/gamma normalization is correct.",
+        "Only the first 120 known zeta critical-line zero ordinates (and conjugates) are sampled using mpmath; no assertion that all zeta zeros are on the line.",
+        "Requires optional numpy, scipy and mpmath."
+      ],
+      "falsifiers": [
+        "Reverse the residue sign or omit the gamma trivial-zero term and compare directly to the prime-sum evaluator.",
+        "Shift zero labels to rho +/- theta for the fake control and test the full parity projections.",
+        "Increase zero count and diagonal gamma cutoff to detect missed contributions."
+      ],
+      "limitations": [
+        "Numerical agreement is not an unconditional infinite-zero-tail enclosure.",
+        "The exact formal identities are known Weil explicit-formula statements; reducing the zero sum does not itself prove RH.",
+        "No unconditional all-K interference bound is established."
+      ],
+      "timeout_s": 240,
+      "default_run": false
+    },
+    {
+      "id": "ftheta_full_s1_annihilator",
+      "path": "experiments/arch_annihilator_s1_source_check.py",
+      "method": "floating",
+      "evidence": "numerical",
+      "claim": "Same exact-structure zeta moment-annihilator vector, evaluated in Wave234's complete prime/pole/diagonal-Arch/cross-Arch S1 parity forms, distinguishes Ftheta numerically and independently reproduces source K6 eigenvalues.",
+      "assumptions": [
+        "Wave234 S1 pole, gamma, diagonal prime and sewing prime normalization is that of MuseResearch/turbo-source-wave234-s1-schur-definitions.md.",
+        "SciPy and NumPy are installed; truncated quadrature through t=500 gives a numerical diagnostic, not rigorous analytic enclosure.",
+        "K6 and K10 finite-sector arithmetic is not a proof of RH."
+      ],
+      "falsifiers": [
+        "Reconstruct all K6 Q±C parity matrix entries independently and compare minimum eigenvalues against Turbo's Wave234 table.",
+        "Check exact algebraic continuum prime sewing identity against the pole square for zeta annihilators.",
+        "Increase t quadrature cutoff, precision and K; cross-check against Arb and explicit prime atoms."
+      ],
+      "limitations": [
+        "The gamma tail and floating-point cancellation are not rigorous directed intervals; matrix sign claims here are numerical only.",
+        "Wave252 Phat6 and the all-K WFLUC_K obstruction remain separate; this experiment does not prove RH."
+      ],
+      "timeout_s": 180,
+      "default_run": false
+    },
+    {
+      "id": "ftheta_shift_arb",
+      "path": "experiments/arch_ftheta_shift_arb_crosscheck.py",
+      "method": "ball_crosscheck",
+      "evidence": "numerical",
+      "claim": "Independent 384-bit Arb re-evaluation of Ftheta shifted one-mode lower witness and finite zeta head at K6 and K10.",
+      "assumptions": [
+        "Optional python-flint==0.9.0 is installed.",
+        "Wave234 source folded kernels and same bump basis as ftheta_arch_frequency_shift."
+      ],
+      "falsifiers": [
+        "Reject if the Arb one-mode value is not strictly above the rational lower certificate.",
+        "Reject if the finite zeta head is not below the proved analytic upper bound."
+      ],
+      "limitations": [
+        "The finite Arb head check does not prove the infinite-tail theorem independently.",
+        "Cross-Arch-only test, not the completed arithmetic form or RH."
+      ],
+      "timeout_s": 60,
+      "default_run": false
+    },
+    {
+      "id": "ftheta_arch_frequency_shift",
+      "path": "experiments/arch_ftheta_shift_gap.py",
+      "method": "interval",
+      "evidence": "interval_certified",
+      "claim": "The exact zeta-Arch annihilating polynomial witnesses distinguish the theta=1/4 shifted cross-Arch Gram by enormous rigorously certified Rayleigh ratios at K6 and K10.",
+      "assumptions": [
+        "Wave234 exact folded kernels k_theta(w)=2cosh(theta*w)k_zeta(w) with theta=1/4.",
+        "Both zeta and F_theta use the same sine2 bump basis and no prime, pole, or diagonal channels are included."
+      ],
+      "falsifiers": [
+        "Check exact first K-1 zeta Laplace annihilations.",
+        "Check the shifted n=0 minus-mode has strictly positive separation from all zeta nodes.",
+        "Cross-check 50-digit outward finite interval bounds with an independent Arb evaluation."
+      ],
+      "limitations": [
+        "Cross-Arch-only contrast; complete F_theta parity may be compensated by other channels, so it is not an RH proof.",
+        "Only K=6 and 10 ratios are certified numerically; the structural nonvanishing argument works at every K>=2."
+      ],
+      "timeout_s": 30,
+      "default_run": true
+    },
+    {
+      "id": "sine2_cross_superexp_null",
+      "path": "experiments/arch_cross_superexp_null.py",
+      "method": "exact_rational",
+      "evidence": "paper_proved",
+      "claim": "Analytic all-K strict negative definiteness of cross-Arch, but a constructive super-exponential upper bound on its smallest eigenvalue.",
+      "assumptions": [
+        "Wave234 exact folded cross-Arch Laplace decomposition and translated sine-squared bump supports.",
+        "K is an integer >=2; the executable rational inequalities run K=6,10."
+      ],
+      "falsifiers": [
+        "Audit the annihilating polynomial P_K and Cauchy-Schwarz Laplace tail inequality.",
+        "Verify the K6 and K10 bounds by exact rational Taylor arithmetic."
+      ],
+      "limitations": [
+        "The upper bound is not a matching asymptotic.",
+        "No all-K full sewn positivity, prime compensator, or RH consequence."
+      ],
+      "timeout_s": 30,
+      "default_run": true
+    },
+    {
+      "id": "sine2_cross_trace_budget",
+      "path": "experiments/arch_cross_trace_gate.py",
+      "method": "exact_rational",
+      "evidence": "interval_certified",
+      "claim": "Exact necessary trace compensation budget for any B making B + C_cross positive semidefinite.",
+      "assumptions": [
+        "The artifact intervals enclose precisely the negative Gram cross-Arch matrix C.",
+        "Any compensator B is in the same basis and normalization."
+      ],
+      "falsifiers": [
+        "Check signs/symmetry of all diagonal intervals.",
+        "Compare proposed B's certified trace to the necessary lower bound."
+      ],
+      "limitations": [
+        "Necessary not sufficient; no compensator is supplied; no unconditional RH conclusion."
+      ],
+      "timeout_s": 10,
+      "default_run": true
+    },
+    {
+      "id": "prime_cayley_channels",
+      "path": "experiments/prime_cayley_two_channel_weyl_check.py",
+      "method": "floating",
+      "evidence": "numerical",
+      "claim": "Legacy prime-Cayley two-channel Weyl numerical audit.",
+      "assumptions": [
+        "Legacy script parameterization; source must be inspected before any analytic promotion."
+      ],
+      "falsifiers": [
+        "Test sensitivity to cutoff and precision.",
+        "Compare against an analytically soluble local-channel limit."
+      ],
+      "limitations": [
+        "Exploratory calculation; not a proof."
+      ],
+      "timeout_s": 90,
+      "default_run": false
+    },
+    {
+      "id": "sphere_elliptic_zeta_bridge",
+      "path": "experiments/sphere_elliptic_zeta_bridge.py",
+      "method": "exact_rational",
+      "evidence": "paper_proved",
+      "claim": "Projective-line arithmetic zeta has two Tate factors; an elliptic curve adds a middle Frobenius factor, and reciprocal duality alone does not imply a positive invariant height.",
+      "assumptions": [
+        "For local elliptic tests E:y²=x³−x has good reduction at odd listed primes; the 2×2 bad matrix is abstract and is not arithmetic Frobenius."
+      ],
+      "falsifiers": [
+        "Count E points independently in F_p and F_{p²} and compare to Frobenius recurrence.",
+        "Verify F^T J F=qJ for both examples, and exhibit lack/existence of a positive symmetric invariant height."
+      ],
+      "limitations": [
+        "This is an existing arithmetic-geometry structural interface, not a new BSD or RH theorem.",
+        "Finite point tests do not prove a global analytic zero assertion; bad Euler factors remain model-dependent."
+      ],
+      "timeout_s": 30,
+      "default_run": true
+    },
+    {
+      "id": "ftheta_geometric_integrality_gate",
+      "path": "experiments/ftheta_geometric_integrality_gate.py",
+      "method": "exact_rational",
+      "evidence": "paper_proved",
+      "claim": "The shifted F1/4 local Euler product has a noninteger linear coefficient at p=2 and cannot be an ordinary finite-field zeta with those local factors, unlike the projective-line two-factor bundle.",
+      "assumptions": [
+        "Interpret a proposed local Euler product as the ordinary point-count Hasse–Weil zeta of a finite-type scheme over F2, not an arbitrary automorphic or analytically shifted product."
+      ],
+      "falsifiers": [
+        "At p=2 show 1<2^(1/4)<5/4 using rational fourth powers and 2<x+1/x<9/4<3 by AM-GM.",
+        "Compare to P1(F2) with exactly 3 points."
+      ],
+      "limitations": [
+        "Exclusion from ordinary finite-field point counts does not prove RH, BSD, or exclude all nongeometric analytic completions."
+      ],
+      "timeout_s": 10,
+      "default_run": true
+    },
+    {
+      "id": "prime_site_grade_signature_census",
+      "path": "experiments/prime_site_grade_signature_census.py",
+      "method": "floating",
+      "evidence": "numerical",
+      "claim": "Within the specified source-normalized finite-prime S1 parity block, K=3, p=3, negative parity, zeta inertia is (2+,1−) but combined shifted F1/4 inertia is (3+,0−), as a finite numerical counterexample to blanket prime-site signature blindness.",
+      "assumptions": [
+        "Use Wave234 S1 b=sin² bump, a_j=7/20+7j/10, and prime matrices Qp^sigma=−(Dprime+sigma Cprime).",
+        "Gamma and pole blocks are NOT attributed to a finite prime; each Ftheta shifted factor is a formal grade, not a geometric motive."
+      ],
+      "falsifiers": [
+        "Independently interval-certify all p=3 K=3 matrix entries and leading determinants with Arb.",
+        "Reconstruct both +theta and -theta matrices, check their exact sum and source weight normalization.",
+        "Reassemble full prime+pole+Arch form to see whether an interpretation as a full local height is false."
+      ],
+      "limitations": [
+        "Floating finite-K signature only; not an interval certificate or Lean kernel proof.",
+        "This is a prime-site matrix contribution, not a local geometric height or a completed RH Weil form."
+      ],
+      "timeout_s": 30,
+      "default_run": true
+    },
+    {
+      "id": "prime_site_grade_arb_certificate",
+      "path": "experiments/prime_site_grade_arb_certificate.py",
+      "method": "interval",
+      "evidence": "interval_certified",
+      "claim": "The 3×3 p=3 prime-site sigma-minus Wave234 S1 source block has first two positive principal minors; its third is negative for zeta and positive for the F1/4 combined shifts, with directed 384-bit Arb and independent overlapping 512-bit elementary-function enclosures.",
+      "assumptions": [
+        "Wave234 G0 sine² autocorrelation is correctly represented by the analytic compact formula.",
+        "This is ONLY the p=3 prime-site source contribution Qp^sigma=−(Dprime+sigma*Cprime), not the global completed form."
+      ],
+      "falsifiers": [
+        "Recompute every p=3 power using exact compact-support inequalities and independent precision intervals.",
+        "Check that 384/512-bit matrix entry enclosures and all signed principal minor intervals overlap.",
+        "Reconstruct the source's p=3 K=3 prime channels in a separate codepath."
+      ],
+      "limitations": [
+        "The certificate covers the stated 3×3 real matrix with theta=1/4, not all K, all primes, or the global height form.",
+        "Arithmetic source identity and full geometric interpretation are not Lean-formalized by this script."
+      ],
+      "timeout_s": 120,
+      "default_run": false
+    },
+    {
+      "id": "epstein_idele_class_projection",
+      "path": "experiments/epstein_idele_class_projection.py",
+      "method": "exact_rational",
+      "evidence": "paper_proved",
+      "claim": "Explicit finite C2 class-character Fourier projection for the two integral forms of discriminant -20; principal-class coefficient f(2)=f(3)=0 but f(6)=2 (nonmultiplicative), while both class-character channels pass all coprime coefficient identities through 128.",
+      "assumptions": [
+        "Q0=x²+5y² and Q1=2x²+2xy+3y² are the reduced primitive forms of discriminant -20; identification with ideal classes and Hecke Euler products is classical prior art, not proved by finite enumeration."
+      ],
+      "falsifiers": [
+        "Independently enumerate r_Q(n) with justified bounds and verify all signed class-character relations.",
+        "Check f(6)≠f(2)f(3), although gcd(2,3)=1.",
+        "Increase cutoff and look for a failure of finite coprime multiplicativity of the projected channels."
+      ],
+      "limitations": [
+        "Finite integer coefficient enumeration and C2 Fourier algebra only; not a proof of general Hecke theory, off-line zero location, or RH.",
+        "The compact idele class character purity condition is necessary in this example but insufficient for GRH."
+      ],
+      "timeout_s": 30,
+      "default_run": true
+    },
+    {
+      "id": "equator_fuzzy_sphere_car",
+      "path": "experiments/equator_fuzzy_sphere_car.py",
+      "method": "exact_rational",
+      "evidence": "paper_proved",
+      "claim": "For N Fourier modes on S1 with explicitly supplied su2 ladder and positive metric, End(C^N) has N² fuzzy spherical harmonics; CAR Fock over End has dimension 2^(N²), and its SU2-singlet sector obeys a rigorous lower bound c*2^(N²)/N^6, hence ln singlets=N² ln2+O(log N).",
+      "assumptions": [
+        "The SU2 action, positive weighted metric, and fermionic second-quantization are added mathematical structures, not derived from the geometry of S1.",
+        "The continuum/Haar lower bound is proved on paper; the script checks exact finite algebra and integer enumerations, not the integral inequality for all N."
+      ],
+      "falsifiers": [
+        "Break any rational commutator, Casimir, diagonal adjointness, or Lagrange projector identity at N<=12.",
+        "Recalculate exact SU2 Fock singlet multiplicities via an independent representation-theoretic method.",
+        "Find a dimension/count mismatch between the matrix harmonic decomposition and the CAR single-particle weight list.",
+        "Construct a BH entropy normalization without fitting microscopic circle spacing."
+      ],
+      "limitations": [
+        "The coefficient 1/4 is NOT derived: matching it requires a=2sqrt(pi ln2)*lP.",
+        "No physical Hamiltonian, Einstein equations, bulk reconstruction, microscopic gauge dynamics, or prime-Arch intertwiners.",
+        "SU2 character decomposition is established representation-theoretic prior art, not proved by finite tests."
+      ],
+      "timeout_s": 30,
+      "default_run": true
+    },
+    {
+      "id": "equator_hawking_thermal_gate",
+      "path": "experiments/equator_hawking_thermal_gate.py",
+      "method": "conditional",
+      "evidence": "paper_proved",
+      "claim": "In the SU2-covariant free horizon CAR model with eps_l=l/R and Schwarzschild beta_H=4piR, S_N=sum_(l=0)^(N-1)(2l+1)hF(4pi*l) stays uniformly bounded independent of N; hence bare free angular modes at Hawking temperature do NOT yield the black-hole area law.",
+      "assumptions": [
+        "Fermionic independent angular modes in each spin-l multiplet; one-body energy eps_l=l/R; thermal Gibbs state with Schwarzschild beta_H=4piR.",
+        "The source SU2 Fock construction is a model, not established microscopic black hole physics."
+      ],
+      "falsifiers": [
+        "Independently verify hF(x)<=exp(-x)(1+x) and the closed-form geometric sums bounding total thermal entropy.",
+        "Try physically motivated near-horizon redshift, interaction or edge mode Hamiltonians: the no-go only concerns the named free angular dispersion.",
+        "Verify that the softened eps_l=l/(NR) changes entropy scaling but requires independent dynamical justification."
+      ],
+      "limitations": [
+        "This is a no-go for a specific free rotationally invariant Hamiltonian, not for all quantum horizons or CFTs.",
+        "An area law in the maximally mixed CAR state is not a physical black-hole entropy derivation.",
+        "No gravity equations, gravitational 1/4, or RH correspondence are obtained."
+      ],
+      "timeout_s": 30,
+      "default_run": true
+    },
+    {
+      "id": "celestial_nodal_intersections",
+      "path": "experiments/celestial_nodal_intersections.py",
+      "method": "floating",
+      "evidence": "numerical",
+      "claim": "Exact shadow/Cayley mapping identifies all dimensional scalar principal-series circles under Delta_d=d*s, proving circle intersections cannot select discrete zero nodes; eta arithmetic phase cancellation and completed xi theta wave give exact distinct interference conditions, with first four critical nodes and Ftheta off-equator controls numerically replayed.",
+      "assumptions": [
+        "Existing complex conformal shadow and completed xi reflection identities are classical and already recorded in GPPVerify/Bridge.",
+        "mpmath numerical source probe is optional, not a certified all-zero theorem; exact theta formula follows Jacobi modularity."
+      ],
+      "falsifiers": [
+        "Vary d and s to verify normalized circles overlap for generic NONZERO spectral values, not just zeta ordinates.",
+        "Exhibit pairwise prime phase coincidences that are not zeros, including t=0 and 2pi/log(3/2).",
+        "Recalculate first four xi nodes via the independent theta integral and test Ftheta zeros north/south of the celestial equator."
+      ],
+      "limitations": [
+        "Two real nodal contours meet at zeros tautologically; reflection does not force all nodes onto equator.",
+        "No physical celestial CFT Hilbert intertwiner, 4D gravity derivation, Weil positivity, or proof of RH.",
+        "Numerical scans and mpmath residuals do not provide interval certifications or global zero exclusion."
+      ],
+      "timeout_s": 60,
+      "default_run": true
+    },
+    {
+      "id": "celestial_jensen_source_microscope",
+      "path": "experiments/celestial_jensen_source_microscope.py",
+      "method": "exact_rational",
+      "evidence": "paper_proved",
+      "claim": "Any height-centered Cayley chart maps Re(s)>1/2 to disk. Classical Jensen defect counts interior zeros positively; for any known critical xi zero rho, shifted F1/4 has an explicitly planted zero at local w=-1/3, so its Jensen defect at r=9/20 is at least log(27/20). This is a source-side control, not an RH proof.",
+      "assumptions": [
+        "Riemann xi is entire with known classical functional equation and at least one critical zero (Hardy's theorem).",
+        "Jensen theorem is applied to nonvanishing center and circles without zeros; finite sampled winding numbers are only numerical evidence.",
+        "Completed complex theta identity and the strict positive Phi/Psi shifted-convolution formula are classical/the earlier programme's theta-control prior art, not proofs of RH."
+      ],
+      "falsifiers": [
+        "Try a fake shifted zero at s=3/4+i gamma: exact Cayley coordinate must be -1/3 for scale a=1/2 and height h=gamma.",
+        "Independently recompute Jordan contour winding of true xi versus Ftheta and show any phase sampling or denominator singularities.",
+        "Recompute two complex theta-integral source anchors independently of gamma*zeta formula.",
+        "Challenge the exact Jensen lower bound from the known fake zero and classical disk theorem."
+      ],
+      "limitations": [
+        "The local true-xi winding-zero count is NUMERICAL and no all-heights source positivity estimate is proved.",
+        "Jensen defect vanishing in ALL half-plane disks is only an RH equivalent, not a solution.",
+        "Source Phi theta positivity/Bochner positive-definiteness persists for Ftheta with off-line zeros and so is insufficient for RH.",
+        "No physical celestial CFT intertwiner, black-hole interpretation, or RH/BSD theorem."
+      ],
+      "timeout_s": 30,
+      "default_run": true
+    }
+  ]
+}

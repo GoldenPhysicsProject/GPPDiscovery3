@@ -1,0 +1,24 @@
+name: Codex generic Ds4 YM baseline
+on:
+  push:
+    branches: ['codex/discovery-workbench']
+    paths:
+      - 'discovery/generalized_cuts/extract_generic_ds4_baseline.py'
+      - 'discovery/generalized_cuts/massive_vector_generic_state_sum_symbolic.py'
+      - 'discovery/generalized_cuts/massive_vector_mhv_state_sum_symbolic.py'
+      - '.github/workflows/codex-generic-ym-baseline.yml'
+  workflow_dispatch:
+
+jobs:
+  exact-symbolic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install sympy
+      - name: Extract generic Ds4 baseline
+        working-directory: discovery/generalized_cuts
+        run: python extract_generic_ds4_baseline.py
