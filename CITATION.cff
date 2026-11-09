@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "GPPDiscovery3: numeric workbench of the Golden Physics Project (Discovery 3)"
+abstract: "Grok mathematical and numerical discovery workbench for the Golden Physics Project"
+authors:
+  - family-names: "Toupin"
+    given-names: "Daniel"
+    orcid: "https://orcid.org/0009-0003-7682-9579"
+license: "Apache-2.0"
+repository-code: "https://github.com/GoldenPhysicsProject/GPPDiscovery3"
