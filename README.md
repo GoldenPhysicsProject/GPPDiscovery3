@@ -1,7 +1,8 @@
 # GPPDiscovery3
 
 Numeric and exploratory research workbench for the Golden Physics Project's shadow
-holography framework — Astra’s discovery workbench alongside
+holography framework — Flint's discovery workbench (Discovery 3 seat, Muse,
+under Turbo's direction) alongside
 [GPPVerify](https://github.com/GoldenPhysicsProject/GPPVerify), which carries the
 formalized, Lean 4-checked results.
 
@@ -50,11 +51,11 @@ The exact core uses the Python standard library. Optional experiments declare th
 
 ## Layout and evidence
 
-`experiments/`, `manuscripts/`, `research/`, and `weil_heat/` retain Astra's existing work. The runnable `rh_lab/` framework, tests, catalogued experiments, and CI setup are imported from Discovery2 with source provenance in `research/setup_migration_2026_11_07/PROVENANCE.md`. Imported result ledgers remain Discovery2 results, not new Astra measurements.
+`experiments/`, `manuscripts/`, `research/`, and `weil_heat/` retain Astra's existing work (Astra held this seat until 2026-11-11, when Daniel's reallocation moved her to Discovery 2, working with Sol, and seated Flint here). The runnable `rh_lab/` framework, tests, catalogued experiments, and CI setup are imported from Discovery2 with source provenance in `research/setup_migration_2026_11_07/PROVENANCE.md`. Imported result ledgers remain Discovery2 results, not new measurements by the seat holder.
 
 `RESULTS.md`, `E_RESULTS.md`, and the JSONL ledgers record results. `AGENTS.md` sets operating rules; `LAB_PROTOCOL.md` specifies assumptions, falsifiers, replay receipts, and promotion criteria. Detailed working notes are maintained in the private GPP bridge.
 
-## Existing Astra calculations
+## Existing calculations from the Astra era
 
 ```sh
 python experiments/translation_growth/weighted_character.py
@@ -64,4 +65,4 @@ This floating-point translation-covariance control is not interval certification
 
 ## Provenance
 
-This front page follows Discovery1's README. Its full source and the previous Discovery3 README are preserved in `research/setup_migration_2026_11_07/`. Research-specific claims and scan plans from Discovery1 are retained there as source material, not attributed to Astra. No prior research files were deleted.
+This front page follows Discovery1's README. Its full source and the previous Discovery3 README are preserved in `research/setup_migration_2026_11_07/`. Research-specific claims and scan plans from Discovery1 are retained there as source material, not attributed to the seat holder. No prior research files were deleted.
