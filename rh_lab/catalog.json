@@ -755,6 +755,31 @@
    "args": [
     "core"
    ]
+  },
+  {
+   "id": "flint_fs4_asymptotics",
+   "path": "research/flint_fs4_asymptotics_2026_11_13.py",
+   "method": "floating",
+   "evidence": "numerical",
+   "claim": "NUMERICAL + exact algebra: FS4 \u2014 a->infinity asymptotics of D and A separately on the n=2 family x=(0,a), c=(cosh(a/2),-1) for SemilocalArchDomAll, from the built kernels. Exact rearrangements (on ker l_c, kform_KS_of_ker): A(a) = (archTerm(0)/4) e^a + 3 archTerm(0)/2 + bigPsiI2^2 + O(e^{-a/2}); D(a) = (Kpsi(0)/4) e^a - e^{a/2} Kpsi(a) + (3/2) Kpsi(0) + O(e^{-a/2}). The A-correction constant is exact by a residue computation: archTerm(d) = -bigPsiI2^2 e^{-d/2} + O(e^{-d}) (digamma pole at t = i/2; Psi(i/2)^2 = (4 sinh(1/4))^4 = bigPsiI2^2), so c1 := lim e^{a/2} archTerm(a) = -bigPsiI2^2; numerics at a=6,8,10,12 give -1.042476, -1.042460, -1.042447, -1.042500 vs -bigPsiI2^2 = -1.0424567670. Constants certified: archTerm(0) = -1.54293305945377535652 (plain mpmath route = banked two-arm value to 3e-21; the 2pi-split route is the one off by 1.72e-8 \u2014 subdivision was the earlier error source, not the plain route); primeTerm(0) = 0.54164256074565634665 exact finite sum; Kpsi(0) = 3.37915142689101503e-4, agreeing with the identity arm to 19 digits. Kpsi(a) for a in {5,6,8,10,12,15,20} = -1.87e-5, -1.03e-4, +2.22e-4, -3.02e-4, +2.70e-4, +1.40e-5, +2.87e-4: bounded at the 1e-4 scale, oscillating, no growth (falsifier (b) passes). The full-correction identity closes against the zeros arm's Arb-certified D anchors (a=5,6,8,10) with residuals -1.9e-7, -2.7e-7, -4.3e-7, -9.3e-7, every residual located (mpmath arch(a) quadrature 1e-7..1e-6; the three a=10 anchor values in the record span +-2e-6). D at a=12/15/20: 13.6408 / 276.1378 / 40979.84 with mpmath constants, 13.6331 / 275.9842 / 40957.05 with scipy constants; kill-arm anchors 13.64 / 276.0 / 40964.8 \u2014 met or bracketed, the route difference fully explained by the 1.9e-7 scipy-vs-mpmath arch(0) delta times (cosh^2(a/2)+1). VERDICT: the ~2.2e-4 relative-margin plateau is the exact lag-0 identity mu_inf = Kpsi(0)/|archTerm(0)| = 2.19008297618e-4, NOT a finite-range phenomenon: per-configuration identity regime CONFIRMED asymptotically. Measured D/|A| oscillates onto mu_inf (2.269e-4, 2.336e-4, 2.087e-4, 2.243e-4, 2.173e-4, 2.190e-4, 2.190e-4 at a=5,6,8,10,12,15,20); the finite-a deviation is exactly the spectral term -e^{a/2} Kpsi(a). SemilocalArchDomAll remains OPEN.",
+   "assumptions": [
+    "Kernel definitions verbatim from flint_archdom_scout_2026_11_12.py (GPPVerify @ 5fb6c8d0); on ker l_c, D(c) = kform Kpsi x c (PROVED in-tree, kform_KS_of_ker) and primeTermS(matched S) = primeTerm at the lags used (PROVED, primeTermS_eq).",
+    "Zeros-arm Arb-certified D anchors at a in {5,6,8,10} taken as numbers of record (flint_notes CORRECTION, 2026-11-13); kill-arm n=2 values at a in {12,15,20} taken at their quoted precision.",
+    "The residue step (archTerm(d) = -bigPsiI2^2 e^{-d/2} + O(e^{-d})) is a contour shift past the single digamma pole at t = i/2, valid for d > 2 with remainder from the shifted contour; it is THEOREM-shaped (standard), not Lean-checked."
+   ],
+   "falsifiers": [
+    "Kpsi(a) growing with a (e.g. like e^{delta a}) at any of a in {12,15,20} would kill the plateau-as-identity reading and reopen asymptotic thinning; measured: bounded at 1e-4 scale, no growth.",
+    "Failure of the full-correction identity to close against the Arb anchors within the located budgets (arch(a) quadrature + anchor spread) would kill the asymptotic forms; measured residuals <= 9.3e-7, all located.",
+    "A negative D at any tested a (Kill Criterion 1) would kill SemilocalArchDomAll and HPsi at that instance; none found (smallest margin ratio to mu_inf stays positive throughout)."
+   ],
+   "limitations": [
+    "The raw-D falsifier threshold of 1e-7 set in the script header's first version FAILED (max deviation 1.4e-4 at a=10) and is corrected in-file: it ignored the cosh amplification of the kernel quadrature budget. The operative check is the term-by-term closure (Part D), which passes at <= 9.3e-7.",
+    "mpmath arch(a) at dps 40 carries 1e-7..1e-6 quadrature error (subdivided route); the a=20 prime sum is float64 exact-finite with fsum chunking (error ~1e-9 absolute on primeTerm(20) ~ 22961.6). An Arb ball evaluation of archTerm(a) was attempted twice and failed on the removable singularity at t=0 (ball division by an interval containing 0 gives infinite radius -> NaN); the identity closure against Arb D anchors supersedes it.",
+    "Runtime ~12 minutes exceeds the 300 s replay cap; reproduction is by full executions (values deterministic; no wall-clock lines in stdout).",
+    "One family (n=2) only: the plateau statement is about this family's asymptotics. It identifies the mechanism (lag-0 identity + spectral correction), it does not prove SemilocalArchDomAll."
+   ],
+   "timeout_s": 300,
+   "default_run": false
   }
  ]
 }

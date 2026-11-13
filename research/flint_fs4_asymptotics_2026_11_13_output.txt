@@ -1,0 +1,59 @@
+== Part 0: constants (mpmath dps 50) ==
+  archTerm(0) split-route   = -1.54293307669248057846245733219
+  archTerm(0) plain-route   = -1.54293305945377535652298665836
+  |route diff| = 1.72e-8; |plain - banked(-1.54293305945377535652)| = 2.99e-21
+  bigPsiI2   = 1.02100772165104628180980129122
+  primeTerm(0) = 0.541642560745656346646202232153
+  Kpsi(0) = 2 B^2 - primeTerm(0) + archTerm(0) = 0.000337915142689101503129518857197
+  identity-arm Kpsi(0) was 3.37915142689101503e-4 — AGREES with this value to 19 digits (both rest on the certified archTerm(0))
+  plateau constant mu_inf = Kpsi(0)/|archTerm(0)| = 0.000219008297618
+
+== Part A: A, P, D at a in {5,6,8,10} (mpmath dps 40) vs Arb anchors ==
+   a                arch(a)  arch_err                Kpsi(a)             D_direct                 D_F1            D_Arb   |D-Arb|      D/|A|
+   5     -0.085580222207071       0.0    -1.8678728827475e-5     0.01327429213095     0.01327429213095   0.013271962350    2.3e-6  0.0002269
+   6     -0.051901822640339       0.0   -0.00010251659880139    0.036652461626883    0.036652461626883   0.036647055885    5.4e-6  0.0002336
+   8     -0.019093322426147       0.0    0.00022207978034901     0.24020539923898     0.24020539923898   0.240182214585    2.3e-5  0.0002087
+  10    -0.0070239554231387       0.0   -0.00030203487842537      1.9061039451078      1.9061039451078   1.905966272783   0.00014  0.0002243
+  arch(10) subdivision budget: |density240 - density120| = 5.94e-8
+
+== Part B: a in {12,15,20} (float64 exact prime sums; scipy arch with error) ==
+   a     primeTerm(a)       arch(a)  arch_err       Kpsi(a)           D_F1       D_direct  D_killarm      D/|A|
+/home/hatch/workspace/gppdiscovery3/research/flint_archdom_scout_2026_11_12.py:73: IntegrationWarning: The maximum number of subdivisions (400) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+  val, err = quad(f, 0, T, limit=400, epsabs=1e-12, epsrel=1e-12,
+  12       420.556806 -2.583995e-03  4.93e-08  2.703232e-04        13.6408        13.6331      13.64 2.1727e-04
+  15      1884.806037 -5.765651e-04  2.12e-08  1.401340e-05       276.1378       275.9842      276.0 2.1899e-04
+  20     22961.638048 -4.732590e-05  9.17e-08  2.872835e-04     40979.8392     40957.0481    40964.8 2.1897e-04
+
+== Part C: first corrections; plateau approach ==
+  e^(a/2) archTerm(a) at a=6: -1.04247597502
+  e^(a/2) archTerm(a) at a=8: -1.04246008245
+  e^(a/2) archTerm(a) at a=10: -1.04244741374
+  e^(a/2) archTerm(a) at a=12: -1.04250026611
+  A(a) correction check: A(a) - archTerm(0) e^a/4 vs 3 archTerm(0)/2 - c1 = -1.27189932307
+    a=8: A - archTerm(0) e^a/4 = -1.27171919942
+    a=10: A - archTerm(0) e^a/4 = -1.27192236066
+  D correction check: (D - (Kpsi(0)/4) e^a)/e^{a/2} vs -Kpsi(a):
+    a=5 (Arb D): lhs=6.0266715e-5  -Kpsi(a)=1.8678729e-5
+    a=6 (Arb D): lhs=0.00012774771  -Kpsi(a)=0.0001025166
+    a=8 (Arb D): lhs=-0.0002132947  -Kpsi(a)=-0.00022207978
+    a=10 (Arb D): lhs=0.00030453627  -Kpsi(a)=0.00030203488
+    a=12 (float D): lhs=-2.690684e-04  -Kpsi(a)=-2.703232e-04
+    a=15 (float D): lhs=-1.373306e-05  -Kpsi(a)=-1.401340e-05
+    a=20 (float D): lhs=-2.872605e-04  -Kpsi(a)=-2.872835e-04
+  plateau: mu_inf = 0.000219008297618; measured D/|A|: a=5: 0.000226852, a=6: 0.000233625, a=8: 0.00020867, a=10: 0.000224311, a=12: 2.1727e-04, a=15: 2.1899e-04, a=20: 2.1897e-04
+
+== Part D: full-correction closure, residuals ==
+  a=5 (Arb anchor): residual = -1.91e-7
+  a=6 (Arb anchor): residual = -2.69e-7
+  a=8 (Arb anchor): residual = -4.25e-7
+  a=10 (Arb anchor): residual = -9.28e-7
+  a=12 (float route): residual = +4.716e-18
+  a=15 (float route): residual = -1.122e-17
+  a=20 (float route): residual = +6.246e-16
+  FS4: per-configuration identity regime CONFIRMED asymptotically (NUMERICAL + exact algebra). mu_inf = Kpsi(0)/|archTerm(0)| = 0.000219008297618; A(a) = (archTerm(0)/4) e^a + 3 archTerm(0)/2 + bigPsiI2^2 + O(e^{-a/2}) with c1 = -bigPsiI2^2 by the digamma-pole residue; D(a) = (Kpsi(0)/4) e^a - e^{a/2} Kpsi(a) + (3/2) Kpsi(0) + O(e^{-a/2}); Kpsi(a) bounded at the 1e-4 scale through a=20. SemilocalArchDomAll remains OPEN.
+DONE (parts 0+A+B+C+D)
