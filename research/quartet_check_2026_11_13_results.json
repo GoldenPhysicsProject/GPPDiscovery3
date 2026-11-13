@@ -1,0 +1,384 @@
+{
+ "label": "NUMERICAL",
+ "experiment": "quartet_check_2026_11_13",
+ "convention": "D(c) = sum_{nontrivial rho} Fhat_c(rho-1/2), Fhat_c(z) = (sinh(z/2)/(z/2))^4 Phi_c(z) Phi_c(-z), Phi_c(z) = sum_i c_i e^{z x_i}; on-line quartet {1/2+ig, 1/2-ig} contributes 2 sinc^4(g) |Phi_c(i g)|^2 >= 0. Pole/arch/prime sides of the Weil explicit formula for F_c are exactly the scout's poleTerm/archTerm/primeTerm quadratic forms (triGhat(1/2) = bigPsiI2^2); on ker l_c the zeros sum equals Flint's defect D(c).",
+ "zeros_files": [
+  "zeros_14.dat",
+  "zeros_5000.dat",
+  "zeros_26000.dat",
+  "zeros_236000.dat",
+  "zeros_446000.dat",
+  "zeros_2546000.dat",
+  "zeros_4646000.dat",
+  "zeros_6746000.dat",
+  "zeros_8846000.dat",
+  "zeros_10946000.dat",
+  "zeros_13046000.dat",
+  "zeros_15146000.dat",
+  "zeros_17246000.dat",
+  "zeros_19346000.dat",
+  "zeros_21446000.dat",
+  "zeros_23546000.dat",
+  "zeros_25646000.dat"
+ ],
+ "reader_verification": {
+  "gamma_1_exact": "14.1347251417346937904572519835624765570",
+  "gamma_1_ref": "14.134725141734693790457251983562470",
+  "gamma_1_match": true,
+  "gamma_last_exact": "27745999.6139777583355747876302036146049",
+  "gamma_last_ref": "27745999.6139777583355747876302036146049",
+  "gamma_last_match": true
+ },
+ "total_zeros_in_files": 63150760,
+ "total_zeros_ref": 63150760,
+ "gamma_max": 27745999.61397776,
+ "direct_source": "Arb-certified arch + exact prime/pole",
+ "configs": [
+  {
+   "a": 0.3,
+   "x": [
+    0.0,
+    0.3
+   ],
+   "c": [
+    1.0112711095766704,
+    -1.0
+   ],
+   "role": "validation",
+   "D_banked_mp": "0.000659842682166490353",
+   "D_direct": 0.0006598154237643768,
+   "D_direct_source": "Arb-certified arch + exact prime/pole",
+   "zeros_side_total": 0.0006598165844543956,
+   "height_summed": 200300.0,
+   "total_minus_D_direct": 1.160690018815573e-09,
+   "validation_tolerance": 1.6288194883251337e-08,
+   "convention_validated": true,
+   "n_quartets": 298695,
+   "min_quartet_contribution": 1.0841271914474054e-39,
+   "min_quartet_gamma": 68235.39233789986,
+   "any_negative_quartet": false
+  },
+  {
+   "a": 1.0,
+   "x": [
+    0.0,
+    1.0
+   ],
+   "c": [
+    1.1276259652063807,
+    -1.0
+   ],
+   "role": "validation",
+   "D_banked_mp": "0.000946990270664940919",
+   "D_direct": 0.0009472065634012556,
+   "D_direct_source": "Arb-certified arch + exact prime/pole",
+   "zeros_side_total": 0.0009472087297352419,
+   "height_summed": 200300.0,
+   "total_minus_D_direct": 2.1663339863295383e-09,
+   "validation_tolerance": 1.7036801911998123e-08,
+   "convention_validated": true,
+   "n_quartets": 298695,
+   "min_quartet_contribution": 1.3489311706182925e-41,
+   "min_quartet_gamma": 145675.65136773928,
+   "any_negative_quartet": false
+  },
+  {
+   "a": 2.0,
+   "x": [
+    0.0,
+    2.0
+   ],
+   "c": [
+    1.5430806348152437,
+    -1.0
+   ],
+   "role": "validation",
+   "D_banked_mp": "0.00184501824855036843",
+   "D_direct": 0.001844825016551083,
+   "D_direct_source": "Arb-certified arch + exact prime/pole",
+   "zeros_side_total": 0.001844826661649364,
+   "height_summed": 200300.0,
+   "total_minus_D_direct": 1.6450982809074893e-09,
+   "validation_tolerance": 2.0053216232519597e-08,
+   "convention_validated": true,
+   "n_quartets": 298695,
+   "min_quartet_contribution": 2.4425324154529295e-40,
+   "min_quartet_gamma": 145675.65136773928,
+   "any_negative_quartet": false
+  },
+  {
+   "a": 4.0,
+   "x": [
+    0.0,
+    4.0
+   ],
+   "c": [
+    3.7621956910836314,
+    -1.0
+   ],
+   "role": "validation",
+   "D_banked_mp": "0.00409363165716318004",
+   "D_direct": 0.004092243547746283,
+   "D_direct_source": "Arb-certified arch + exact prime/pole",
+   "zeros_side_total": 0.004092252244031424,
+   "height_summed": 200300.0,
+   "total_minus_D_direct": 8.696285140781523e-09,
+   "validation_tolerance": 4.525325623820663e-08,
+   "convention_validated": true,
+   "n_quartets": 298695,
+   "min_quartet_contribution": 6.318595975601397e-39,
+   "min_quartet_gamma": 145675.65136773928,
+   "any_negative_quartet": false
+  },
+  {
+   "a": 5.0,
+   "x": [
+    0.0,
+    5.0
+   ],
+   "c": [
+    6.132289479663686,
+    -1.0
+   ],
+   "role": "main",
+   "D_banked_mp": "0.013270503741742108165",
+   "D_direct": 0.013271962349676236,
+   "D_direct_source": "Arb-certified arch + exact prime/pole",
+   "zeros_side_total": 0.013271984503413745,
+   "height_summed": 27745999.61397776,
+   "total_minus_D_direct": 2.2153737509397753e-08,
+   "validation_tolerance": 8.907531694363427e-08,
+   "convention_validated": true,
+   "n_quartets": 63150760,
+   "min_quartet_contribution": 1.3554485108317123e-55,
+   "min_quartet_gamma": 24967531.154251188,
+   "any_negative_quartet": false,
+   "partial_sums": {
+    "100.0": {
+     "S(T)": 0.013271983129790187,
+     "S(T)-D_direct": 2.0780113950749635e-08,
+     "n_quartets": 4520,
+     "gamma_reached": 4999.329681372973
+    },
+    "1000.0": {
+     "S(T)": 0.013271983129790187,
+     "S(T)-D_direct": 2.0780113950749635e-08,
+     "n_quartets": 4520,
+     "gamma_reached": 4999.329681372973
+    },
+    "10000.0": {
+     "S(T)": 0.013271984370189574,
+     "S(T)-D_direct": 2.2020513338119607e-08,
+     "n_quartets": 11681,
+     "gamma_reached": 11299.203529961593
+    },
+    "100000.0": {
+     "S(T)": 0.013271984503178975,
+     "S(T)-D_direct": 2.2153502738861408e-08,
+     "n_quartets": 140534,
+     "gamma_reached": 101599.48238173917
+    },
+    "1000000.0": {
+     "S(T)": 0.013271984503413568,
+     "S(T)-D_direct": 2.2153737332455958e-08,
+     "n_quartets": 1747908,
+     "gamma_reached": 1000399.6772611638
+    },
+    "10000000.0": {
+     "S(T)": 0.013271984503413745,
+     "S(T)-D_direct": 2.2153737509397753e-08,
+     "n_quartets": 21138398,
+     "gamma_reached": 10000999.728199273
+    }
+   }
+  },
+  {
+   "a": 6.0,
+   "x": [
+    0.0,
+    6.0
+   ],
+   "c": [
+    10.067661995777765,
+    -1.0
+   ],
+   "role": "main",
+   "D_banked_mp": "0.036645381015542243784",
+   "D_direct": 0.036647055884792765,
+   "D_direct_source": "Arb-certified arch + exact prime/pole",
+   "zeros_side_total": 0.03664711462355191,
+   "height_summed": 27745999.61397776,
+   "total_minus_D_direct": 5.87387591483024e-08,
+   "validation_tolerance": 2.004122096183355e-07,
+   "convention_validated": true,
+   "n_quartets": 63150760,
+   "min_quartet_contribution": 4.231081419291644e-55,
+   "min_quartet_gamma": 24967531.154251188,
+   "any_negative_quartet": false,
+   "partial_sums": {
+    "100.0": {
+     "S(T)": 0.03664711096076399,
+     "S(T)-D_direct": 5.5075971228113474e-08,
+     "n_quartets": 4520,
+     "gamma_reached": 4999.329681372973
+    },
+    "1000.0": {
+     "S(T)": 0.03664711096076399,
+     "S(T)-D_direct": 5.5075971228113474e-08,
+     "n_quartets": 4520,
+     "gamma_reached": 4999.329681372973
+    },
+    "10000.0": {
+     "S(T)": 0.03664711426956021,
+     "S(T)-D_direct": 5.8384767444297214e-08,
+     "n_quartets": 11681,
+     "gamma_reached": 11299.203529961593
+    },
+    "100000.0": {
+     "S(T)": 0.03664711462292944,
+     "S(T)-D_direct": 5.873813667400807e-08,
+     "n_quartets": 140534,
+     "gamma_reached": 101599.48238173917
+    },
+    "1000000.0": {
+     "S(T)": 0.03664711462355161,
+     "S(T)-D_direct": 5.873875884299107e-08,
+     "n_quartets": 1747908,
+     "gamma_reached": 1000399.6772611638
+    },
+    "10000000.0": {
+     "S(T)": 0.03664711462355191,
+     "S(T)-D_direct": 5.87387591483024e-08,
+     "n_quartets": 21138398,
+     "gamma_reached": 10000999.728199273
+    }
+   }
+  },
+  {
+   "a": 8.0,
+   "x": [
+    0.0,
+    8.0
+   ],
+   "c": [
+    27.308232836016487,
+    -1.0
+   ],
+   "role": "main",
+   "D_banked_mp": "0.24020063734910498574",
+   "D_direct": 0.24018221458498237,
+   "D_direct_source": "Arb-certified arch + exact prime/pole",
+   "zeros_side_total": 0.24018264310683807,
+   "height_summed": 27745999.61397776,
+   "total_minus_D_direct": 4.2852185569430823e-07,
+   "validation_tolerance": 1.2556858637921702e-06,
+   "convention_validated": true,
+   "n_quartets": 63150760,
+   "min_quartet_contribution": 3.561591368248622e-54,
+   "min_quartet_gamma": 24967531.154251188,
+   "any_negative_quartet": false,
+   "partial_sums": {
+    "100.0": {
+     "S(T)": 0.2401826164334524,
+     "S(T)-D_direct": 4.0184847002744384e-07,
+     "n_quartets": 4520,
+     "gamma_reached": 4999.329681372973
+    },
+    "1000.0": {
+     "S(T)": 0.2401826164334524,
+     "S(T)-D_direct": 4.0184847002744384e-07,
+     "n_quartets": 4520,
+     "gamma_reached": 4999.329681372973
+    },
+    "10000.0": {
+     "S(T)": 0.24018264052518096,
+     "S(T)-D_direct": 4.259401985839961e-07,
+     "n_quartets": 11681,
+     "gamma_reached": 11299.203529961593
+    },
+    "100000.0": {
+     "S(T)": 0.2401826431022963,
+     "S(T)-D_direct": 4.2851731393844794e-07,
+     "n_quartets": 140534,
+     "gamma_reached": 101599.48238173917
+    },
+    "1000000.0": {
+     "S(T)": 0.24018264310683446,
+     "S(T)-D_direct": 4.285218520860834e-07,
+     "n_quartets": 1747908,
+     "gamma_reached": 1000399.6772611638
+    },
+    "10000000.0": {
+     "S(T)": 0.24018264310683807,
+     "S(T)-D_direct": 4.2852185569430823e-07,
+     "n_quartets": 21138398,
+     "gamma_reached": 10000999.728199273
+    }
+   }
+  },
+  {
+   "a": 10.0,
+   "x": [
+    0.0,
+    10.0
+   ],
+   "c": [
+    74.20994852478785,
+    -1.0
+   ],
+   "role": "main",
+   "D_banked_mp": "1.906130279714603562",
+   "D_direct": 1.9059645089504065,
+   "D_direct_source": "Arb-certified arch + exact prime/pole",
+   "zeros_side_total": 1.905967669822652,
+   "height_summed": 27745999.61397776,
+   "total_minus_D_direct": 3.1608722455001015e-06,
+   "validation_tolerance": 8.802929697876272e-06,
+   "convention_validated": true,
+   "n_quartets": 63150760,
+   "min_quartet_contribution": 2.7580424064418803e-53,
+   "min_quartet_gamma": 24967531.154251188,
+   "any_negative_quartet": false,
+   "partial_sums": {
+    "100.0": {
+     "S(T)": 1.9059674733068728,
+     "S(T)-D_direct": 2.964356466295115e-06,
+     "n_quartets": 4520,
+     "gamma_reached": 4999.329681372973
+    },
+    "1000.0": {
+     "S(T)": 1.9059674733068728,
+     "S(T)-D_direct": 2.964356466295115e-06,
+     "n_quartets": 4520,
+     "gamma_reached": 4999.329681372973
+    },
+    "10000.0": {
+     "S(T)": 1.9059676507825531,
+     "S(T)-D_direct": 3.141832146669188e-06,
+     "n_quartets": 11681,
+     "gamma_reached": 11299.203529961593
+    },
+    "100000.0": {
+     "S(T)": 1.9059676697891568,
+     "S(T)-D_direct": 3.160838750293493e-06,
+     "n_quartets": 140534,
+     "gamma_reached": 101599.48238173917
+    },
+    "1000000.0": {
+     "S(T)": 1.9059676698226258,
+     "S(T)-D_direct": 3.160872219298838e-06,
+     "n_quartets": 1747908,
+     "gamma_reached": 1000399.6772611638
+    },
+    "10000000.0": {
+     "S(T)": 1.905967669822652,
+     "S(T)-D_direct": 3.1608722455001015e-06,
+     "n_quartets": 21138398,
+     "gamma_reached": 10000999.728199273
+    }
+   }
+  }
+ ],
+ "verdict": "QuartetPositivity CREDENTIALED in range (NUMERICAL): the explicit-formula convention is validated against direct D values (Arb-certified archimedean entries) at all eight lags; every one of the 63150760 on-line quartets in the staged range contributes >= 0 for the n=2 family a in {5,6,8,10}, and the partial sums converge to D. In range this is structural: each quartet collapses to the pair {1/2+ig, 1/2-ig} with contribution 2 sinc^4(g) |Phi_c(i g)|^2, a square times a non-negative window. It says nothing about off-line zeros (none exist in the staged range) and proves neither HPsi nor RH.",
+ "banked_value_correction": "Flint's banked dps40 D at a=10 (1.906130279714603562) carries ~1.6e-4 of archimedean quadrature error; the Arb-certified direct value and the zeros-side total agree at 1.905966/1.905968. All banked signs, margins (~2.2e-4 plateau) and SURVIVES verdicts are unchanged."
+}

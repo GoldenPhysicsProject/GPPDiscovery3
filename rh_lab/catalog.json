@@ -635,6 +635,126 @@
    ],
    "timeout_s": 300,
    "default_run": false
+  },
+  {
+   "id": "quartet_check_2026_11_13",
+   "path": "research/quartet_check_2026_11_13.py",
+   "method": "floating",
+   "evidence": "numerical",
+   "claim": "NUMERICAL: zeros-side quartet check of the Weil pairing for Flint n=2 family. Convention (Weil explicit formula for the triG-autocorrelation F_c of f_c, Laplace transform (sinh(z/2)/(z/2))^4 Phi_c(z) Phi_c(-z)) VALIDATED at eight lags a in {0.3,1,2,4,5,6,8,10}: zeros-side totals match direct D values with Arb-ball-certified archimedean entries to +1.2e-9 .. +3.2e-6, inside the arch tail envelope at every lag. Summing all 63,150,760 Platt zeros (complete to gamma = 27,746,000, all on the line), every quartet {1/2+ig, 1/2-ig} contributes 2 sinc^4(g) |Phi_c(i g)|^2 >= 0 for a in {5,6,8,10}: no negative quartet exists in range (minimum +1.4e-55 at gamma = 24,967,531.1543, a sinc-node zero). QuartetPositivity CREDENTIALED in range, structurally: on the line each quartet contribution is a square times the non-negative window sinc^4. Side finding: Flint banked dps40 D at a=10 carries ~1.6e-4 archimedean quadrature error (banked 1.906130279714603562 vs Arb-certified direct 1.90596627278309747 / zeros-side 1.905967669818); signs, the ~2.2e-4 relative-margin plateau and all SURVIVES verdicts unchanged.",
+   "assumptions": [
+    "Statements, kernels and orientation verbatim from flint_archdom_scout (GPPVerify @5fb6c8d0); on ker l_c the zeros sum equals D(c) by the PROVED kform_KS_of_ker identity once the explicit-formula convention is fixed, and the convention is validated numerically in-run rather than assumed.",
+    "Platt staged tables at ~/workspace/zeros-platt are the complete zero list to gamma = 27,746,000 with every zero on the line and listed once (multiplicity one as listed); reader verified in exact integer arithmetic: gamma_1 and gamma_63150760 reproduce the known values, total count 63,150,760.",
+    "Direct-side validation uses archTerm entries certified by Arb ball integration (python-flint, period chunks, analytic tail bound <= 1.6e-9) plus exact finite prime sums and the exact pole correction; without python-flint the script falls back to Flint banked dps40 values with a looser stated tolerance and records the fallback."
+   ],
+   "falsifiers": [
+    "Exhibit any zero gamma in the staged range whose quartet contribution 2 sinc^4(g) |Phi_c(i g)|^2 is negative beyond float error for these configurations: impossible on the line by the formula shape, so a negative value would falsify the convention or the reader, not just the hypothesis.",
+    "Show a zeros-side total disagreeing with an independently certified direct D at any tested lag beyond the arch tail envelope: kills the stated convention.",
+    "Produce an off-line zero (a genuine quartet {rho, conj(rho), 1-rho, 1-conj(rho)} with Re rho != 1/2) in range: the grouped contribution is then no longer a square and QuartetPositivity becomes a real question again."
+   ],
+   "limitations": [
+    "NUMERICAL, in range only: the staged zeros are all on the line, so in-range quartet positivity is structural (square times non-negative window) and is NOT evidence about hypothetical off-line quartets, HPsi, or RH.",
+    "Configurations are the n=2 family x=(0,a), c=(cosh(a/2),-1) (plus small-lag validation lags); projected-eigenvalue configurations were not run from the zeros side.",
+    "Bulk zero sums are float64 (gamma decode error ~1e-11); exact integer decoding is used only for the first/last zero verification."
+   ],
+   "timeout_s": 300,
+   "default_run": false
+  },
+  {
+   "id": "flint_primelog_cluster",
+   "path": "research/flint_primelog_cluster_2026_11_13.py",
+   "method": "floating",
+   "evidence": "numerical",
+   "claim": "NUMERICAL: SemilocalArchDomAll SURVIVES the prime-log cluster family (flint_todo item 4, queued test (i)). Statements/apparatus imported unchanged from flint_archdom_scout / WeilGramContraction @5fb6c8d0; D-form on ker ell_c, matched window. Family A (tight clusters centred at log P, P in {101,1009,10007,100003,1000003}, eps in {0.05,0.125,0.25}, n in {4,6}): projected lam_min positive everywhere and essentially centre-independent (centre-dependence suppressed ~e^{-u0}, identical to ~9 digits across P); smallest margin eps=0.05 n=6: float +4.138e-6, mpmath dps40 +3.9408e-6 at both P=101 and P=1000003. Family B (consecutive-prime log clusters, spreads down to L=0.0005): float lam_min at noise level (~1e-12, spurious float negatives ~-1e-13); mpmath dps40 confirms all POSITIVE (P=100003: n=8 +1.322e-12, n=6 +1.346e-12, n=4 +4.348e-12; P=10007: n=6 +1.907e-10, n=8 +8.426e-11; P=1009: n=4 +5.988e-8, n=6 +3.871e-8, n=8 +3.433e-8) - the family reaches the coalescence degenerate locus through prime density; tiny positive margins there are the degenerate boundary. Family C (prime-power log offsets, x = log P + {-log 3, -log 2, 0, log 2, log 3}, L = 2 log 3): lam_min float +4.140e-5 (P=1009), mpmath dps40 +4.098e-5. Every row's D-form value equals the direct K-form value (proved kform_KS_of_ker cross-check). NO negative defect value for zeta anywhere: NOT a Kill Criterion 1 event. The Prop remains OPEN.",
+   "assumptions": [
+    "Same verbatim statements and orientation as flint_archdom_scout (GPPVerify @5fb6c8d0); fast prime kernel via shared prime-power sieve cross-checked against the scout kernel (max float diff 0.0).",
+    "mpmath dps40 confirmations (research/flint_primelog_cluster_mp_extra_2026_11_13.py) are the values of record wherever float |lam_min| < 1e-5; float-mp lam_min gap (~2e-7 absolute) is fully accounted for by the archimedean quadrature error component of arch_scipy (returns quad (value, error); error est 6.4e-7 at lag 0, dominated by the omitted t>250 tail bound; entrywise D diff at lag 0 measured 1.88e-7).",
+    "Family B float negatives ~-1e-13 are float noise at the coalescence locus, superseded by the dps40 values."
+   ],
+   "falsifiers": [
+    "Exhibit any prime-log cluster configuration with dps40-confirmed lam_min < 0: kills SemilocalArchDomAll and, by the proved equivalence, H_psi (Kill Criterion 1).",
+    "Show the projected lam_min at a Family A centre decays with P (centre-dependence NOT suppressed): would contradict the e^{-u0} suppression pattern and reopen the family as a kill surface."
+   ],
+   "limitations": [
+    "NUMERICAL, finite instances only (n<=8, five centres, three tightnesses): survival is not a proof of SemilocalArchDomAll, H_psi, or RH.",
+    "Family B margins ~1e-12 are positive at dps40 but are degenerate-locus values; they evidence the boundary shape, not a uniform margin."
+   ],
+   "timeout_s": 300,
+   "default_run": false
+  },
+  {
+   "id": "flint_fs3_probe",
+   "path": "research/flint_fs3_probe_2026_11_13.py",
+   "method": "floating",
+   "evidence": "numerical",
+   "claim": "NUMERICAL probe of the checkable corollary of FS3 (oracle advice 2026-11-13 section C; ORACLE SIGHTING - UNAUDITED, this probe is its audit). FS3 claims D(c) = 0 iff the symmetrised exponential sum M_c == 0, with corollary that near-null configurations have M_c measurably ~ 0. At the extension run's Nelder-Mead minimiser (x = (-0.03620, -0.03647, +0.03403, +0.10798), banked lam_min +6.06e-9, recomputed identically), the extremal c = (-0.7079, +0.7063, +0.0023, -0.0006) concentrates on the near-coincident pair (separation 2.7e-4) with cancelling coefficients: the near-null direction IS a near-annihilator. M_c(1/2+it) = 2 sum c_i cos(t x_i) statistics (ratios to 2||c||_2): sup 0.0885 / RMS 0.0394 on t in [0,500], vs generic equispaced L=2 n=4 sup 1.5175 / RMS 0.9995; on [0,2000] the minimiser's sup rises to 0.3685 (the pair decouples at t ~ 1/separation), so the smallness is scale-dependent and lives in the pairing's effective range. Verdict: FS3 corollary SUPPORTED in uniform form on [0,500] with mechanism visible; the FS3 equivalence's hard direction (D(c)=0 only at annihilators) remains the open strictness content and is NOT adopted as a lemma.",
+   "assumptions": [
+    "Minimiser coordinates and lam_min taken from flint_archdom_margin_extension_2026_11_12_results.json (minimisation_n4 smallest row); extremal c recomputed with the scout's proj_eigmin on the same D matrix; ell_c(c) = -5.1e-16 (ker check).",
+    "M_c evaluated on a t-grid of step 0.001; sup/RMS ratios are grid statistics, labelled NUMERICAL."
+   ],
+   "falsifiers": [
+    "Exhibit a near-null configuration (lam_min < 1e-7) whose extremal c does NOT concentrate on near-duplicate cancelling groups, with M_c O(1) on [0,500]: kills the FS3 corollary's mechanism.",
+    "Exhibit any non-degenerate configuration with D(c) = 0 exactly: kills FS3's hard direction outright (and would be a boundary case of SemilocalArchDomAll)."
+   ],
+   "limitations": [
+    "One minimiser probed (plus one generic comparison): the corollary's support is instance-level, NUMERICAL.",
+    "M_c smallness is asserted only on the pairing-relevant range; uniform smallness on [0, infinity) is false for any fixed near-duplicate separation, by decoupling at t ~ 1/separation."
+   ],
+   "timeout_s": 300,
+   "default_run": false
+  },
+  {
+   "id": "flint_ftheta_control",
+   "path": "research/flint_ftheta_control_2026_11_13.py",
+   "method": "floating",
+   "evidence": "numerical",
+   "claim": "NUMERICAL: F_theta control (theta = 1/4) for the semilocal defect apparatus (flint_todo item 4, queued test (ii); Kill Criterion 2). Datum pinned from the record BEFORE any number was trusted: prime weights per prime power n multiplied by (n^{1/4} + n^{-1/4}) = 2 cosh((log n)/4); archimedean kernel and pole correction kept at zeta's; ONLY the prime kernel substituted (prime-side distinction sufficient per BT3/#561; W_inf difference is a separate mu-level gap, not a gate). Build checks: theta kernel fast = slow exactly at d in {0,0.3,1,2,4,6}; domination primeTerm_theta >= 2 primeTerm (ratio 2.05 at d=0 to 4.94 at d=6); n=2 weight 2.0301035302564356 = banked constant; FS1 identity D - D_theta = -(primeQ_theta - primeQ) verified per configuration (residuals <= 1.1e-13). RESULTS: (a) projected scans: lam_zeta > 0 in every non-degenerate case; lam_theta NEGATIVE at 14 windows (equispaced n=6 at L=0.5/1/2: -8.27e-5/-3.99e-4/-8.91e-4; equispaced n=5 at L=1: -1.66e-4; equispaced all n at L=5: -0.164..-1.262, at L=8: -5.22..-19.95; clustered0.1L n=6 at L=5: -8.27e-5, L=8: -1.60e-5). (b) EXCEPTION at the degenerate locus: at zeta's smallest-margin window (clustered0.1L L=0.5 n=6) dps40 lam_theta = +8.99e-7 vs zeta's banked +8.88e-7, and at the near-coalescent NM point lam_theta +7e-9 vs lam_zeta +6e-9 - no discrimination there, structurally: near-annihilator directions are near-null for every smooth kernel form, so the theta-zeta difference form degenerates on the same locus. Kill Criterion 2 verdict as filed by Flint: PASSES in substance (decisive detection at 14 windows incl. L=0.5 equispaced), FAILS only at degenerate-locus points where zeta's own margin is a locus artefact; the script's binary verdict string keys on the clustered L=0.5 point alone and reads CONTROL FAILS - the filed filing in the bridge notes corrects the operationalisation. (c) FS2 (oracle advice 2026-11-13 section B): zeta half HOLDS (D_zeta > 0 at all primes p <= 97 float; dps40 at p=1009/10007/100003/999983: +0.0894/+0.8449/+8.4246/+84.2908); theta half FAILS DECISIVELY (D_theta > 0 everywhere, dps40 +5.23e3/+9.90e4/+1.84e6/+3.36e7 at the same primes - the amplified spike at the configuration's own lag enters via the cross term with the sign that adds positivity). FS2's race mechanism KILLED as stated. Full run executed twice with identical output (reproduction).",
+   "assumptions": [
+    "Same verbatim SemilocalArchDom statements/apparatus as flint_archdom_scout (GPPVerify @5fb6c8d0); the control changes ONLY primeTerm to primeTerm_theta as pinned; FS1's identity is the internal audit of that restriction.",
+    "Kill Criterion 2 operationalisation inherited from the matured advice (control must go negative where zeta's margins are smallest); Flint's filed verdict distinguishes window-level discrimination from degenerate-locus points - see claim.",
+    "mpmath dps40 values are primary wherever |lam| < 1e-5 (float arch quadrature carries the known ~2e-7 entry-level systematic); all 14 negative windows exceed the -5e-6 threshold by >= 3x except clustered L=8 (-1.60e-5, 3.2x)."
+   ],
+   "falsifiers": [
+    "Recompute any of the 14 negative windows with an independent implementation of the pinned datum and obtain lam_theta >= 0: breaks the control's discrimination claim at that window.",
+    "Show the pinned F_theta datum is not the record's datum (weights (n^theta + n^-theta) on prime powers, zeta arch/pole): invalidates the control wholesale.",
+    "Exhibit a non-degenerate window where lam_zeta < 0 in the same scans: that is Kill Criterion 1 territory against zeta itself, superseding this control."
+   ],
+   "limitations": [
+    "NUMERICAL, finite windows (n <= 6 scans, n=2 families): discrimination evidence, not a proof about F_theta's RH-analogue or about H_psi.",
+    "Full script runtime ~395 s exceeds the catalogue replay cap of 300 s; reproduction was instead established by two complete executions with byte-identical computed output (2026-11-13).",
+    "The n=2 fixed-vector family does not detect F_theta at all (D_theta large positive); discrimination lives in the projected spectra, not in that family."
+   ],
+   "timeout_s": 300,
+   "default_run": false
+  },
+  {
+   "id": "flint_adversarial_kill",
+   "path": "research/flint_adversarial_kill_2026_11_13.py",
+   "method": "floating",
+   "evidence": "numerical",
+   "claim": "NUMERICAL: Independent adversarial kill arm against SemilocalArchDomAll (GPPVerify @5fb6c8d0), fresh kernel implementation, no scout code imported. Validation: archTerm(0) reproduced to 5.7e-17 at mpmath dps40; n=2 family D at a in {5,6,8,10} reproduced within the demonstrated arch-quadrature method spread (<=3.5e-5 in D at a=10, i.e. ~2.4e-7 in archTerm(10) amplified x148 by 2 cosh(a/2); prime kernel route-independent to 2.3e-13; D-vs-Kform assembly identity to 1e-38 at dps40). Assault: differential evolution + Nelder-Mead basins (prime-log clusters, near-coalescent, two-cluster, endpoints) plus global-shift refinement, 843,595 surrogate evaluations over n=3..10, L in {2,5,10,20}; surrogate minima reached -3.8e-4, but EVERY surrogate-negative candidate flipped positive under exact kernels -- the optimiser was mining the surrogate's smooth prime-histogram spline bias (kernel error ~1.3e-4 measured), not the statement. Smallest exact projected eigenvalue at an adversarially optimised configuration: +6.34e-6 (n=9, L=2; mpmath dps40 +6.3400073716189069565e-6, full projected spectrum positive); all other verified candidates +7.3e-6..+1.24e-5 with Gershgorin error budgets <=5.0e-6. n=2 family extended beyond the scout range: D > 0 at a in {12,15,20} (+13.64, +276.0, +40964.8), relative margin plateaued at 2.17e-4..2.19e-4. NO KILL: SemilocalArchDomAll SURVIVES this arm; the Prop remains OPEN.",
+   "assumptions": [
+    "Statements, kernels, triG, bigPsiI2 and orientation P <= A read from GPPVerify @5fb6c8d0 as transcribed in flint_archdom_scout_2026_11_12.py; kernels re-implemented independently in this script (direct prime-power enumeration, segmented-sieve routes, adaptive quadrature, trapezoid cosine transform, mpmath) -- the scout module is never imported.",
+    "primeTermS (primesBelowExp L) d = primeTerm d for |d| <= L by the PROVED primeTermS_eq; the unrestricted primeTerm is computed.",
+    "Surrogate (histogram+spline) values are used ONLY to propose candidate configurations; every reported sign is decided by exact kernels with an explicit error budget, and the smallest candidate by mpmath dps40.",
+    "The statement constrains only the pairwise spread (<= L); translations of a configuration are legal instances and are searched via shifted starts and a global-shift refinement."
+   ],
+   "falsifiers": [
+    "Exhibit any (L, n, x, c in ker ell_c) with D(c) < 0 beyond numerical error: kills SemilocalArchDomAll and, by the proved equivalence, H_psi. This arm tried global optimisation specifically to find one and failed.",
+    "Recompute the n=9, L=2 configuration recorded in the results JSON at higher precision and check the sign of its smallest projected eigenvalue (+6.3400073716189069565e-6 at dps40).",
+    "Show the surrogate-bias explanation is wrong by evaluating any assault candidate with exact kernels and obtaining a negative value beyond its error budget."
+   ],
+   "limitations": [
+    "NUMERICAL, finite instances only (n<=10, L<=20 plus the n=2 family to a=20): survival is not a proof of SemilocalArchDomAll, H_psi, or RH.",
+    "Global optimisation over a surrogate can only propose candidates; the exact-kernel minima found (~+6e-6) are the smallest at OPTIMISED configurations, not a certified global infimum over x-space.",
+    "archTerm at oscillatory lags carries a demonstrated quadrature method spread (~2.4e-7 in archTerm(10) across subdivided mpmath schemes), the same spread documented in flint_archdom_scout's assumptions; all sign decisions here are made well above it or at dps40.",
+    "Runner replay (args: core) reproduces the anchors, the four sub-L=20 exact verifications and n2ext a=12 inside the 300 s cap; the two L=20 exact verifications use the multi-lag segmented pass in the verify stage (minutes each) and are reproduced by running the script's verify stage."
+   ],
+   "timeout_s": 300,
+   "default_run": false,
+   "args": [
+    "core"
+   ]
   }
  ]
 }

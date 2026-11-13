@@ -1,0 +1,37 @@
+{
+ "label": "NUMERICAL",
+ "experiment": "flint_primelog_cluster_mp_extra",
+ "rows": [
+  {
+   "case": "A P=101 eps=0.05 n=6",
+   "lam_min_mp": "3.9408039188183346492e-6",
+   "verdict": "SURVIVES (NUMERICAL)"
+  },
+  {
+   "case": "A P=1000003 eps=0.05 n=6",
+   "lam_min_mp": "3.9408050632519834795e-6",
+   "verdict": "SURVIVES (NUMERICAL)"
+  },
+  {
+   "case": "B P=1009 n=4 primes=1009..1021",
+   "lam_min_mp": "5.9884650215903003076e-8",
+   "verdict": "SURVIVES (NUMERICAL)"
+  },
+  {
+   "case": "B P=1009 n=6 primes=1009..1033",
+   "lam_min_mp": "3.870519538390287832e-8",
+   "verdict": "SURVIVES (NUMERICAL)"
+  },
+  {
+   "case": "B P=1009 n=8 primes=1009..1049",
+   "lam_min_mp": "3.4330838519537566808e-8",
+   "verdict": "SURVIVES (NUMERICAL)"
+  },
+  {
+   "case": "C P=1009 offsets=log(1/3..3)",
+   "lam_min_mp": "0.000040982804541409314605",
+   "verdict": "SURVIVES (NUMERICAL)"
+  }
+ ],
+ "runtime_s": 199.7650408744812
+}
