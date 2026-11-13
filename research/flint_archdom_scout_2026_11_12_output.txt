@@ -1,0 +1,76 @@
+=== SemilocalArchDom scout (NUMERICAL) — D(c) = archQ - primePoleQ on ker l_c, S = primesBelowExp L ===
+bigPsiI2 = 1.021007721651; archTerm(0) scipy = (-1.5429332473576938, np.float64(6.361234762586334e-07))
+
+-- n=2, x=(0,a), c=(cosh(a/2),-1) in ker l_c, L=a (matched) --
+    a         archQ     primeForm   poleCorr  P=primePoleQ       D=A-P  Kpsi_direct    D/|c|^2     D/|A|
+ 0.05   -0.00411003   -0.00572304  +0.001303   -0.00441970 +0.00030967  +0.00030967 +0.0001548  +0.07534
+  0.3   -0.15801848   -0.20594141  +0.047263   -0.15867797 +0.00065949  +0.00065949 +0.0003260  +0.00417
+  1.0   -1.43706387   -2.00414855  +0.566138   -1.43801047 +0.00094660  +0.00094660 +0.0004167  +0.00066
+  2.0   -3.96708894   -6.84840289  +2.879470   -3.96893330 +0.00184436  +0.00184436 +0.0005455  +0.00046
+  4.0  -22.31931645  -49.74860162 +27.425195  -22.32340626 +0.00408981  +0.00408981 +0.0002699  +0.00018
+
+-- scan: min eigenvalue of D-form projected on ker l_c (endpoints have an exact-0 duplicate-point mode: see notes) --
+   L         config  n      lam_min_D  lam_max_abs_D  rel_margin
+ 0.5     equispaced  3   +0.000247414       0.000552  +4.482e-01   (K-form proj min +0.000247414)
+ 0.5  clustered0.1L  3   +0.000018029       0.000155  +1.165e-01   (K-form proj min +0.000018029)
+ 0.5      endpoints  3   +0.000000000       0.000330  +1.380e-13   (K-form proj min -0.000000000)
+ 0.5     equispaced  4   +0.000064815       0.000746  +8.693e-02   (K-form proj min +0.000064815)
+ 0.5  clustered0.1L  4   +0.000003621       0.000177  +2.046e-02   (K-form proj min +0.000003621)
+ 0.5      endpoints  4   -0.000000000       0.000495  -1.174e-16   (K-form proj min -0.000000000)
+ 0.5     equispaced  5   +0.000107065       0.000617  +1.736e-01   (K-form proj min +0.000107065)
+ 0.5  clustered0.1L  5   +0.000001081       0.000203  +5.317e-03   (K-form proj min +0.000001081)
+ 0.5      endpoints  5   -0.000000000       0.000594  -8.081e-14   (K-form proj min -0.000000000)
+ 0.5     equispaced  6   +0.000046586       0.000719  +6.483e-02   (K-form proj min +0.000046586)
+ 0.5  clustered0.1L  6   +0.000000206       0.000231  +8.911e-04   (K-form proj min +0.000000206)
+ 0.5      endpoints  6   -0.000000000       0.000742  -2.085e-13   (K-form proj min -0.000000000)
+ 1.0     equispaced  3   +0.000193155       0.000417  +4.629e-01   (K-form proj min +0.000193155)
+ 1.0  clustered0.1L  3   +0.000085092       0.000364  +2.338e-01   (K-form proj min +0.000085092)
+ 1.0      endpoints  3   +0.000000000       0.000556  +3.592e-14   (K-form proj min +0.000000000)
+ 1.0     equispaced  4   +0.000053274       0.000625  +8.518e-02   (K-form proj min +0.000053274)
+ 1.0  clustered0.1L  4   +0.000023075       0.000425  +5.435e-02   (K-form proj min +0.000023075)
+ 1.0      endpoints  4   -0.000000000       0.000835  -5.184e-14   (K-form proj min -0.000000000)
+ 1.0     equispaced  5   +0.000189706       0.000774  +2.451e-01   (K-form proj min +0.000189706)
+ 1.0  clustered0.1L  5   +0.000008151       0.000494  +1.648e-02   (K-form proj min +0.000008151)
+ 1.0      endpoints  5   -0.000000000       0.001002  -2.601e-14   (K-form proj min -0.000000000)
+ 1.0     equispaced  6   +0.000024744       0.000939  +2.635e-02   (K-form proj min +0.000024744)
+ 1.0  clustered0.1L  6   +0.000004138       0.000567  +7.292e-03   (K-form proj min +0.000004138)
+ 1.0      endpoints  6   -0.000000000       0.001252  -5.138e-14   (K-form proj min -0.000000000)
+ 2.0     equispaced  3   +0.000374773       0.000565  +6.629e-01   (K-form proj min +0.000374773)
+ 2.0  clustered0.1L  3   +0.000293912       0.000574  +5.117e-01   (K-form proj min +0.000293912)
+ 2.0      endpoints  3   +0.000000000       0.000754  +5.324e-14   (K-form proj min +0.000000000)
+ 2.0     equispaced  4   +0.000221092       0.000853  +2.591e-01   (K-form proj min +0.000221092)
+ 2.0  clustered0.1L  4   +0.000089654       0.000712  +1.259e-01   (K-form proj min +0.000089654)
+ 2.0      endpoints  4   -0.000000000       0.001131  -2.165e-14   (K-form proj min +0.000000000)
+ 2.0     equispaced  5   +0.000079305       0.000642  +1.235e-01   (K-form proj min +0.000079305)
+ 2.0  clustered0.1L  5   +0.000059623       0.000861  +6.927e-02   (K-form proj min +0.000059623)
+ 2.0      endpoints  5   -0.000000000       0.001357  -4.858e-14   (K-form proj min -0.000000000)
+ 2.0     equispaced  6   +0.000021715       0.000806  +2.693e-02   (K-form proj min +0.000021715)
+ 2.0  clustered0.1L  6   +0.000029161       0.001013  +2.878e-02   (K-form proj min +0.000029161)
+ 2.0      endpoints  6   -0.000000000       0.001696  -1.007e-13   (K-form proj min -0.000000000)
+ 4.0     equispaced  3   +0.000201085       0.000605  +3.322e-01   (K-form proj min +0.000201085)
+ 4.0  clustered0.1L  3   +0.000229280       0.000689  +3.329e-01   (K-form proj min +0.000229280)
+ 4.0      endpoints  3   +0.000000000       0.000268  +5.650e-14   (K-form proj min -0.000000000)
+ 4.0     equispaced  4   +0.000039136       0.000396  +9.872e-02   (K-form proj min +0.000039136)
+ 4.0  clustered0.1L  4   +0.000215873       0.000554  +3.899e-01   (K-form proj min +0.000215873)
+ 4.0      endpoints  4   -0.000000000       0.000402  -7.591e-13   (K-form proj min -0.000000000)
+ 4.0     equispaced  5   +0.000137512       0.000629  +2.186e-01   (K-form proj min +0.000137512)
+ 4.0  clustered0.1L  5   +0.000118107       0.000702  +1.683e-01   (K-form proj min +0.000118107)
+ 4.0      endpoints  5   -0.000000000       0.000483  -2.004e-13   (K-form proj min -0.000000000)
+ 4.0     equispaced  6   +0.000020018       0.000711  +2.815e-02   (K-form proj min +0.000020018)
+ 4.0  clustered0.1L  6   +0.000091844       0.000829  +1.108e-01   (K-form proj min +0.000091844)
+ 4.0      endpoints  6   -0.000000000       0.000603  -3.449e-13   (K-form proj min -0.000000000)
+
+primeTermS(matched S) vs primeTerm: max |diff| over all lags used = 0.000e+00 (primeTermS_eq check)
+
+-- mpmath confirmation (dps=40) --
+a=0.05: archQ=-0.00410973983321076813 primeForm=-0.00572303954522258945 poleCorr=0.00130334245533 D=0.000309957256682645116
+a=0.3: archQ=-0.158018123399053968 primeForm=-0.205941406971001062 poleCorr=0.0472634408898 D=0.000659842682166490353
+a=1: archQ=-1.43706347895186579 primeForm=-2.00414855237677731 poleCorr=0.566138083154 D=0.000946990270664940919
+a=2: archQ=-3.96708828416528298 primeForm=-6.84840289421580668 poleCorr=2.8794695918 D=0.00184501824855036843
+a=4: archQ=-22.3193126237084265 primeForm=-49.7486016207369908 poleCorr=27.4251953654 D=0.00409363165716318004
+clustered0.1L L=0.5 n=6: projected D eigenvalues (mp dps40) min = 8.88261092817865522e-7; all = ['8.88261092817865522e-7', '1.64967526828830442e-6', '4.1585327549569248e-6', '0.0000240062468576724321', '0.000231036045679639966']
+clustered0.1L L=0.5 n=5: projected D eigenvalues (mp dps40) min = 1.74322860809772707e-6; all = ['1.74322860809772707e-6', '3.72601760061844716e-6', '0.0000215789047604821384', '0.000203403826539311378']
+equispaced L=4 n=6: projected D eigenvalues (mp dps40) min = 0.0000209975664509897405; all = ['0.0000209975664509897405', '0.000247501447314688549', '0.000263542730091594274', '0.000667409332450584017', '0.000710785337471417619']
+endpoints L=2 n=4: projected D eigenvalues (mp dps40) min = -1.12103877145985366e-44; all = ['-1.12103877145985366e-44', '1.68155815718978049e-44', '0.0011310845810893297']
+
+JSON head: {"label": "NUMERICAL", "n2": [{"a": 0.05, "archQ": -0.0041100308601083185, "prime_form": -0.005723039545222434, "pole_corr": 0.0013033424553291761, "primePoleQ": -0.004419697089893258, "D": 0.00030966 ...
