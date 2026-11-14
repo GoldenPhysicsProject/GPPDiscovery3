@@ -1,0 +1,18 @@
+{
+ "table_match": true,
+ "mismatch_pieces": [],
+ "bernstein_min": [
+  9.094947104567018e-13,
+  76
+ ],
+ "bernstein_failures": [],
+ "err_max": 5.96046447865071e-08,
+ "step3_min_gap": [
+  4.215715333197259e-08,
+  0,
+  0.25,
+  4.215715333197259e-08
+ ],
+ "step3_violations": [],
+ "verdict": "PASS"
+}

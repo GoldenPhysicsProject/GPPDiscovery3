@@ -780,6 +780,42 @@
    ],
    "timeout_s": 300,
    "default_run": false
+  },
+  {
+   "id": "flint_inputb_probe",
+   "path": "research/flint_inputb_probe_2026_11_14.py",
+   "method": "interval",
+   "evidence": "numerical",
+   "claim": "Input (b) of the first prime-visible window certificate (GPPVerify PR #597, head c930c5e) SURVIVES its cheapest falsifier: at 4001 + 20100 + 8000 Arb points (prec 200; minorant side exact fmpq), mfun <= symbolTwo - betaTwo(25) on [0,25] with min margin 4.346e-5 at r=24.94 (uniform ~4.35e-5 across tail pieces; 4.477e-5 at r=0.25), and max |mfun| = 6.713 < 8, so (b2) holds with room. Decomposition: min (target - G_80) = 4.339e-5 at r=25 (the digamma-enclosure gap, ~0.28/80^2); min (G_80 - mfun) = 4.216e-8 at r=0.25 (generator slack nearly touches at the first breakpoint, but the total margin there is still 4.48e-5). No certified violation anywhere.",
+   "assumptions": [
+    "Definitions read firsthand from the branch sources at c930c5e: symbolTwo r = Re digamma(1/4 + i r/2) - log pi - sqrt(2) log 2 cos(r log 2); betaTwo 25 = log(25/2pi) - 1/25 - sqrt(2) log 2; mfun = m(|.|) with pieceTable pieces on (i/4,(i+1)/4], piece 0 at r=0. mfun even, so [0,25] covers [-25,25]."
+   ],
+   "falsifiers": [
+    "Any sampled point with upper ball of mfun above lower ball of (symbolTwo - betaTwo 25), or |mfun| > 8, kills input (b) as stated. None found."
+   ],
+   "limitations": [
+    "Sampling-based (dense but finite); not a proof. Between-sample dips are excluded only by the margin scale (4.3e-5) against polynomial variation on 1/160 spacing, not by a certified derivative bound. The proof obligation is unchanged; this probe prices its difficulty (any enclosure with error << 4e-5 per piece closes (b1))."
+   ],
+   "default_run": false,
+   "timeout_s": 300
+  },
+  {
+   "id": "flint_inputb_generators_audit",
+   "path": "research/flint_inputb_generators_audit_2026_11_14.py",
+   "method": "exact_rational",
+   "evidence": "interval_certified",
+   "claim": "Second-arm audit of the input-(b) generator chain PASSES: (1) the Lean pieceTable on PR #597 head c930c5e is EXACTLY (fmpq equality, all 100 pieces) the regeneration of cert_data.pieces_G from b_exact_mirror.piece_lower; (2) p_i <= lb_i - err_i on every piece is certified in exact rational arithmetic by Bernstein-basis coefficients (min coefficient +9.09e-13 at piece 76 -- exactly the 2^-40 floor the generator subtracts by construction; max err_i = 5.96e-8); (3) the analytic step lb_i - err_i <= G_80 holds at 4100 Arb samples (prec 200), min gap 4.216e-8 at piece 0, r=0.25, no violations. Remaining for Lean: redo (2) by kernel decide and (3) by the WindowElementary Taylor-remainder lemmas, with the transcendental constants enclosed by proved bounds in place of the mirror's Arb-derived qd enclosures.",
+   "assumptions": [
+    "Generator sources read firsthand at GPP-bridge main 55892bc (b_exact_mirror.py, cert_data.py, gen_lean_minorant.py). G_80 evaluated by the GppWindowGM.GM formula verbatim. Bernstein nonnegativity is a sufficient (not necessary) interval certificate."
+   ],
+   "falsifiers": [
+    "A pieceTable mismatch, a negative Bernstein coefficient together with a sampled violation, or a negative Arb lower ball for G_80 - (lb_i - err_i) would kill the generator chain. None found."
+   ],
+   "limitations": [
+    "Step (3) is numerical (Arb sampling), not a proof of the mirror's Taylor-remainder inequalities; the Bernstein step certifies only the polynomial comparison. The qd constant enclosures come from Arb balls in the generator; Lean must replace them with proved bounds (pi to 20 digits, log_two, sum_le_log) -- numbers verified here, proofs owed there."
+   ],
+   "default_run": false,
+   "timeout_s": 300
   }
  ]
 }
