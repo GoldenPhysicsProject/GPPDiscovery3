@@ -14,5 +14,16 @@
   4.215715333197259e-08
  ],
  "step3_violations": [],
- "verdict": "PASS"
+ "verdict": "PASS",
+ "b2_bernstein": {
+  "min_8_minus_p": [
+   6.0956988524444435,
+   91
+  ],
+  "min_8_plus_p": [
+   1.286773030856054,
+   0
+  ],
+  "failures": []
+ }
 }
