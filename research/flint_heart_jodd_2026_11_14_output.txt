@@ -1,0 +1,13 @@
+zeta_rho1 eps 0.3  W = (0.0 + 0.0j)  direct = (0.0 + 0.0j)  tail <= 2.16e-12
+zeta_rho1 eps 0.24  W = (0.0 + 0.0j)  direct = (0.0 + 0.0j)  tail <= 8.84e-13
+zeta_rho1 eps 0.19  W = (0.0 + 0.0j)  direct = (0.0 + 0.0j)  tail <= 3.47e-13
+zeta_rho1 eps 0.15  W = (0.0 + 0.0j)  direct = (0.0 + 0.0j)  tail <= 1.35e-13
+zeta_rho1 eps 0.12  W = (0.0 + 0.0j)  direct = (0.0 + 0.0j)  tail <= 5.52e-14
+zeta_rho1 eps 0.1  W = (0.0 + 0.0j)  direct = (0.0 + 0.0j)  tail <= 2.66e-14
+zeta_rho1 eps 0.08  W = (0.0 + 0.0j)  direct = (0.0 + 0.0j)  tail <= 1.09e-14
+zeta_rho1 eps 0.06  W = (0.0 + 0.0j)  direct = (0.0 + 0.0j)  tail <= 3.45e-15
+Traceback (most recent call last):
+  File "/home/hatch/workspace/gppdiscovery3/research/flint_heart_jodd_2026_11_14.py", line 114, in <module>
+    ys = np.array([float(complex(r['W_identity']).real) for r in rows])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: complex() arg is a malformed string

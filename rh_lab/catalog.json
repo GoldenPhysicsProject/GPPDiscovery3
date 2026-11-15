@@ -881,6 +881,74 @@
    ],
    "timeout_s": 300,
    "default_run": false
+  },
+  {
+   "id": "flint_odd_sector_2026_11_14",
+   "path": "research/flint_odd_sector_2026_11_14.py",
+   "method": "ball_crosscheck",
+   "evidence": "numerical",
+   "claim": "PREDICTION, stated before the run (Flint tenth run, candidate (a)): the shadow-antisymmetrised concentration state v = state(rho) - state(1-rho) in the COMPLETED Cesaro pairing (falsifier arm's evaluator, exec'd byte-for-byte) has G-normalised diagonal (C/2) tending to 2 at BOTH test zeros -- zeta's first zero rho_1 (shadow partner 1-rho_1 = conj(rho_1)) and F_theta's first zero rho_1 + 1/4 (partner 1/4 - i gamma_1) -- with the cross Gram G(rho, 1-rho) tending to 0 in both cases. I.e. NO cancellation of the shadow mass by antisymmetrisation and NO selection: the limit diagonal is the sum of the two quartet masses (m_rho + m_{1-rho} = 2), parity-blind; the even combination has the same limit. If instead G_odd^theta extrapolates to <= 0 within bars while G_odd^zeta -> 2, the antisymmetrised object selects and candidate (a) stands.",
+   "assumptions": [
+    "Evaluator reused byte-for-byte from cesaro_gram_falsifier_2026_11_14.py (definitions exec'd, RUN stripped), re-certified in-run on C(0.3; rho_1, rho_1) arithmetic = 2.0000089211 and on run 9's published F_theta self-pairing row at eps = 0.30 before any odd-sector number is taken.",
+    "F_theta pairing via Hadamard shift W_theta[F] = W[F(.-1/4)] + W[F(.+1/4)] (THEOREM, classical), applied to pair weights W_{ab} by shifting both centres, exactly as run 9 did for the diagonal.",
+    "Ordinates from the staged Platt table; gamma_1 simple; spectral sums |gamma| <= 3000 with the falsifier's analytic tail majorant (x3 for the combination weight, stated in the script)."
+   ],
+   "falsifiers": [
+    "G_odd^theta intercept <= 0 within the total error bar while G_odd^zeta -> 2: antisymmetrisation selects, prediction wrong, candidate (a) stands.",
+    "Cross Gram G(rho, 1-rho) intercept bounded away from 0 in either case: the C2-a delta-structure fails for shadow pairs and the analysis must be redone.",
+    "Arithmetic and spectral legs disagreeing beyond their bars at any grid eps: evaluator failure, no verdict taken."
+   ],
+   "limitations": [
+    "First quartet only (gamma_1), theta = 1/4; NUMERICAL throughout.",
+    "The odd combination is taken in the concentration basis of the completed pairing. Heart's companion computation (odd sector of the WeilIsGram Gram family, construction side) is a different realisation and is filed separately; the two are made comparable by shared labels, normalisation G = C/2, and eps grid."
+   ],
+   "timeout_s": 300,
+   "default_run": false
+  },
+  {
+   "id": "flint_r2_leg1_spectral_2026_11_14",
+   "path": "research/flint_r2_leg1_spectral_2026_11_14.py",
+   "method": "ball_crosscheck",
+   "evidence": "numerical",
+   "claim": "PREDICTION, stated before the run (Flint tenth run, candidate (b), R2 leg (i)): the clustered0.1L L=0.5 n=6 configuration's projected lambda_min = +8.88e-7 (kernel-face anchor from the kill arm / F_theta control script) is reproduced from the SPECTRAL (state) face alone: the matrix M_spec[i,j] = sum over all zeta zeros rho of K(rho) K(1-rho) exp(-(rho-1/2)(x_i - x_j)), K(rho) = (sinh((rho-1/2)/2)/((rho-1/2)/2))^2 (identity C1's Ftilde factor), Platt zeros |gamma| <= 3000 with analytic tail bound ~3e-9, plus the pole boundary matrix P of identity (I3) (P: c -> Ftilde_c(0)^2 + Ftilde_c(1)^2) if the zeros-only matrix misses by exactly that term, has projected lambda_min agreeing with a dps-50 kernel-face recomputation within the tail bound -- no Kpsi kernel value used anywhere on the state face. SECOND REGISTERED PREDICTION (Heart's C1, her Round 1 filing, GPPDiscovery5 41dcd57; registered by her before this run): at the same configuration, the parity split of the projected problem -- lambda_min(arch - prime) on the even reversal block intersect ker l_c (pole term vanishes identically there) versus lambda_min(arch - prime - pole) on the odd reversal block (l_c constraint automatic there) -- has its small margin on the ODD face: lambda_min(odd) = +8.88e-7 < lambda_min(even block). Falsified if the even-face margin is the smaller one.",
+   "assumptions": [
+    "Identity C1 (D(c) = sum_rho Ftilde_c(rho) Ftilde_c(1-rho) for c in ker l_c, F_c = sum c_i tri(. - x_i)) is THEOREM-level in the record (identity arm 2026-11-13, components certified at dps 40); this run assembles it for one configuration and checks the assembly against the anchor.",
+    "Configuration x = clustered0.1L at L = 0.5, n = 6 from flint_archdom_scout_2026_11_12.configs, verbatim.",
+    "Kernel face recomputed at dps 50 with the F_theta control script's arch_mp/prime_mp conventions (archTerm via the (sin(t/2)/(t/2))^4 digamma kernel; primeTerm via triG prime sums)."
+   ],
+   "falsifiers": [
+    "|lambda_min(state face) - lambda_min(kernel face)| beyond the tail bound plus fit/eigensolver bars: leg (i) fails as assembled; the discrepancy is reported, not absorbed.",
+    "The correction needed differs from the (I3) pole matrix P: C1's assembly for this matrix is misunderstood and must be re-derived before any use."
+   ],
+   "limitations": [
+    "One configuration, n = 6; NUMERICAL.",
+    "The algebra-only abelForm Gram (an explicit WeilIsGram family evaluated in the Cesaro space) is NOT computed: WeilIsGram's family is existential in the record (CesaroWeilGram.lean states the Prop, no explicit family), so leg (i) is discharged in its spectral-face form only; the gap is named in the run notes.",
+    "The parity split is exact because the clustered configuration is symmetric under x -> -x (reversal); the split is Heart's H5 read at this configuration."
+   ],
+   "timeout_s": 300,
+   "default_run": false
+  },
+  {
+   "id": "flint_heart_jodd_2026_11_14",
+   "path": "research/flint_heart_jodd_2026_11_14.py",
+   "method": "ball_crosscheck",
+   "evidence": "numerical",
+   "claim": "Verification of HEART's registered prediction (her filing, GPP-bridge GROK_RESEARCH_NOTES.md @ 27691cf, item 6, and PR #11 comment 6888360390; registered by her BEFORE this computation): the J-odd concentration diagonal of her sesquilinear Weil form W(f,f) = sum_rho m_rho fhat(rho) conj(fhat(1-conj(rho))), for f = g_s - J g_s at unit amplitude (a = 1, peak-1 Abel kernels), tends to -2 at F_theta's first zero s_theta = rho_1 + 1/4 and is exactly 0 at zeta's first zero rho_1 (where tau(s) = s forces fhat = 0 identically). Computed on the spectral leg with exact kernels: W_eps(s) = -sum_w |Ahat^s(w) - Ahat^{tau(s)}(w)|^2 over Platt zeros |gamma| <= 3000 (theta: the four shifted families), the pointwise identity fhat(tau(w)) = -conj(fhat(w)) being checked independently at finite eps. NOTE: this W is sesquilinear, NOT the corpus bilinear completed pairing of runs 8-9; the two pairings' odd-sector diagonals are different numbers and the dictionary is part of the deliverable.",
+   "assumptions": [
+    "Heart's definitions taken verbatim from her filing: J f(x) = x^{-1} conj(f(1/x)), (Jf)^(s) = conj(fhat(1-conj(s))); concentration = Abel kernel at unit peak, the regularised form of her idealised two-point concentration (her item 3, modulo TailLemma).",
+    "Spectral face of W is Weil's explicit formula (classical THEOREM); the arithmetic leg of W does not exist in the corpus evaluator because the sesquilinear weight is antiholomorphic in the second slot -- Heart's own item 5 obstruction; the spectral leg is the evaluator's certified leg (run 9: legs agreed to 5e-7 at the theta diagonal).",
+    "Platt ordinates simple in range; tail majorant computed in-script."
+   ],
+   "falsifiers": [
+    "Extrapolated W(s_theta) differing from -2 beyond the fit spread plus tail bound: her prediction breaks and item 6's normalisation or mechanism is wrong.",
+    "W(rho_1) nonzero beyond tail/floor at any eps: the J-odd identity fhat(tau(w)) = -conj(fhat(w)) fails in the evaluator's dictionary."
+   ],
+   "limitations": [
+    "Spectral leg only (see assumptions); first quartet only; NUMERICAL.",
+    "Verifies the registered NUMBERS under the stated dictionary (unit amplitude). The identification of the Abel-regularised limit with her idealised concentration is modulo TailLemma, as in her filing."
+   ],
+   "timeout_s": 300,
+   "default_run": false
   }
  ]
 }
