@@ -816,6 +816,71 @@
    ],
    "default_run": false,
    "timeout_s": 300
+  },
+  {
+   "id": "flint_completed_pairing",
+   "path": "research/flint_completed_pairing_2026_11_14.py",
+   "method": "floating",
+   "evidence": "numerical",
+   "claim": "Certifications for the completed Cesaro pairing in the Abel mean channel, P(alpha) = -(xi'/xi)(1/2+alpha): (N1) (xi'/xi)(1/2) = 0, so P(0) = 0; (N2) the residue of P at alpha = i*gamma_1 is -1 (=-m_1, first zero simple); (N3) (xi'/xi)(w) + (xi'/xi)(1-w) = 0 (FE antisymmetry); (N4) sum_{n<=1e6} Lambda(n)/n^2 agrees with -(zeta'/zeta)(2) inside the stated tail bar; (N5) the F_theta (theta=1/4) resolvent has residue -1 at its shifted zero alpha = rho_1 - 1/4: the residue exists for F_theta, so its exclusion from statehood comes from the diagonal Cesaro factor eps^2/(eps^2-(2theta)^2) -> 0, not from the residue. gamma_1 cross-checked Platt vs mpmath.",
+   "assumptions": [
+    "xi(s) = (1/2) s (s-1) pi^{-s/2} Gamma(s/2) zeta(s); xi'/xi computed as zeta'/zeta + 1/s + 1/(s-1) - (1/2) log pi + (1/2) digamma(s/2).",
+    "gamma_1 from mpmath zetazero(1) at dps 60, cross-checked against the staged Platt table via platt_sequential.zeros_by_index."
+   ],
+   "falsifiers": [
+    "N2 residue estimates failing to converge to -1 as delta -> 0 would kill the claim Res_{alpha=rho-1/2} P = -m_rho at the first zero.",
+    "N1 |(xi'/xi)(1/2)| above 1e-40 would kill P(0) = 0."
+   ],
+   "limitations": [
+    "Point evaluations and a finite prime sum; the pairing identity P(alpha) = sum_rho m_rho/(rho-1/2-alpha) itself is a classical theorem (Hadamard product for xi, with the constant identity B + sum_rho m_rho/rho = 0 proved by log algebra in Flint's eighth-run notes), not certified by this script.",
+    "N4's tail bar 3/N is a stated heuristic-scale bar from psi(x) ~ x, not an interval enclosure."
+   ],
+   "default_run": false,
+   "timeout_s": 300
+  },
+  {
+   "id": "cesaro_gram_falsifier_2026_11_14",
+   "path": "research/cesaro_gram_falsifier_2026_11_14.py",
+   "method": "ball_crosscheck",
+   "evidence": "numerical",
+   "claim": "The 2x2 Gram matrix of the first two zero states under the completed renormalised Cesaro pairing, extrapolated to regulator 0, is the identity within a total error bar of 9e-4 (smaller eigenvalue 1.0000007); the Cesaro-GNS route survives this finite corner. The F_theta control diverges as required: the free Cesaro diagonal at sigma = 1/2 +- 1/4 grows like R^{1/2}/log R (1101 at R = e^20), and the completed shifted diagonal is singular at eps = 1/4 rather than a finite positive corner.",
+   "assumptions": [
+    "Gram weight (1/2) A_eps(s_k, w) A_eps(s_j, w) built from the corpus Abel-Cesaro kernel abelValue (CesaroAbelState.lean); Gram matrix normalised by the GNS factor 2 (CesaroGNS.lean).",
+    "Prime side of the explicit formula evaluated by analytic continuation in the regulator from the Weil-class region eps > 1/2 (component values of -zeta'/zeta and its derivative in Arb); certified against the Platt spectral sum to 2e-9 at eps = 0.6, 0.75.",
+    "Ordinates gamma_1, gamma_2 taken from the staged Platt table (agreement with task-supplied values 6e-33 and 1e-32)."
+   ],
+   "falsifiers": [
+    "Smaller eigenvalue of the extrapolated Gram matrix negative beyond the total error bar (fit spread + arch tail bound + Arb radii).",
+    "Control failure: identical code returning a finite positive corner at the shifted labels rho_k +- 1/4, or a bounded free Cesaro diagonal there."
+   ],
+   "limitations": [
+    "One finite 2x2 corner of one route; a SURVIVES verdict proves nothing about the full pairing or Step C.",
+    "A prime-truncated evaluation cannot certify this corner near eps = 1/2 (signed tail at X = 2e6 measured up to 0.105; corrected absolute majorant bound up to 1251); the headline numbers rest on the continuation evaluation, itself certified spectrally."
+   ],
+   "timeout_s": 300,
+   "default_run": false
+  },
+  {
+   "id": "flint_ftheta_self_pairing_2026_11_14",
+   "path": "research/flint_ftheta_self_pairing_2026_11_14.py",
+   "method": "ball_crosscheck",
+   "evidence": "numerical",
+   "claim": "PREDICTION, stated before the run: the completed Cesaro pairing of F_theta(s) = xi(s-1/4) xi(s+1/4) at its OWN first zero rho_1 + 1/4, Abel-concentrated with the corpus kernel (the falsifier arm's evaluator, reused), tends as eps -> 0 to C = 2 in corpus normalisation (G = C/2 -> 1), the same value as zeta at its on-line zero -- NOT to the free-selector value 0 that the eighth run's extracted-norm formula m_rho * lim eps^2/(eps^2 - (2 sigma - 1)^2) predicts. Mechanism: in the spectral sum over F_theta's own zeros, the shadow zero rho_1 - 1/4 sits exactly at the kernel centre u = 1 - conj(rho_1 + 1/4), contributing full weight 2. If confirmed, the completed concentration Gram does not select the critical line, and the eighth run's norm formula is killed as a statement about the completed pairing.",
+   "assumptions": [
+    "F_theta's explicit formula is the sum of the two shifted zeta explicit formulas: W_theta[F] = W[F(. - 1/4)] + W[F(. + 1/4)] with W the Guinand-Weil functional of the falsifier script (xi_theta is entire, order 1, xi_theta(s) = xi_theta(1-s); Hadamard face identity THEOREM, classical).",
+    "Evaluator reused byte-for-byte from cesaro_gram_falsifier_2026_11_14.py (definitions section exec'd, RUN section stripped) and re-certified in-run on three of that script's published values before any theta number is taken.",
+    "Ordinates from the staged Platt table; gamma_1 simple (m = 1); spectral sums truncated at |gamma| <= 3000 with the falsifier's analytic tail majorant."
+   ],
+   "falsifiers": [
+    "Extrapolated G_0^theta consistent with 0 within the total error bar: the shadow-term computation is wrong and the eighth run's norm formula survives.",
+    "Arithmetic (continuation) and spectral legs disagreeing beyond their bars at any grid eps: evaluator failure, no verdict taken."
+   ],
+   "limitations": [
+    "One label (first zero, theta = 1/4), diagonal entry only; the statement tested is about the mechanism (does the completed Gram select), not about any individual zero of zeta.",
+    "NUMERICAL evidence for an identity whose spectral face is a theorem: the run certifies the evaluator and the limit, it does not prove the tail estimates in general."
+   ],
+   "timeout_s": 300,
+   "default_run": false
   }
  ]
 }
