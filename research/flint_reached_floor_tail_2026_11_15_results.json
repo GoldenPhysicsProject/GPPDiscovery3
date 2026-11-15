@@ -1,0 +1,32 @@
+{
+ "label": "NUMERICAL derivation of the conditional (H-Env) tail bound for run 13 P5; hypotheses (H-Env), (H-A)",
+ "inputs_from_run13_json": {
+  "C_y_envelope": 0.0033293405873747175,
+  "c_A_profile_min": 1.7372355768219303,
+  "rho_Z": 0.33419022381006247,
+  "SigmaV0": 6.509301522856798e-23,
+  "RQ_D": 234263965236.22696,
+  "beta0": 1.30163e-08,
+  "beta1": 1.41006e-08
+ },
+ "S_sum_bracket": {
+  "partial_sum_813_to_N": 7.660549187409353e-07,
+  "N": 200000,
+  "integral_bracket_remainder": 2.0192982891917e-09,
+  "S_lo": 7.680742162620528e-07,
+  "S_hi": 7.68074228540664e-07
+ },
+ "factor_Cy2_over_cA": 6.380544408961761e-06,
+ "tail_bracket": {
+  "lo": 4.9007316462385274e-12,
+  "hi": 4.900731724582752e-12
+ },
+ "filed_tail_input_run13": 4.8991e-12,
+ "filed_tail_inside_derived_bracket": false,
+ "tail_bound_used": 4.900731724582752e-12,
+ "finite_part_sum_y2_over_Ajj_j_le_812": 1.524894785662644e-11,
+ "total_bound": 2.0149679581209192e-11,
+ "assembled_v0Lv0_bound": 3.026341802386067e-11,
+ "room_vs_beta0": 430.10012913073876,
+ "room_vs_beta1": 465.928864640558
+}
