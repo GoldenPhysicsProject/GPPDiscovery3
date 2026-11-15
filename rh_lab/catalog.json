@@ -1091,6 +1091,30 @@
    ],
    "timeout_s": 300,
    "default_run": false
+  },
+  {
+   "id": "flint_tail_bound_2026_11_15",
+   "path": "research/flint_tail_bound_2026_11_15.py",
+   "method": "floating",
+   "evidence": "numerical",
+   "claim": "OddFace(0.5) tail bound (b): Lambda(60) = lambda_min SB(60) - lambda_min SB(inf) <= 4.5e-11 (measured 60->800 part 1.62e-11 plus geometric-ratio tail bound 2.81e-11), against the certified floor beta0 = 1.30163e-8: room >= 290x (sharp-ratio reading 2.1e-11, room ~620x). Bordered sweep SB(60) = 1.4170882205e-8, SB(800) = 1.4154680154e-8. Full numbers in research/flint_tail_bound_2026_11_15_results.json.",
+   "assumptions": [
+    "Heart's R6 bordered reduction and beta0 = 1.30163e-8 (GPPDiscovery5 2d3506b) as the standing certified floor; beta1 from her (a) not yet filed.",
+    "Spectral Gram assembled by period-wise Gauss-Legendre (48 nodes/period, t to omega_812 + 400); validated against the run-11 kernel-domain matrix (max entry diff 1.6e-12) and Heart's printed sweep values (all printed digits).",
+    "Tail beyond mode 800 bounded by the measured doubling-increment ratios (0.712, 0.649, 0.563, decreasing) with a 1.25 safety factor on the largest ratio."
+   ],
+   "falsifiers": [
+    "Recompute the bordered sweep at a second quadrature resolution: Lambda(60) drift must stay << 1e-11 (measured 2.8e-16 at 64 nodes/period).",
+    "Any bordered increment ratio above 1 at larger K breaks the geometric tail bound.",
+    "An arb-certified SB(60) or SB(inf) from Heart's (a) differing from the float sweep by more than 1e-10 breaks the certification chain."
+   ],
+   "limitations": [
+    "NUMERICAL, not a proof: the closed analytic per-mode bound through the Z-block floor gives 4.4e-8 > beta0 and FAILS; the proof of (b) still needs a floor for S_Z^eff on the coupling-reached subspace (the measured loss action on the bottom eigendirection is 1.62e-11, cross-checked two ways to 1.5e-21).",
+    "L = 0.5 only; no statement at other widths (the Round 4 crossover warning stands).",
+    "The coupling envelope C_v <= 0.22 is measured on modes 73..812; its top-mode values sit at the quadrature noise floor (~2e-13 per entry), so it is an upper envelope, not a sharp asymptotic."
+   ],
+   "timeout_s": 300,
+   "default_run": false
   }
  ]
 }
