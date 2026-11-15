@@ -949,6 +949,148 @@
    ],
    "timeout_s": 300,
    "default_run": false
+  },
+  {
+   "id": "flint_jgram_2026_11_15",
+   "path": "research/flint_jgram_2026_11_15.py",
+   "method": "floating",
+   "evidence": "numerical",
+   "claim": "The full J-Gram of (g_s, J g_s) in Heart's sesquilinear Weil pairing at rho_1 (xi) and s_theta = rho_1 + 1/4 (F_theta), computed DEFINITION-SIDE by direct zero sums over staged Platt ordinates |gamma| <= 3000 at dps 50, eps in {0.12, 0.06, 0.03}, with an independent in-script implementation of Heart's J2 residue formulas as second leg. At eps = 0.06 the sums reproduce Heart's filed J4 values (GPPDiscovery5 950b1b3) to her rounding (|sum - filed| <= 4.7e-15 at rho_1, <= 3.7e-15 for B and <= 3.1e-15 for D at s_theta; det to 9.3e-16); at eps = 0.12 likewise (<= 1.2e-13). New values at eps = 0.03: rho_1 A = B = 1.0000000004475106, D = det = 0; s_theta A = -0.0072260127662419, B = 1.0000130546933103, D = -2.0144781349191, det = -0.9999738942965. D(eps) at s_theta: -2.2519536107599, -2.0588684851580, -2.0144781349191 with D + 2 ~ 16.5 eps^2 (the TailLemma (b) rate). Structural identities W(Jg,Jg) = A and W(Jg,g) = conj(B) hold to 0.0 at dps 50 (termwise tau-substitution). Sum-vs-my-residue agreement <= 1.1e-14 (eps 0.12), <= 6.7e-16 (0.06), <= 4.2e-17 (0.03), inside the joint TailLemma tail majorants (<= 3.8e-14 at eps 0.12) printed per row. Discharges run-10 queue item 10.",
+   "assumptions": [
+    "Zero sums use the staged Platt ordinates with multiplicity 1 (Heart's own convention; J2 residues include true multiplicities and agree, confirming m = 1 in range).",
+    "Heart's definitions: Ahat^q(w) = eps^2/(eps^2 - (w-q)^2) unit peak; A, B the zero sums of her Round 2/3 filings; D := 2 Re A - 2 Re B; det := A^2 - |B|^2.",
+    "Zeros used only as the summation set of the DEFINITIONS of A and B and as test labels; no construction takes zeros as input."
+   ],
+   "falsifiers": [
+    "Any entry differing from Heart's filed J4 values beyond her rounding plus the tail majorant: the J-Gram dictionary (peak, pairing, or D's definition) is off.",
+    "W(Jg,Jg) != A or W(Jg,g) != conj(B) beyond tail: the J action (Jg)^(w) = conj(g^(tau w)) is mis-implemented."
+   ],
+   "limitations": [
+    "NUMERICAL, dps 50; sums truncated at |gamma| <= 3000 with the TailLemma majorant as the stated tail bound, not an interval certificate.",
+    "Two labels only (rho_1, s_theta); the (P5) pattern is verified at these labels, not proved for the family."
+   ],
+   "timeout_s": 300,
+   "default_run": false
+  },
+  {
+   "id": "flint_crossgram_2026_11_15",
+   "path": "research/flint_crossgram_2026_11_15.py",
+   "method": "floating",
+   "evidence": "numerical",
+   "claim": "The two-centre cross Gram cross(rho_1, rho_2, eps) = sum_w m_w Ahat^{rho_1}(w) Ahat^{rho_2}(w) over xi zeros, by direct sum and by an independent four-point residue formula (J1 applied to Ahat^a Ahat^b): eps 0.12: 0.0006070883996287 (legs agree 5.3e-15); eps 0.06: 0.0001517827770008 (agree 3.3e-16). Ratio 3.9997 ~ 4 = (0.12/0.06)^2: the cross term vanishes at rate O(eps^2) (times density log), as the agreed TailLemma's T3/two-centre T2 predict -- NOT at run 9's filed O(eps log(1/eps)) rate, which is hereby withdrawn on the spectral face. This is the off-diagonal input C2-a consumes.",
+   "assumptions": [
+    "Residue formula uses Heart's J2 principal parts Res(Ahat^q, q+-eps) = +-eps/2 and J1's contour identity with hypothesis (G) for xi.",
+    "Same Platt staging and multiplicity convention as flint_jgram_2026_11_15."
+   ],
+   "falsifiers": [
+    "Legs differing beyond the TailLemma tail majorant: the four-point residue formula or the sum is wrong.",
+    "Ratio approaching 2.65 (the O(eps log(1/eps)) prediction) instead of 4: the agreed TailLemma's rate is wrong and run 9's rate stands."
+   ],
+   "limitations": [
+    "NUMERICAL; one centre pair (rho_1, rho_2), two epsilons.",
+    "Spectral face only; the assembly face of the off-diagonal is covered by flint_assembly_domain2's T2 (which FAILS -- see its entry)."
+   ],
+   "timeout_s": 300,
+   "default_run": false
+  },
+  {
+   "id": "flint_mevaluator_compare_2026_11_15",
+   "path": "research/flint_mevaluator_compare_2026_11_15.py",
+   "method": "floating",
+   "evidence": "numerical",
+   "claim": "Run 9's arithmetic assembly (falsifier definitions exec'd verbatim) versus Heart's J-Gram B at the shadow argument. Algebra (checked pointwise in-script, 0.0): (1/2) A_eps(s,.) = Ahat^{tau s}, so IF the assembly computed the completed pairing of its weight it would equal B(tau s, eps) exactly. Measured: at the zeta diagonal rho_1 (eps 0.12) assembly/2 = 1.0000001145048386 vs B = 1.0000001145063870, diff 1.5e-12 (agreement). At the F_theta diagonal via run 9's Hadamard shift: assembly/2 = 0.9794017805385980 - 0.0010612511721632 i (eps 0.12) and 0.9880459904792954 - 0.0005306150871482 i (eps 0.06) vs B(tau s_theta) = 1.0037359447046086 + 2.94e-8 i and 1.0002134774831662 + 1.84e-9 i: gaps 0.02436 and 0.01218, i.e. exactly eps * (0.203 + 0.0088 i) at the G level at both eps -- an eps-linear defect, not quadrature error. The +1/4 shifted leg (centre rho_1) is exact; the whole defect sits in the -1/4 leg (centre i gamma_1). Run 9's own grid shows the same constant: legs_diff/eps = 0.406 at C level for eps = 0.3, 0.26, 0.225.",
+   "assumptions": [
+    "Run 9's Hadamard assembly taken verbatim (falsifier defs exec'd; re-certified in-run at rho_1).",
+    "B(tau s_theta) targets from flint_jgram_2026_11_15 (zero sums, dps 50, tail-majorised)."
+   ],
+   "falsifiers": [
+    "Assembly at rho_1 differing from B(rho_1) beyond 1e-9: the exec'd evaluator is not run 9's.",
+    "Gap not linear in eps: the defect is ordinary quadrature error and run 9's explanation stands."
+   ],
+   "limitations": [
+    "NUMERICAL; the assembly leg carries the falsifier's error budget at on-line centres only.",
+    "Identifies THAT and WHERE the presentations separate; the closed form of the defect term is named open in the notes."
+   ],
+   "timeout_s": 300,
+   "default_run": false
+  },
+  {
+   "id": "flint_b_i_gamma1_2026_11_15",
+   "path": "research/flint_b_i_gamma1_2026_11_15.py",
+   "method": "floating",
+   "evidence": "numerical",
+   "claim": "B_xi at the off-line centre i gamma_1 (sigma = 0, not a zero): eps 0.12: 0.0037358301982216 + 2.9372743746060e-8 i; eps 0.06: 0.0002134703237010 + 1.8369330028219e-9 i; zero-sum and J2-residue legs agree to 5.3e-15 / 3.3e-16. Equals B(tau s_theta) - B(rho_1) exactly as the F_theta zero-sum shift decomposition requires. Run 9's assembly at the same centre gives -0.0205983340 - 0.0010612512 i (eps 0.12): the assembly leg is the failing one, isolated.",
+   "assumptions": [
+    "Same staging/conventions as flint_jgram_2026_11_15."
+   ],
+   "falsifiers": [
+    "B_xi(i gamma_1) + B_xi(rho_1) != B_Fth(tau s_theta) beyond tails: the shift decomposition of the F_theta zero sum fails."
+   ],
+   "limitations": [
+    "NUMERICAL, dps 50."
+   ],
+   "timeout_s": 300,
+   "default_run": false
+  },
+  {
+   "id": "flint_assembly_domain_2026_11_15",
+   "path": "research/flint_assembly_domain_2026_11_15.py",
+   "method": "floating",
+   "evidence": "numerical",
+   "claim": "Domain probe of run 9's assembly at eps = 0.12, labels sigma + i gamma_1: sigma 0.95 (centre 0.05 + i g1): assembly/2 = -0.0184698148283601 - 0.0009552005080573 i vs B = 0.0058607820327307: gap/eps = -0.20275 - 0.00796 i. Sigma 1.1 (centre -0.1 + i g1): assembly/2 = -0.0226062037672231 - 0.0012732702860198 i vs B = 0.0017362183001717: gap/eps = -0.20285 - 0.01061 i. The defect's real part -0.2028 is centre-independent at this height; the script's initial boundary-at-a=1/2 hypothesis is REFUTED by the sigma 0.95 row (inside the strip, same defect).",
+   "assumptions": [
+    "Same evaluator and targets conventions as flint_mevaluator_compare_2026_11_15."
+   ],
+   "falsifiers": [
+    "A centre at height gamma_1 with |Re centre| <= 0.1 where the assembly agrees with B: the defect is not centre-generic and the locus statement must shrink."
+   ],
+   "limitations": [
+    "NUMERICAL; two off-line labels at one height, one eps."
+   ],
+   "timeout_s": 300,
+   "default_run": false
+  },
+  {
+   "id": "flint_assembly_domain2_2026_11_15",
+   "path": "research/flint_assembly_domain2_2026_11_15.py",
+   "method": "floating",
+   "evidence": "numerical",
+   "claim": "The assembly's validity locus is the tau-fixed diagonal. T1: diagonal at centre 1/2 + 20 i (tau-fixed, NOT a zero): assembly/2 = 0.0001854449636026 vs B zero sum 0.0001854449651624, diff 1.6e-12 -- agreement, so zero-ness is not the criterion, tau-fixedness is. T2: tau-paired off-diagonal centres (i g1, 1 + i g1): assembly/2 = 0.0055795885590 vs A-entry zero sum 0.0037358342847, diff 1.8e-3 -- FAILS, so tau-pairing of distinct centres does not extend the locus. T3: diagonal at centre tau s_theta = 1/4 + i g1 (label s_theta directly): assembly/2 = 0.0653062039433422 - 0.0005307854800 i vs B(tau s_theta) = 1.0037359447046086, diff 0.9384 -- the assembly's off-line value is a third number, equal to neither B(tau s) nor B(s) (= 0.0896262818375077 over xi zeros, checked separately). Verdict: assembly(s) = B(tau s, eps) exactly on the tau-fixed locus (all on-line labels, the falsifier's whole certified Gram); off it, the assembly is the label-continuation of the on-line formulas and is NOT the completed pairing of its weight. Run 9's C2-b KILL is unaffected (rests on the spectral main term 2.0 and the shared eps -> 0 intercept; the defect is O(eps) on the Hadamard leg).",
+   "assumptions": [
+    "Same evaluator/targets conventions as flint_mevaluator_compare_2026_11_15.",
+    "T3's B(s_theta) comparison value computed in the same session (zero sum over xi zeros, dps 50)."
+   ],
+   "falsifiers": [
+    "Any non-tau-fixed centre where assembly = B(tau s) to 1e-9: the locus statement is wrong.",
+    "Any tau-fixed centre where they differ beyond the falsifier budget: the locus is smaller than claimed."
+   ],
+   "limitations": [
+    "NUMERICAL; locus characterised at eps = 0.12, heights gamma_1 and 20, finitely many centres -- a measured domain, not a proved one.",
+    "The closed form of the off-locus defect is not identified; named open in the notes."
+   ],
+   "timeout_s": 300,
+   "default_run": false
+  },
+  {
+   "id": "flint_p1_kernel_check_2026_11_15",
+   "path": "research/flint_p1_kernel_check_2026_11_15.py",
+   "method": "floating",
+   "evidence": "numerical",
+   "claim": "Pair-internal check of Heart's Round-5 P1 certificate (GPPDiscovery5 3ee15a8): the N = 12 odd block at L = 0.5 reassembled in the KERNEL domain from the in-tree definitions (KreinHPsi.lean: poleTerm, primeTerm/triG, archTerm with bigPsi(t) = sinc^2(t/2)), float64 numpy, archTerm by period-wise Gauss-Legendre (64 nodes/period, T = 4000) on a 2001-point d-grid with PCHIP interpolation, (s,u) integrals by composite GL (12 panels x 10 nodes). Evaluator certified in-run: archTerm(0) = -1.5429330859613 vs the banked accurate -1.54293308589872 (diff 6.3e-11; the plain-quad artifact -1.542933059454 does NOT appear). Results: lambda_min(mine) = 1.8537510e-8 vs her 1.8535939e-8 (rel 8.5e-5, inside my error budget); spot entries (1,1), (1,2), (3,4), (6,7) agree to rel <= 6.8e-8, (12,12) to rel 2.5e-5 = abs 1.6e-12 (most cancellation-heavy entry). Downstream arithmetic from her filed midpoints: beta = 0.9 lambda_min = 1.6682344813e-8, her filed beta 1.66823e-8 is the truncation DOWN (safe direction); LDL^T pivots of M_filed - beta I all positive (min pivot 1.96e-9). Her certificate's numbers stand on an independent code path.",
+   "assumptions": [
+    "On |d| <= 0.5 the in-tree primeTerm and Heart's prime_S coincide (all other n have triG(+-log n + d) = 0 there); her set {2,3,4,5,7,8,9,11} used.",
+    "Heart's filed M matrix (round5 JSON midpoints) is the comparison target; her arb ball certificate itself is hers -- this is a spot verification, not a re-certification."
+   ],
+   "falsifiers": [
+    "archTerm(0) landing on the plain-quad artifact value: my evaluator is under-resolved and the check is void.",
+    "lambda_min differing in sign or by > 1e-3 relative: her block or my kernel assembly is wrong."
+   ],
+   "limitations": [
+    "float64 spot check with arch interpolation error ~1e-9 absolute propagating to entries; lambda_min certified only to ~1e-4 relative by this path.",
+    "N = 12, L = 0.5 only -- the single-width block P1 names."
+   ],
+   "timeout_s": 300,
+   "default_run": false
   }
  ]
 }
