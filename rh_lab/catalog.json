@@ -1162,6 +1162,49 @@
     "Conditional on (H-Env) and (H-A) as hypotheses; the derivation is exact algebra plus a bracketed elementary sum, but the hypotheses' proof-grade forms remain open (Heart's (T2-rig); interval certification).",
     "L = 0.5 only, inherited from runs 12-13."
    ]
+  },
+  {
+   "id": "flint_gram_k_2026_11_15",
+   "path": "research/flint_gram_k_2026_11_15.py",
+   "method": "interval",
+   "evidence": "interval_certified",
+   "claim": "Item 3' of the OddFace(0.5) proof-grade programme (Flint run 15): the ball Gram(k) on X' (73x73), Gram(k) = HH^T + CC^T via Heart's R10 identity (CHECKED), with CC^T = sum_{j>=73} C~_j C~_j^T assembled from the R8 (T2) split C~_{a,j} = w_j q_a + om_j^2 rho_j(x_a). Head j=73..4000 summed exactly in Arb balls (Q(om_j) = R(om_j)+Pi(om_j) with R by the exact finite-interval form R(om_j) = (pi/2) int_0^{5/2} h(u) s(u) sin(om_j u) du); tail j>4000: rank-one part W qq^T exact (W = 1.26635649437e-5) plus entrywise remainder bounded by Heart R12's NEW envelopes (C_delta = 19.5771, C_phi = 69.5492, rounded up from the Arb values 19.57696116/69.54894066; the superseded 2.1 log om envelope is NOT used). q_{phi_i} = C~_{delta,i} from the R7 shards (identity q_x = <k_delta, phi_i>, verified against the independent spectral route: shard ball -0.009837353 +- 5.4e-10 inside the spectral ball -0.0098373513 +- 8.5e-8 at i=1); q_delta = 0.11970390585268734 +- 6.2e-30 by the kernel route (matches R8 float 0.1197039). Result: Gram(k) enclosed with max entry radius 9.08e-10 (Gram_{delta,delta} = 0.000335227 +- 9.6e-10 vs R10 float 0.0003352306686632827); CC^T balls with max radius 2.09e-10, diagonals matching R10's identity-route floats at rows 0/6/11/12/13/40/72 to <= 7.2e-9 (their routes' own spread is 5.1e-7); float Schur of A - CC^T/5.24628 = 1.4117111e-8 vs R10's 1.4116860e-8. Balls: research/flint_gram_k_2026_11_15_balls.json (Gram), _cct_balls.json (CC^T), _a_balls.json (A_X'); full record in research/flint_gram_k_2026_11_15_results.json.",
+   "assumptions": [
+    "Heart R10 identity CC^T = Gram(k) - HH^T (CHECKED, audited) and the R8 (T2) split of C~_{a,j} for j >= 73 (CHECKED).",
+    "Heart R12 (T2-rig) envelope bounds: |om_j^4 rho_j(delta)| <= 19.5770 (j >= 13) and |om_j^4 rho_j(phi_i)| <= 69.5490/(om_j - om_i) + sigma-term, with Arb-evaluated constants (audited to all digits by Turbo).",
+    "R7 Arb shards (GPPDiscovery5 1da974d, round7_turbo) for A_X' and H; R12's Q-reduction formulas for rho (validated: delta row vs R8's direct integrals at 5 points; phi rows vs the defining Arb integral at 6 spot points, all inside the direct balls)."
+   ],
+   "falsifiers": [
+    "Any enclosed Gram(k) entry failing to contain an independently computed value (e.g. a kernel-quadrature Gram in the style of R10's float pipeline) outside the stated radii.",
+    "A violation of the R12 envelopes at any j > 4000 (e.g. |om_j^4 rho_j(delta)| > 19.5771) breaks the tail bound and the CC^T radii with it."
+   ],
+   "timeout_s": 300,
+   "default_run": false,
+   "limitations": [
+    "Interval-certified as a matrix enclosure; the identity/split/envelope inputs are CHECKED or PROVED at paper level (R8/R10/R12), not Lean.",
+    "L = 0.5 (ell = 1/4) only; one face (odd) at one width."
+   ]
+  },
+  {
+   "id": "flint_border_ldlt_2026_11_15",
+   "path": "research/flint_border_ldlt_2026_11_15.py",
+   "method": "interval",
+   "evidence": "interval_certified",
+   "claim": "Item 4 of the OddFace(0.5) proof-grade programme (Flint run 15): 600-bit ball LDL^T of the bordered H_73 system A_X' - CC^T/lambda_Z at the LOCKED lambda_Z = 5.24628 (Heart (T1'), interval-certified; the lambda_Z = 1 plan is killed and not revisited), in R7's scaled basis with elimination order [psi_13..72, delta, E_12] and R7's diag(r) perturbation argument (max scaled radius row-sum r_a = 0.0361). CERTIFIED: the pre-named bordered floor beta2 = 1.3e-8 holds \u2014 all 73 pivots enclosed > 0, smallest (last E_12 pivot) lower bound 0.109146 in scaled units; float Schur = 1.4117111e-8, float margin over beta2 = 1.1171e-9 (audited margin 1.12e-9). The same LDL^T also certifies the strengthened floor 1.40e-8 (smallest pivot lower bound 0.004855); the probe at 1.41e-8 fails at the last pivot, consistent with the float Schur value. Inputs: item 3' balls (research/flint_gram_k_2026_11_15_a_balls.json, _cct_balls.json; CC^T max radius 2.09e-10) and R7's certified block (a). Full pivots in research/flint_border_ldlt_2026_11_15_results.json.",
+   "assumptions": [
+    "lambda_Z = 5.24628 as the (T1') lower bound on H_73 (Heart R9, interval-certified NUMERICAL; the Lean form of the repaired kernel lemma is banked via Claude PR #603).",
+    "Item 3' CC^T balls (flint_gram_k_2026_11_15) and R7's A_X' balls as the bordered matrix; the Schur conclusion uses A - CC^T/lambda_Z with CC^T the true tail matrix enclosed by those balls."
+   ],
+   "falsifiers": [
+    "Re-running the LDL^T from the committed balls with any pivot's lower bound <= 0 at beta2 = 1.3e-8.",
+    "An independent enclosure of CC^T ( disjoint from item 3''s envelopes) moving the Schur complement of A - CC^T/5.24628 below 1.3e-8."
+   ],
+   "timeout_s": 300,
+   "default_run": false,
+   "limitations": [
+    "Certifies the bordered floor for the H_73 bordered system at L = 0.5 given lambda_Z >= 5.24628; it is one finite face of the OddFace assembly, not the all-widths statement (AKG).",
+    "The certificate is a finite interval computation (Arb balls at 600-bit LDL^T precision); the Lean formalisation of this block is Claude's lane."
+   ]
   }
  ]
 }
