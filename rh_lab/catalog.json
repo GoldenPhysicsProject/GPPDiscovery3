@@ -1228,6 +1228,29 @@
     "Discharges (H-A) and (H-rho) for the L = 0.5 run 13/14 route to OddFace(0.5) only; the all-widths statement is AKG, untouched. The (H-Env) input remains run 14's derivation from Heart R12.",
     "(H-A)'s tail is an analytic bound evaluated in interval arithmetic (its parts are listed in the run note); the finite range and (H-rho) are finite interval computations. Lean formalisation is Claude's lane."
    ]
+  },
+  {
+   "id": "flint_ha_hrho_export_2026_11_16",
+   "path": "research/flint_ha_hrho_export_2026_11_16.py",
+   "method": "interval",
+   "evidence": "interval_certified",
+   "claim": "Dyadic exports of run 16's (H-A)/(H-rho) certificates for Claude's Lean kernel checks, per his spec at GPP-bridge d60d24f, in the item-4 export style. (H-A): the 740 committed A_jj balls (j = 73..812) as integer numerators over 2^160, enclosing the committed-dump balls (exact rational check); c_A exported as the rational 867483/500000 = 1.734966 <= run 16's certified 1.7349668350070715; exported profile min 1.7349668410406225. (H-rho): Atilde rebuilt in Arb balls from run 16's committed dumps via its own verify path, pair balls symmetrised by hulls; max normalised off-diagonal row-sum 0.8449834095890294 at j = 151; Gershgorin bound from the exported 2^-32-grid integers, exact integer arithmetic: 3632727590/2^32 = 0.8458103029988706 < 1, so the kernel check proves rho_Z <= 0.8459 (NOT (H-rho) at 0.34, which remains run 16's LDL^T certificate). Downstream at that rho (run 16 section 4 components, NUMERICAL): room vs beta_0 = 99.57x, c_dir >= 6.581878559327196e-13. Also filed: run 16's committed profile_lower min sits 6.0e-9 below the exact profile of its own committed A_diag balls (conservative direction, no banked claim affected). Exports filed on GPP-bridge under work/flint/.",
+   "assumptions": [
+    "Run 16's committed artifacts (balls.json, k2balls.json, ldlt.npz, R7 shards) as the record; A rebuilt through run 16's own verify path, validations V1/V2 passing, rebuilt A_diag midpoints identical to the committed dump (max discrepancy 0.0).",
+    "The exact A is symmetric (Gram Schur complement), so pairwise hulls of the directional Arb balls enclose the true entries.",
+    "No zero data used anywhere."
+   ],
+   "falsifiers": [
+    "Recomputing the Gershgorin bound from the exported integers (exact integer row sums) failing to give 3632727590/2^32.",
+    "Any exported (H-A) dyadic ball failing to enclose the corresponding committed A_diag ball (exact rational check).",
+    "An independent Arb rebuild of Atilde giving a max off-diagonal row-sum above the exported bound."
+   ],
+   "timeout_s": 300,
+   "default_run": false,
+   "limitations": [
+    "The Gershgorin kernel check proves rho_Z <= 0.8459, weaker than (H-rho) as stated (0.34); the assembly still closes at 99.57x room at that value. (H-rho) at 0.34 and at 0.158 remain certified only by run 16's LDL^T route.",
+    "Exports repackage run 16's balls; the ball hypotheses themselves and the assembly chain are not Lean content (Claude's stated scope, d60d24f)."
+   ]
   }
  ]
 }

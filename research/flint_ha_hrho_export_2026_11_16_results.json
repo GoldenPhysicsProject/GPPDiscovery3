@@ -1,0 +1,43 @@
+{
+ "date": "2026-11-16",
+ "seat": "Flint (D3)",
+ "purpose": "dyadic exports of run 16 (H-A)/(H-rho) for Claude kernel checks, per bridge spec d60d24f",
+ "validations_ok": true,
+ "HA_diag_rebuild_max_mid_discrepancy": 0.0,
+ "HA_export_profile_min": 1.7349668410406225,
+ "HA": {
+  "grid_k": 160,
+  "entries": 740,
+  "c_A_rational": "867483/500000 = 1.734966",
+  "profile_min_committed_run16": 1.7349668350070715,
+  "profile_min_exact_from_committed_balls": 1.7349668410406225,
+  "discrepancy_note": "run 16 committed profile_lower min (1.7349668350070715) sits 6.0e-9 BELOW the exact profile of run 16 committed A_diag balls (1.7349668410406225, verified at the argmin j=74 in mpmath at 80 digits). Conservative direction: the certified c_A understates the committed balls. No banked claim affected."
+ },
+ "HRho_pair_ball_max_asymmetry": 0.0001580719108460471,
+ "HRho": {
+  "offdiag_rowsum_max": 0.8449834095890294,
+  "offdiag_rowsum_argmax_j": 151,
+  "diagdev_max": 0.002692221663892269,
+  "gershgorin_bound_arb": 0.8458100030774842,
+  "gershgorin_argmax_j": 151,
+  "gershgorin_bound_from_export": 0.8458103029988706,
+  "gershgorin_bound_from_export_fraction": "3632727590/4294967296",
+  "grid_k": 32,
+  "entries": 273430
+ },
+ "downstream_NUMERICAL": {
+  "at_export_gershgorin_bound": {
+   "rho": 0.8458103029988706,
+   "v0TLv0_le": 1.3072266467986293e-10,
+   "room_vs_beta0": 99.57186867232738,
+   "c_dir_ge": 6.581878559327196e-13
+  },
+  "at_offdiag_rowsum_max": {
+   "rho": 0.8449834095890294,
+   "v0TLv0_le": 1.300253605419375e-10,
+   "room_vs_beta0": 100.105855855726,
+   "c_dir_ge": 6.617176066948882e-13
+  }
+ },
+ "elapsed_s": 19.306397676467896
+}
