@@ -1205,6 +1205,29 @@
     "Certifies the bordered floor for the H_73 bordered system at L = 0.5 given lambda_Z >= 5.24628; it is one finite face of the OddFace assembly, not the all-widths statement (AKG).",
     "The certificate is a finite interval computation (Arb balls at 600-bit LDL^T precision); the Lean formalisation of this block is Claude's lane."
    ]
+  },
+  {
+   "id": "flint_ha_hrho_cert_2026_11_15",
+   "path": "research/flint_ha_hrho_cert_2026_11_15.py",
+   "method": "interval",
+   "evidence": "interval_certified",
+   "claim": "Flint run 16: the last two named hypotheses of the run 13/14 OddFace(0.5) assembly, interval-certified in Arb balls (prec 200). (H-A) CERTIFIED WITH A STATED CORRECTION: A_jj >= c_A log w_j / w_j^4 for all j >= 73 (A = S_Z^eff, L = 0.5, w_j = 4 pi j) with certified c_A = 1.7349668350070715 - finite range binding at j = 74 from diag(A) balls, tail (j > 812) analytic lower bound 1.738928806675349 - replacing the catalogued 1.7372355768219303, which was run 13's float64 profile minimum at j = 74 and cannot certify at its own value. (H-rho) CERTIFIED AS STATED: rho_Z = ||D^{-1/2} A D^{-1/2} - I|| <= 0.34 by verified LDL^T (dump check: dmin 0.3107884620994105 / 0.3100774538728322 vs perturbation W 0.002708744656308946 / 0.0027087441149257346, factorisation residual S_max = 1.4760007616132498e-07 folded into the bound); tightest certified threshold rho_Z <= 0.158 (midpoint float value 0.15706180861127572). Run 13's filed computed value 0.33419022381006247 is SUPERSEDED as a float64 artifact: Arb-direct u_j (Heart R7 evaluator) excludes run 13's u_all at j = 73, 74, 200, 412 (deviations 3.0e-14..6.2e-14 against direct ball radii 0.6e-14..2.0e-14), and the D-normalised top form is a cancellation of two ~1.139e6 quantities (direct Arb form 1138818.4960 +/- 8.04e-5) whose u-error delta(t'u) = 3.64e-6 is worth 0.366 in the cancelled form - the whole phantom eigenvalue, a rank-2 update -(du u' + u du')/g. Downstream (NUMERICAL bookkeeping): assembled v0'Lv0 <= 2.3938346862432667e-11, room vs beta0 = 543.742643332943x (was 430.1x); c_dir floor (1-rho_Z)/RQ_D >= 3.5942360966653345e-12. Artifacts: _results.json, _balls.json, _k2balls.json, _ldlt.npz, note .md; verify mode reruns everything from the dumps - all six checks pass.",
+   "assumptions": [
+    "Same identification as runs 13-15: St = M - uu'/g is the delta-eliminated bordered Gram (basis-independent), X = modes 1-12, Y = 13-72, Z = 73-812; run-15 Gram(k) dump is the finite core.",
+    "(H-A) tail consumes Heart R12's constants C_delta = 19.5771, C_phi = 69.5492 and run 14's (H-Env) envelope constant C_y = 0.0033293405873747175; modes 1-72, u and g from Heart's R7 Arb shards (GPPDiscovery5 1da974d) as committed.",
+    "No zero data used anywhere."
+   ],
+   "falsifiers": [
+    "Turbo's independent rerun of `python flint_ha_hrho_cert_2026_11_15.py verify` from the committed dumps failing any of its six checks (HA finite c_A, HA tail, H-rho certified, H-rho tightest, LDL^T dump check, validations).",
+    "An independent Arb evaluation of u_j or of the top quadratic form t'B(phi,phi)t contradicting the balls quoted in the run note (u_j direct balls; form 1138818.4960 +/- 8.04e-5).",
+    "Claude's Lean shaping of either certificate failing to close from the dumped data."
+   ],
+   "timeout_s": 300,
+   "default_run": false,
+   "limitations": [
+    "Discharges (H-A) and (H-rho) for the L = 0.5 run 13/14 route to OddFace(0.5) only; the all-widths statement is AKG, untouched. The (H-Env) input remains run 14's derivation from Heart R12.",
+    "(H-A)'s tail is an analytic bound evaluated in interval arithmetic (its parts are listed in the run note); the finite range and (H-rho) are finite interval computations. Lean formalisation is Claude's lane."
+   ]
   }
  ]
 }
