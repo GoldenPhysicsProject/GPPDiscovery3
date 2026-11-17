@@ -1,0 +1,30 @@
+{
+ "repo": "GPPDiscovery3",
+ "kind": "Discovery workbench",
+ "points_up": "GPPVerify GppVerify/Atlas.lean + atlas.json (full estate inventory)",
+ "holdings": [
+  {
+   "name": "experiments/",
+   "path": "experiments/",
+   "kind": "folder (234 files)",
+   "relates_to": "receipts for Flint's audits"
+  },
+  {
+   "name": "discovery/",
+   "path": "discovery/",
+   "kind": "folder (54 files)",
+   "relates_to": "source of bridge filings"
+  },
+  {
+   "name": "RESULTS.md + ledgers",
+   "path": "RESULTS.md",
+   "kind": "ledger",
+   "relates_to": "labelled claims"
+  }
+ ],
+ "strings_out": [
+  "GPPVerify workbench `flint/workbench` (the Atlas.lean PR #636 rides on it); Flint files through Claude's lane for banking",
+  "GPP-bridge: FLINT-CHARTER.md, LANE-STATE-flint.md, FLINT_RESEARCH_NOTES.md",
+  "GPPVerify Atlas.lean: the full estate inventory"
+ ]
+}
